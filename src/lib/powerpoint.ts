@@ -16,11 +16,16 @@ export interface Box {
 
 export interface SelectedShape extends Box {
   id: string;
+  type: PowerPoint.Shape["type"];
 }
 
 export class NoSelectionError extends Error {
-  constructor() {
-    super("Select two or more shapes first.");
+  constructor(minShapes: number) {
+    super(
+      minShapes <= 1
+        ? "Select at least one shape first."
+        : `Select ${minShapes} or more shapes first.`,
+    );
     this.name = "NoSelectionError";
   }
 }
@@ -39,14 +44,15 @@ export async function withSelectedShapes(
 ): Promise<void> {
   await PowerPoint.run(async (context) => {
     const collection = context.presentation.getSelectedShapes();
-    collection.load("items/id,items/left,items/top,items/width,items/height");
+    collection.load("items/id,items/type,items/left,items/top,items/width,items/height");
     await context.sync();
 
     const shapes = collection.items;
-    if (shapes.length < minShapes) throw new NoSelectionError();
+    if (shapes.length < minShapes) throw new NoSelectionError(minShapes);
 
     const geometry: SelectedShape[] = shapes.map((s) => ({
       id: s.id,
+      type: s.type,
       left: s.left,
       top: s.top,
       width: s.width,

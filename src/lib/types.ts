@@ -20,7 +20,11 @@ export interface Feature {
 export interface Category {
   id: string;
   label: string;
-  /** Generic feature-button list. Ignored when `panel` is set. */
+  /**
+   * Generic feature-button list. May be combined with `panel` — when both are
+   * present the panel renders first, then the feature list (used to keep
+   * not-yet-built / blocked features visible alongside implemented ones).
+   */
   features?: Feature[];
   /** Optional custom UI for categories that need more than buttons. */
   panel?: ComponentType;

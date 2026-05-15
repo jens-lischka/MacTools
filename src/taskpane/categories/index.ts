@@ -1,5 +1,7 @@
 import type { Category, Feature } from "../../lib/types";
 import { AlignmentPanel } from "../components/AlignmentPanel";
+import { SizePositionPanel } from "../components/SizePositionPanel";
+import { SelectSamePanel } from "../components/SelectSamePanel";
 
 /**
  * Category registry driving the task pane.
@@ -28,13 +30,10 @@ export const categories: Category[] = [
   {
     id: "size",
     label: "Size & Position",
+    panel: SizePositionPanel,
     features: [
-      f("matchSize", "Match Size / Width / Height", "ok"),
-      f("stretch", "Stretch to edge", "ok"),
-      f("fill", "Fill to edge / gap", "ok"),
-      f("scaleToValue", "Scale to Value", "ok"),
-      f("straightenLine", "Straighten Line", "ok"),
-      f("unifyShapes", "Unify Shapes / Arrows", "partial"),
+      f("fillGap", "Fill to gap", "partial", "Planned for a later phase."),
+      f("unifyShapes", "Unify Shapes / Arrows", "partial", "Planned for a later phase."),
       f("cropToCircle", "Crop to Circle", "blocked", "Picture crop API not exposed."),
       f("aspectRatioLock", "Lock Aspect Ratio", "blocked", "Property not exposed."),
     ],
@@ -42,13 +41,10 @@ export const categories: Category[] = [
   {
     id: "selection",
     label: "Select Same",
+    panel: SelectSamePanel,
     features: [
-      f("selectFill", "Select by Fill Colour", "ok"),
-      f("selectOutline", "Select by Outline", "ok"),
-      f("selectType", "Select by Type", "ok"),
-      f("selectSize", "Select by Size", "ok"),
-      f("selectFont", "Select by Font / Text", "ok"),
-      f("selectPosition", "Select by Position", "ok"),
+      f("selectFont", "Select by Font / Text", "ok", "Planned for a later phase."),
+      f("selectPosition", "Select by Position", "ok", "Planned for a later phase."),
       f("showHide", "Show All / Hide Objects", "blocked", "Shape visibility not exposed."),
     ],
   },

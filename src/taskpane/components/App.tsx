@@ -4,6 +4,7 @@ import {
   AccordionHeader,
   AccordionItem,
   AccordionPanel,
+  Divider,
   FluentProvider,
   MessageBar,
   MessageBarBody,
@@ -31,7 +32,12 @@ const useStyles = makeStyles({
   },
   scroll: { flexGrow: 1, overflowY: "auto" },
   status: { margin: tokens.spacingVerticalS },
-  panelInner: { padding: tokens.spacingVerticalS },
+  panelInner: {
+    padding: tokens.spacingVerticalS,
+    display: "flex",
+    flexDirection: "column",
+    gap: tokens.spacingVerticalS,
+  },
 });
 
 type Status = { kind: "info" | "success" | "error"; text: string } | null;
@@ -87,16 +93,15 @@ const App: React.FC = () => {
             <Accordion collapsible defaultOpenItems="alignment">
               {categories.map((category) => {
                 const Panel = category.panel;
+                const features = category.features ?? [];
                 return (
                   <AccordionItem key={category.id} value={category.id}>
                     <AccordionHeader>{category.label}</AccordionHeader>
                     <AccordionPanel>
                       <div className={styles.panelInner}>
-                        {Panel ? (
-                          <Panel />
-                        ) : (
-                          <FeatureList features={category.features ?? []} />
-                        )}
+                        {Panel && <Panel />}
+                        {Panel && features.length > 0 && <Divider />}
+                        {features.length > 0 && <FeatureList features={features} />}
                       </div>
                     </AccordionPanel>
                   </AccordionItem>
