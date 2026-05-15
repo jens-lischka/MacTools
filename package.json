@@ -7,10 +7,11 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "start": "office-addin-debugging start manifest.xml",
-    "stop": "office-addin-debugging stop manifest.xml",
+    "start": "office-addin-debugging start manifest.local.xml",
+    "stop": "office-addin-debugging stop manifest.local.xml",
     "dev-server": "webpack serve --mode development",
     "validate": "office-addin-manifest validate manifest.xml",
+    "validate:local": "office-addin-manifest validate manifest.local.xml",
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit"
   },

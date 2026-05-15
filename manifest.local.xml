@@ -12,9 +12,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="MacTools for PowerPoint" />
   <Description DefaultValue="Cross-platform PowerPoint productivity tools — alignment, sizing, text and shape utilities." />
-  <IconUrl DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-64.png" />
-  <SupportUrl DefaultValue="https://jens-lischka.github.io/MacTools/" />
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png" />
+  <SupportUrl DefaultValue="https://localhost:3000/" />
 
   <Hosts>
     <Host Name="Presentation" />
@@ -27,7 +27,7 @@
   </Requirements>
 
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://jens-lischka.github.io/MacTools/taskpane.html" />
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
   </DefaultSettings>
 
   <Permissions>ReadWriteDocument</Permissions>
@@ -76,14 +76,14 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-16.png" />
-        <bt:Image id="Icon.32" DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-32.png" />
-        <bt:Image id="Icon.80" DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-80.png" />
+        <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
+        <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+        <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://jens-lischka.github.io/MacTools/commands.html" />
-        <bt:Url id="Taskpane.Url" DefaultValue="https://jens-lischka.github.io/MacTools/taskpane.html" />
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://jens-lischka.github.io/MacTools/" />
+        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://localhost:3000/" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="MacTools for PowerPoint" />

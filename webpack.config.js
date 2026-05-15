@@ -22,6 +22,9 @@ module.exports = async (env, argv) => {
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "[name].js",
+      // Empty publicPath keeps asset references relative, so the build works
+      // when served from a GitHub Pages project subpath (/MacTools/).
+      publicPath: "",
       clean: true,
     },
     resolve: {

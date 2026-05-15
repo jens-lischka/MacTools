@@ -22,33 +22,57 @@ for the full feature inventory and feasibility analysis.
 
 TypeScript · React 18 · Fluent UI v9 · webpack · Office.js (`PowerPointApi`)
 
-## Develop
+## Two manifests
+
+A manifest is only a *pointer* to where the add-in's code is hosted — it does
+not contain the app. There are two:
+
+| File | Points at | Use |
+|---|---|---|
+| `manifest.xml` | `https://jens-lischka.github.io/MacTools/` (GitHub Pages) | **Upload this.** Works on any machine — web, Mac, Windows — no local server. |
+| `manifest.local.xml` | `https://localhost:3000/` | Local development only; needs the dev server running on *that* machine. |
+
+## Use it (hosted — recommended)
+
+1. In the GitHub repo: **Settings → Pages → Source → "GitHub Actions"**.
+2. Push to the deploy branch (or run the *Deploy to GitHub Pages* workflow
+   manually). It builds and publishes `dist/`.
+3. Once the deploy succeeds, upload **`manifest.xml`** in PowerPoint
+   (Web/Mac: *Add-ins → My Add-ins → Upload My Add-in*). It now loads on every
+   machine with no local setup.
+
+> The hosted URL assumes the repository is named `MacTools`. If your repo name
+> differs in spelling or case, update the URLs in `manifest.xml` and
+> `.github/workflows/deploy.yml` to match `https://<user>.github.io/<repo>/`.
+
+## Develop locally (optional)
 
 ```bash
 npm install
 npx office-addin-dev-certs install   # one-time: trust the HTTPS dev certificate
-npm start                            # sideload into PowerPoint and open the task pane
+npm start                            # runs dev server + sideloads manifest.local.xml
 ```
 
 Other scripts:
 
 ```bash
 npm run dev-server  # webpack dev server only (https://localhost:3000)
-npm run validate    # validate the manifest
-npm run typecheck   # type-check without emitting
 npm run build       # production build to dist/
+npm run validate    # validate manifest.xml
+npm run typecheck   # type-check without emitting
 ```
 
-> **Task pane not loading?** Office only loads a task pane over HTTPS with a
-> *trusted* certificate. Run `npx office-addin-dev-certs install` once (it adds
-> the dev cert to your OS trust store), then restart `npm start`. On Office on
-> the web, also confirm `https://localhost:3000/taskpane.html` opens in a
-> browser without a certificate warning.
+> **Task pane blank or "can't reach localhost"?** That means no dev server is
+> running on that machine. The localhost manifest only works where the dev
+> server runs. To test across several machines, use the hosted `manifest.xml`
+> instead.
 
 ## Project layout
 
 ```
-manifest.xml                 Office Add-in manifest (PowerPoint, all platforms)
+manifest.xml                 Hosted manifest (GitHub Pages URL) — upload this
+manifest.local.xml           Localhost manifest for local development
+.github/workflows/deploy.yml Builds and publishes dist/ to GitHub Pages
 src/
   taskpane/
     index.tsx                Office.onReady bootstrap
