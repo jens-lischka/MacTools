@@ -2,8 +2,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const devCerts = require("office-addin-dev-certs");
 
-module.exports = (env, argv) => {
+// Office (web and desktop) only loads a task pane over HTTPS with a trusted
+// certificate. Use the Office dev certs rather than webpack's self-signed one.
+async function getHttpsOptions() {
+  const options = await devCerts.getHttpsServerOptions();
+  return { ca: options.ca, key: options.key, cert: options.cert };
+}
+
+module.exports = async (env, argv) => {
   const dev = argv.mode === "development";
   return {
     devtool: dev ? "source-map" : false,
@@ -41,7 +49,10 @@ module.exports = (env, argv) => {
     ],
     devServer: {
       static: { directory: path.join(__dirname, "dist") },
-      server: "https",
+      server: {
+        type: "https",
+        options: dev ? await getHttpsOptions() : {},
+      },
       port: 3000,
       headers: { "Access-Control-Allow-Origin": "*" },
     },

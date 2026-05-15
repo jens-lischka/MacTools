@@ -26,12 +26,24 @@ TypeScript · React 18 · Fluent UI v9 · webpack · Office.js (`PowerPointApi`)
 
 ```bash
 npm install
-npm start          # sideload into PowerPoint and open the task pane
+npx office-addin-dev-certs install   # one-time: trust the HTTPS dev certificate
+npm start                            # sideload into PowerPoint and open the task pane
+```
+
+Other scripts:
+
+```bash
 npm run dev-server  # webpack dev server only (https://localhost:3000)
 npm run validate    # validate the manifest
 npm run typecheck   # type-check without emitting
 npm run build       # production build to dist/
 ```
+
+> **Task pane not loading?** Office only loads a task pane over HTTPS with a
+> *trusted* certificate. Run `npx office-addin-dev-certs install` once (it adds
+> the dev cert to your OS trust store), then restart `npm start`. On Office on
+> the web, also confirm `https://localhost:3000/taskpane.html` opens in a
+> browser without a certificate warning.
 
 ## Project layout
 
