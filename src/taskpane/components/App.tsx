@@ -83,10 +83,12 @@ const App: React.FC = () => {
               <br />
               <Caption1>A Creative Studio Solution</Caption1>
               <br />
+              <br />
               <Caption1>
                 Enhanced features for macOS and web — built for streamlined
                 presentation workflows.
               </Caption1>
+              <br />
               <br />
               <Caption1>PowerPoint API {highestSupportedApi()}</Caption1>
             </div>
