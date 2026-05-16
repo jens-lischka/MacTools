@@ -79,9 +79,7 @@ const App: React.FC = () => {
         <div className={styles.root}>
           <div className={styles.header}>
             <div>
-              <Subtitle2>StudioTools</Subtitle2>
-              <br />
-              <Caption1>A Creative Studio Solution</Caption1>
+              <Subtitle2>A Creative Studio Solution</Subtitle2>
               <br />
               <br />
               <Caption1>
