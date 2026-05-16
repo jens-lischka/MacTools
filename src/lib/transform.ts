@@ -38,6 +38,51 @@ export async function swapSize(): Promise<void> {
   });
 }
 
+/** Swap fill colour and outline (colour, weight, dash) between two shapes. */
+export async function swapFillAndOutline(): Promise<void> {
+  await PowerPoint.run(async (context) => {
+    const selected = context.presentation.getSelectedShapes();
+    selected.load("items/id,items/type");
+    await context.sync();
+
+    if (selected.items.length !== 2) {
+      throw new Error("Select exactly two shapes to swap.");
+    }
+    const [a, b] = selected.items;
+    if (
+      a.type !== PowerPoint.ShapeType.geometricShape ||
+      b.type !== PowerPoint.ShapeType.geometricShape
+    ) {
+      throw new Error("Both shapes must be standard shapes with a fill.");
+    }
+
+    [a, b].forEach((s) => {
+      s.fill.load("foregroundColor");
+      s.lineFormat.load("color,weight,dashStyle");
+    });
+    await context.sync();
+
+    const snapshot = (s: PowerPoint.Shape) => ({
+      fill: s.fill.foregroundColor,
+      color: s.lineFormat.color,
+      weight: s.lineFormat.weight,
+      dashStyle: s.lineFormat.dashStyle,
+    });
+    const aStyle = snapshot(a);
+    const bStyle = snapshot(b);
+
+    const apply = (s: PowerPoint.Shape, style: ReturnType<typeof snapshot>) => {
+      s.fill.setSolidColor(style.fill);
+      s.lineFormat.color = style.color;
+      s.lineFormat.weight = style.weight;
+      s.lineFormat.dashStyle = style.dashStyle;
+    };
+    apply(a, bStyle);
+    apply(b, aStyle);
+    await context.sync();
+  });
+}
+
 /** Store the size and position of the single selected shape. */
 export async function pickUpSizePosition(): Promise<void> {
   let picked: Box | null = null;

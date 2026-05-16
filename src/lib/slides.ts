@@ -40,6 +40,35 @@ export async function getSlideTitles(): Promise<string[]> {
   return titles;
 }
 
+/** Tag marking a shape as a MacTools sticky note. */
+const STICKY_NOTE_TAG = "MACTOOLS_STICKY_NOTE";
+
+/**
+ * Add a sticky note (a small coloured text box stamped with the author's
+ * initials and today's date) to the slide in view.
+ */
+export async function addStickyNote(initials: string): Promise<void> {
+  const author = initials.trim() || "Note";
+  const stamp = new Date().toLocaleDateString();
+
+  await PowerPoint.run(async (context) => {
+    const slides = context.presentation.getSelectedSlides();
+    slides.load("items/id");
+    await context.sync();
+    if (slides.items.length === 0) throw new Error("Open a slide first.");
+
+    const note = slides.items[0].shapes.addTextBox(`${author} — ${stamp}\n`, {
+      left: 700,
+      top: 24,
+      width: 220,
+      height: 90,
+    });
+    note.fill.setSolidColor("#FFF1A8");
+    note.tags.add(STICKY_NOTE_TAG, "1");
+    await context.sync();
+  });
+}
+
 /** Insert a numbered table of contents as a text box on the slide in view. */
 export async function insertTableOfContents(): Promise<void> {
   const titles = await getSlideTitles();

@@ -1,6 +1,19 @@
 import * as React from "react";
-import { Button, Caption1, makeStyles, tokens } from "@fluentui/react-components";
-import { insertShape, insertLine, insertTextBox } from "../../lib/shapes";
+import {
+  Button,
+  Field,
+  Divider,
+  Caption1,
+  makeStyles,
+  tokens,
+} from "@fluentui/react-components";
+import {
+  insertShape,
+  insertLine,
+  insertTextBox,
+  insertNumberedCircle,
+  groupAsLayout,
+} from "../../lib/shapes";
 import { useActions } from "./ActionContext";
 
 const useStyles = makeStyles({
@@ -51,7 +64,36 @@ export const ShapeCreationPanel: React.FC = () => {
         >
           Text Box
         </Button>
+        <Button
+          disabled={busy}
+          onClick={() =>
+            run("Insert numbered circle", () => insertNumberedCircle("1"))
+          }
+        >
+          Numbered Circle
+        </Button>
       </div>
+
+      <Divider />
+
+      <Field label="Lay selected shapes out as">
+        <div className={styles.grid}>
+          <Button
+            disabled={busy}
+            onClick={() => run("Group as row", () => groupAsLayout("row"))}
+          >
+            Row
+          </Button>
+          <Button
+            disabled={busy}
+            onClick={() =>
+              run("Group as column", () => groupAsLayout("column"))
+            }
+          >
+            Column
+          </Button>
+        </div>
+      </Field>
     </div>
   );
 };

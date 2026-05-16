@@ -9,7 +9,7 @@ import {
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
-import { replaceFonts, insertCagr } from "../../lib/utilities";
+import { replaceFonts, insertCagr, getFileSize } from "../../lib/utilities";
 import { useActions } from "./ActionContext";
 
 const useStyles = makeStyles({
@@ -35,6 +35,19 @@ export const UtilitiesPanel: React.FC = () => {
   const [startValue, setStartValue] = React.useState(100);
   const [endValue, setEndValue] = React.useState(200);
   const [periods, setPeriods] = React.useState(5);
+  const [fileSize, setFileSize] = React.useState("");
+  const [checkingSize, setCheckingSize] = React.useState(false);
+
+  const checkFileSize = async () => {
+    setCheckingSize(true);
+    try {
+      setFileSize(await getFileSize());
+    } catch (err) {
+      setFileSize(err instanceof Error ? err.message : String(err));
+    } finally {
+      setCheckingSize(false);
+    }
+  };
 
   return (
     <div className={styles.section}>
@@ -114,6 +127,21 @@ export const UtilitiesPanel: React.FC = () => {
           >
             Insert
           </Button>
+        </div>
+      </Field>
+
+      <Divider />
+
+      <Field label="Presentation file size">
+        <div className={styles.row}>
+          <Button
+            className={styles.grow}
+            disabled={busy || checkingSize}
+            onClick={() => void checkFileSize()}
+          >
+            Check File Size
+          </Button>
+          {fileSize && <Caption1>{fileSize}</Caption1>}
         </div>
       </Field>
     </div>

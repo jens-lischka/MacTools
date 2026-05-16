@@ -5,10 +5,12 @@
  * position; the user then moves them as needed.
  */
 
+import { withSelectedShapes } from "./powerpoint";
+
 /** Default placement for a newly inserted shape, points. */
 const DEFAULT_PLACEMENT = { left: 120, top: 120, width: 200, height: 120 };
 
-async function getActiveSlide(
+export async function getActiveSlide(
   context: PowerPoint.RequestContext,
 ): Promise<PowerPoint.Slide> {
   const slides = context.presentation.getSelectedSlides();
@@ -51,5 +53,49 @@ export async function insertTextBox(): Promise<void> {
     const slide = await getActiveSlide(context);
     slide.shapes.addTextBox("Text", { ...DEFAULT_PLACEMENT, height: 60 });
     await context.sync();
+  });
+}
+
+/** Insert a numbered circle (an ellipse with a centred label). */
+export async function insertNumberedCircle(label: string): Promise<void> {
+  await PowerPoint.run(async (context) => {
+    const slide = await getActiveSlide(context);
+    const circle = slide.shapes.addGeometricShape(
+      PowerPoint.GeometricShapeType.ellipse,
+      { left: 120, top: 120, width: 48, height: 48 },
+    );
+    circle.textFrame.textRange.text = label.trim() || "1";
+    circle.textFrame.textRange.paragraphFormat.horizontalAlignment =
+      PowerPoint.ParagraphHorizontalAlignment.center;
+    await context.sync();
+  });
+}
+
+export type GroupDirection = "row" | "column";
+
+/** Lay the selected shapes out edge-to-edge as a row or a column. */
+export async function groupAsLayout(direction: GroupDirection): Promise<void> {
+  const gap = 8;
+  await withSelectedShapes(2, (shapes, geometry) => {
+    const order = geometry
+      .map((g, i) => ({ g, i }))
+      .sort((a, b) =>
+        direction === "row" ? a.g.left - b.g.left : a.g.top - b.g.top,
+      );
+    const base = direction === "row" ? order[0].g.top : order[0].g.left;
+    let cursor = direction === "row" ? order[0].g.left : order[0].g.top;
+
+    order.forEach((o) => {
+      const shape = shapes[o.i];
+      if (direction === "row") {
+        shape.left = cursor;
+        shape.top = base;
+        cursor += o.g.width + gap;
+      } else {
+        shape.top = cursor;
+        shape.left = base;
+        cursor += o.g.height + gap;
+      }
+    });
   });
 }

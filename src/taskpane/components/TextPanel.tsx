@@ -15,7 +15,13 @@ import {
   setParagraphAlignment,
   clearLineBreaks,
   clearText,
+  setBullets,
+  applyTextStyle,
+  mergeText,
+  splitText,
+  insertSpecialCharacter,
   type Margins,
+  type TextStyle,
 } from "../../lib/text";
 import { useActions } from "./ActionContext";
 
@@ -44,6 +50,14 @@ const ALIGNMENTS: { label: string; value: PowerPoint.ParagraphHorizontalAlignmen
   { label: "Right", value: PowerPoint.ParagraphHorizontalAlignment.right },
   { label: "Justify", value: PowerPoint.ParagraphHorizontalAlignment.justify },
 ];
+
+const STYLES: { label: string; style: TextStyle }[] = [
+  { label: "Heading", style: { size: 28, bold: true } },
+  { label: "Subheading", style: { size: 20, bold: true } },
+  { label: "Body", style: { size: 14, bold: false } },
+];
+
+const SPECIAL_CHARS = ["—", "–", "•", "→", "←", "↑", "↓", "×", "✓", "€"];
 
 export const TextPanel: React.FC = () => {
   const styles = useStyles();
@@ -185,6 +199,79 @@ export const TextPanel: React.FC = () => {
         Clear Line Breaks joins multi-line text into one line; Clear Text
         empties the selected shapes.
       </Caption1>
+
+      <Divider />
+
+      <Field label="Bullets">
+        <div className={styles.row}>
+          <Button
+            className={styles.grow}
+            disabled={busy}
+            onClick={() => run("Bullets on", () => setBullets(true))}
+          >
+            On
+          </Button>
+          <Button
+            className={styles.grow}
+            disabled={busy}
+            onClick={() => run("Bullets off", () => setBullets(false))}
+          >
+            Off
+          </Button>
+        </div>
+      </Field>
+
+      <Field label="Text style">
+        <div className={styles.row}>
+          {STYLES.map((s) => (
+            <Button
+              key={s.label}
+              className={styles.grow}
+              disabled={busy}
+              onClick={() =>
+                run(`Apply ${s.label} style`, () => applyTextStyle(s.style))
+              }
+            >
+              {s.label}
+            </Button>
+          ))}
+        </div>
+      </Field>
+
+      <Divider />
+
+      <div className={styles.row}>
+        <Button
+          className={styles.grow}
+          disabled={busy}
+          onClick={() => run("Merge text", () => mergeText())}
+        >
+          Merge Text
+        </Button>
+        <Button
+          className={styles.grow}
+          disabled={busy}
+          onClick={() => run("Split text", () => splitText())}
+        >
+          Split Text
+        </Button>
+      </div>
+
+      <Field label="Insert special character (at the text cursor)">
+        <div className={styles.row}>
+          {SPECIAL_CHARS.map((ch) => (
+            <Button
+              key={ch}
+              disabled={busy}
+              onClick={() =>
+                run(`Insert ${ch}`, () => insertSpecialCharacter(ch))
+              }
+            >
+              {ch}
+            </Button>
+          ))}
+        </div>
+      </Field>
     </div>
   );
 };

@@ -7,20 +7,23 @@ All features live in a single **task pane**, organised by category.
 
 ## Status
 
-Phases 2–4 implemented (feasible features).
+All feasible features implemented.
 
-- ✅ Task-pane shell with categorised, collapsible navigation
-- ✅ Settings store (per-document + per-user roaming)
 - ✅ **Alignment & Distribution**
 - ✅ **Size & Position** — match size, scale, stretch, straighten lines
-- ✅ **Select Same** — fill / outline colour, outline weight, type, size
-- ✅ **Text & Paragraph** — autofit, word wrap, margins, alignment, clear text
-- ✅ **Shape Creation** — insert shapes, line, text box
-- ✅ **Swap / Pick up & Apply** — swap position/size, pick up & apply geometry
-- ✅ **Slides** — export slide titles, insert table of contents
-- ✅ **Utilities** — replace fonts, CAGR
-- 🚧 Remaining items are API-constrained (`partial`) or `blocked`; each is
-  listed in-product with its feasibility rating. See the overview doc.
+- ✅ **Select Same** — fill/outline colour & weight, type, size, font, position
+- ✅ **Text & Paragraph** — autofit, wrap, margins, alignment, clear text,
+  bullets, text styles, merge/split text, special characters
+- ✅ **Shape Creation** — insert shapes, line, text box, numbered circle,
+  lay out as row/column
+- ✅ **Swap / Pick up & Apply** — swap position/size/fill&outline, pick up
+  & apply geometry
+- ✅ **Slides** — export titles, table of contents, sticky notes
+- ✅ **Special Shapes** — title, conclusion, footnote, ghost, label
+- ✅ **Utilities** — replace fonts, CAGR, file size
+- ✅ **Settings** — slide size, default initials, online help
+- ⛔ Remaining items are `blocked` (no JS API) or need the table API; each is
+  listed in-product with the reason. See the overview doc.
 
 See [`docs/powerpoint-cross-platform-overview.md`](docs/powerpoint-cross-platform-overview.md)
 for the full feature inventory and feasibility analysis.

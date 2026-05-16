@@ -1,13 +1,13 @@
 /**
- * "Select Same" operations — Phase 2.
+ * "Select Same" operations.
  *
  * The user selects one reference shape; the add-in then selects every shape
  * on the current slide that matches it on the chosen property.
  *
- * Properties split into two groups:
- *  - type / size need only universally-safe geometry, loaded in one pass.
- *  - fill / outline properties are loaded only on the shape types that
- *    support them, in a second pass, to avoid errors on incompatible shapes.
+ * Properties split into three groups by how they must be loaded:
+ *  - type / size / position need only universally-safe geometry (one pass).
+ *  - fill / outline are loaded only on the shape types that support them.
+ *  - font is loaded only on text-capable shape types.
  */
 
 export type SameProperty =
@@ -15,14 +15,40 @@ export type SameProperty =
   | "lineColor"
   | "lineWeight"
   | "shapeType"
-  | "size";
+  | "size"
+  | "fontName"
+  | "positionTop"
+  | "positionLeft"
+  | "positionRight"
+  | "positionBottom";
 
 /** Geometry tolerance in points. */
 const SIZE_TOLERANCE = 0.5;
 const WEIGHT_TOLERANCE = 0.01;
 
+const TEXT_SHAPE_TYPES: ReadonlyArray<PowerPoint.Shape["type"]> = [
+  PowerPoint.ShapeType.geometricShape,
+  PowerPoint.ShapeType.textBox,
+  PowerPoint.ShapeType.placeholder,
+];
+
 function near(a: number, b: number, tolerance: number): boolean {
   return Math.abs(a - b) < tolerance;
+}
+
+function edgeValue(shape: PowerPoint.Shape, property: SameProperty): number {
+  switch (property) {
+    case "positionTop":
+      return shape.top;
+    case "positionLeft":
+      return shape.left;
+    case "positionRight":
+      return shape.left + shape.width;
+    case "positionBottom":
+      return shape.top + shape.height;
+    default:
+      return NaN;
+  }
 }
 
 export async function selectSame(property: SameProperty): Promise<void> {
@@ -43,7 +69,7 @@ export async function selectSame(property: SameProperty): Promise<void> {
     const referenceId = selectedShapes.items[0].id;
     const slide = selectedSlides.items[0];
     const shapes = slide.shapes;
-    shapes.load("items/id,items/type,items/width,items/height");
+    shapes.load("items/id,items/type,items/left,items/top,items/width,items/height");
     await context.sync();
 
     const all = shapes.items;
@@ -64,6 +90,18 @@ export async function selectSame(property: SameProperty): Promise<void> {
             near(s.height, reference.height, SIZE_TOLERANCE),
         )
         .map((s) => s.id);
+    } else if (
+      property === "positionTop" ||
+      property === "positionLeft" ||
+      property === "positionRight" ||
+      property === "positionBottom"
+    ) {
+      const refEdge = edgeValue(reference, property);
+      matchIds = all
+        .filter((s) => near(edgeValue(s, property), refEdge, SIZE_TOLERANCE))
+        .map((s) => s.id);
+    } else if (property === "fontName") {
+      matchIds = await selectSameFont(context, all, referenceId);
     } else {
       matchIds = await selectSameStyle(context, all, referenceId, property);
     }
@@ -117,5 +155,30 @@ async function selectSameStyle(
       }
       return near(s.lineFormat.weight, reference.lineFormat.weight, WEIGHT_TOLERANCE);
     })
+    .map((s) => s.id);
+}
+
+/** Font-name matching — second pass over the text-capable subset. */
+async function selectSameFont(
+  context: PowerPoint.RequestContext,
+  all: PowerPoint.Shape[],
+  referenceId: string,
+): Promise<string[]> {
+  const textShapes = all.filter((s) => TEXT_SHAPE_TYPES.includes(s.type));
+  if (!textShapes.some((s) => s.id === referenceId)) {
+    throw new Error("The reference shape has no text to match.");
+  }
+
+  const fonts = new Map<string, PowerPoint.ShapeFont>();
+  textShapes.forEach((s) => {
+    const font = s.textFrame.textRange.font;
+    font.load("name");
+    fonts.set(s.id, font);
+  });
+  await context.sync();
+
+  const referenceName = fonts.get(referenceId)?.name;
+  return textShapes
+    .filter((s) => fonts.get(s.id)?.name === referenceName)
     .map((s) => s.id);
 }

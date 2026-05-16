@@ -10,6 +10,7 @@ import {
 import {
   swapPosition,
   swapSize,
+  swapFillAndOutline,
   pickUpSizePosition,
   applySizePosition,
 } from "../../lib/transform";
@@ -46,6 +47,15 @@ export const TransformPanel: React.FC = () => {
             onClick={() => run("Swap size", () => swapSize())}
           >
             Swap Size
+          </Button>
+          <Button
+            className={styles.grow}
+            disabled={busy}
+            onClick={() =>
+              run("Swap fill & outline", () => swapFillAndOutline())
+            }
+          >
+            Swap Fill &amp; Outline
           </Button>
         </div>
       </Field>

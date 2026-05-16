@@ -57,6 +57,25 @@ export async function replaceFonts(
   return changed;
 }
 
+/** Return the current presentation's file size as a human-readable string. */
+export async function getFileSize(): Promise<string> {
+  return new Promise<string>((resolve, reject) => {
+    Office.context.document.getFileAsync(Office.FileType.Compressed, (result) => {
+      if (result.status !== Office.AsyncResultStatus.Succeeded) {
+        reject(result.error);
+        return;
+      }
+      const file = result.value;
+      const bytes = file.size;
+      file.closeAsync(() => undefined);
+      const mb = bytes / (1024 * 1024);
+      resolve(
+        mb >= 1 ? `${mb.toFixed(2)} MB` : `${(bytes / 1024).toFixed(0)} KB`,
+      );
+    });
+  });
+}
+
 /**
  * Compute the compound annual growth rate and insert it as a text box on the
  * slide in view.
