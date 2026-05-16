@@ -6,11 +6,18 @@
  * break the batch.
  */
 
-const TEXT_SHAPE_TYPES: ReadonlyArray<PowerPoint.Shape["type"]> = [
-  PowerPoint.ShapeType.geometricShape,
-  PowerPoint.ShapeType.textBox,
-  PowerPoint.ShapeType.placeholder,
-];
+/**
+ * True for shape types that carry a text frame. Defined as a function (not a
+ * module-level constant) so the `PowerPoint` enum is read lazily — referencing
+ * it at module load can run before Office.js has defined the namespace.
+ */
+function isTextShape(type: PowerPoint.Shape["type"]): boolean {
+  return (
+    type === PowerPoint.ShapeType.geometricShape ||
+    type === PowerPoint.ShapeType.textBox ||
+    type === PowerPoint.ShapeType.placeholder
+  );
+}
 
 async function withTextShapes(
   callback: (
@@ -24,7 +31,7 @@ async function withTextShapes(
     await context.sync();
 
     const textShapes = selected.items.filter((s) =>
-      TEXT_SHAPE_TYPES.includes(s.type),
+      isTextShape(s.type),
     );
     if (textShapes.length === 0) {
       throw new Error("Select at least one shape that can contain text.");
@@ -161,7 +168,7 @@ export async function splitText(): Promise<void> {
     await context.sync();
 
     const textShapes = selected.items.filter((s) =>
-      TEXT_SHAPE_TYPES.includes(s.type),
+      isTextShape(s.type),
     );
     if (textShapes.length !== 1) {
       throw new Error("Select exactly one text shape to split.");

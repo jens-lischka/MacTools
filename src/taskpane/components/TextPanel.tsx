@@ -44,13 +44,6 @@ const MARGIN_PRESETS: { label: string; margins: Margins }[] = [
   { label: "Wide", margins: all(14.4) },
 ];
 
-const ALIGNMENTS: { label: string; value: PowerPoint.ParagraphHorizontalAlignment }[] = [
-  { label: "Left", value: PowerPoint.ParagraphHorizontalAlignment.left },
-  { label: "Center", value: PowerPoint.ParagraphHorizontalAlignment.center },
-  { label: "Right", value: PowerPoint.ParagraphHorizontalAlignment.right },
-  { label: "Justify", value: PowerPoint.ParagraphHorizontalAlignment.justify },
-];
-
 const STYLES: { label: string; style: TextStyle }[] = [
   { label: "Heading", style: { size: 28, bold: true } },
   { label: "Subheading", style: { size: 20, bold: true } },
@@ -63,6 +56,15 @@ export const TextPanel: React.FC = () => {
   const styles = useStyles();
   const { run, busy } = useActions();
   const [customMargin, setCustomMargin] = React.useState(6);
+
+  // Built inside the component so the PowerPoint enum is read after Office.js
+  // has loaded, not at module-evaluation time.
+  const ALIGNMENTS: { label: string; value: PowerPoint.ParagraphHorizontalAlignment }[] = [
+    { label: "Left", value: PowerPoint.ParagraphHorizontalAlignment.left },
+    { label: "Center", value: PowerPoint.ParagraphHorizontalAlignment.center },
+    { label: "Right", value: PowerPoint.ParagraphHorizontalAlignment.right },
+    { label: "Justify", value: PowerPoint.ParagraphHorizontalAlignment.justify },
+  ];
 
   return (
     <div className={styles.section}>

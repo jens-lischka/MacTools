@@ -29,18 +29,20 @@ const useStyles = makeStyles({
   },
 });
 
-const SHAPES: { label: string; type: PowerPoint.GeometricShapeType }[] = [
-  { label: "Rectangle", type: PowerPoint.GeometricShapeType.rectangle },
-  { label: "Rounded Rectangle", type: PowerPoint.GeometricShapeType.roundRectangle },
-  { label: "Oval", type: PowerPoint.GeometricShapeType.ellipse },
-  { label: "Triangle", type: PowerPoint.GeometricShapeType.triangle },
-  { label: "Right Arrow", type: PowerPoint.GeometricShapeType.rightArrow },
-  { label: "Chevron", type: PowerPoint.GeometricShapeType.chevron },
-];
-
 export const ShapeCreationPanel: React.FC = () => {
   const styles = useStyles();
   const { run, busy } = useActions();
+
+  // Built inside the component so the PowerPoint enum is read after Office.js
+  // has loaded, not at module-evaluation time.
+  const SHAPES: { label: string; type: PowerPoint.GeometricShapeType }[] = [
+    { label: "Rectangle", type: PowerPoint.GeometricShapeType.rectangle },
+    { label: "Rounded Rectangle", type: PowerPoint.GeometricShapeType.roundRectangle },
+    { label: "Oval", type: PowerPoint.GeometricShapeType.ellipse },
+    { label: "Triangle", type: PowerPoint.GeometricShapeType.triangle },
+    { label: "Right Arrow", type: PowerPoint.GeometricShapeType.rightArrow },
+    { label: "Chevron", type: PowerPoint.GeometricShapeType.chevron },
+  ];
 
   return (
     <div className={styles.section}>

@@ -26,11 +26,15 @@ export type SameProperty =
 const SIZE_TOLERANCE = 0.5;
 const WEIGHT_TOLERANCE = 0.01;
 
-const TEXT_SHAPE_TYPES: ReadonlyArray<PowerPoint.Shape["type"]> = [
-  PowerPoint.ShapeType.geometricShape,
-  PowerPoint.ShapeType.textBox,
-  PowerPoint.ShapeType.placeholder,
-];
+/** True for shape types that carry a text frame. A function (not a
+ *  module-level constant) so the `PowerPoint` enum is read lazily. */
+function isTextShape(type: PowerPoint.Shape["type"]): boolean {
+  return (
+    type === PowerPoint.ShapeType.geometricShape ||
+    type === PowerPoint.ShapeType.textBox ||
+    type === PowerPoint.ShapeType.placeholder
+  );
+}
 
 function near(a: number, b: number, tolerance: number): boolean {
   return Math.abs(a - b) < tolerance;
@@ -164,7 +168,7 @@ async function selectSameFont(
   all: PowerPoint.Shape[],
   referenceId: string,
 ): Promise<string[]> {
-  const textShapes = all.filter((s) => TEXT_SHAPE_TYPES.includes(s.type));
+  const textShapes = all.filter((s) => isTextShape(s.type));
   if (!textShapes.some((s) => s.id === referenceId)) {
     throw new Error("The reference shape has no text to match.");
   }

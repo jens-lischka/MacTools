@@ -2,11 +2,15 @@
  * Utility operations — Phase 4.
  */
 
-const TEXT_SHAPE_TYPES: ReadonlyArray<PowerPoint.Shape["type"]> = [
-  PowerPoint.ShapeType.geometricShape,
-  PowerPoint.ShapeType.textBox,
-  PowerPoint.ShapeType.placeholder,
-];
+/** True for shape types that carry a text frame. A function (not a
+ *  module-level constant) so the `PowerPoint` enum is read lazily. */
+function isTextShape(type: PowerPoint.Shape["type"]): boolean {
+  return (
+    type === PowerPoint.ShapeType.geometricShape ||
+    type === PowerPoint.ShapeType.textBox ||
+    type === PowerPoint.ShapeType.placeholder
+  );
+}
 
 /**
  * Replace a font across the whole presentation. When `fromFont` is blank,
@@ -37,7 +41,7 @@ export async function replaceFonts(
     const fonts: PowerPoint.ShapeFont[] = [];
     shapeCollections.forEach((shapes) => {
       shapes.items
-        .filter((s) => TEXT_SHAPE_TYPES.includes(s.type))
+        .filter((s) => isTextShape(s.type))
         .forEach((s) => {
           const font = s.textFrame.textRange.font;
           font.load("name");
