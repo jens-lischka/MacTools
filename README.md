@@ -7,7 +7,7 @@ All features live in a single **task pane**, organised by category.
 
 ## Status
 
-Phases 2–3 implemented.
+Phases 2–4 implemented (feasible features).
 
 - ✅ Task-pane shell with categorised, collapsible navigation
 - ✅ Settings store (per-document + per-user roaming)
@@ -17,9 +17,10 @@ Phases 2–3 implemented.
 - ✅ **Text & Paragraph** — autofit, word wrap, margins, alignment, clear text
 - ✅ **Shape Creation** — insert shapes, line, text box
 - ✅ **Swap / Pick up & Apply** — swap position/size, pick up & apply geometry
-- 🚧 Phase 4 (Tables, Sticky Notes, TOC, Conversion Assistant, bullets &
-  paragraph spacing) — these are the API-constrained "partial" features; each
-  is listed in-product with its rating and tackled next.
+- ✅ **Slides** — export slide titles, insert table of contents
+- ✅ **Utilities** — replace fonts, CAGR
+- 🚧 Remaining items are API-constrained (`partial`) or `blocked`; each is
+  listed in-product with its feasibility rating. See the overview doc.
 
 See [`docs/powerpoint-cross-platform-overview.md`](docs/powerpoint-cross-platform-overview.md)
 for the full feature inventory and feasibility analysis.

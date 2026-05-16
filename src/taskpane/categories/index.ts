@@ -5,6 +5,8 @@ import { SelectSamePanel } from "../components/SelectSamePanel";
 import { TextPanel } from "../components/TextPanel";
 import { ShapeCreationPanel } from "../components/ShapeCreationPanel";
 import { TransformPanel } from "../components/TransformPanel";
+import { SlidesPanel } from "../components/SlidesPanel";
+import { UtilitiesPanel } from "../components/UtilitiesPanel";
 
 /**
  * Category registry driving the task pane.
@@ -108,11 +110,10 @@ export const categories: Category[] = [
   {
     id: "slides",
     label: "Slides & Presentation",
+    panel: SlidesPanel,
     features: [
-      f("exportTitles", "Export Slide Titles", "ok"),
-      f("toc", "Table of Contents", "partial"),
-      f("stickyNotes", "Sticky Notes", "partial"),
-      f("pasteOnSlides", "Paste on Slides", "partial"),
+      f("stickyNotes", "Sticky Notes", "partial", "Planned for a later phase."),
+      f("pasteOnSlides", "Paste on Slides", "partial", "Clipboard access is constrained."),
       f("exportPictures", "Export as Pictures", "blocked", "No slide-render/export API."),
       f("sections", "Section management", "blocked", "No sections API."),
       f("slideGuides", "Slide Guides", "blocked", "No slide-guide API."),
@@ -134,12 +135,11 @@ export const categories: Category[] = [
   {
     id: "utilities",
     label: "Utilities",
+    panel: UtilitiesPanel,
     features: [
-      f("cagr", "CAGR", "ok"),
-      f("replaceFonts", "Replace Fonts", "ok"),
-      f("optimizeFontSize", "Optimize Font Size", "partial"),
-      f("fileSize", "File Size", "partial"),
-      f("conversionColours", "Conversion Assistant — Colours / Fonts", "partial"),
+      f("optimizeFontSize", "Optimize Font Size", "partial", "Planned for a later phase."),
+      f("fileSize", "File Size", "partial", "Planned for a later phase."),
+      f("conversionColours", "Conversion Assistant — Colours / Fonts", "partial", "Planned for a later phase."),
       f("airplaneMode", "Airplane Mode", "blocked", "Picture compression not exposed."),
       f("applyTemplate", "Apply Custom Template", "blocked", "No template-swap API."),
     ],
