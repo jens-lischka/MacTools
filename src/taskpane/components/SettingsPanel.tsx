@@ -11,6 +11,7 @@ import {
 } from "@fluentui/react-components";
 import { getSetting, setSetting } from "../../lib/settings";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -81,6 +82,7 @@ export const SettingsPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="Save" />}
             onClick={() =>
               run("Save slide size", () =>
                 setSetting("slideSize", { width, height }, "document"),
@@ -104,6 +106,7 @@ export const SettingsPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="Save" />}
             onClick={() =>
               run("Save initials", () =>
                 setSetting("stickyNote:initials", initials, "roaming"),
@@ -121,6 +124,7 @@ export const SettingsPanel: React.FC = () => {
         <Button
           className={styles.grow}
           disabled={busy}
+          icon={<ToolIcon name="Clear" />}
           onClick={() =>
             run("Reset slide size", async () => {
               await setSetting("slideSize", DEFAULT_SLIDE_SIZE, "document");
@@ -134,6 +138,7 @@ export const SettingsPanel: React.FC = () => {
         <Button
           className={styles.grow}
           appearance="secondary"
+          icon={<ToolIcon name="OnlineHelp" />}
           onClick={() => window.open(SUPPORT_URL, "_blank", "noopener")}
         >
           Online Help

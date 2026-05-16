@@ -15,6 +15,7 @@ import {
   applySizePosition,
 } from "../../lib/transform";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -37,6 +38,7 @@ export const TransformPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="SwapPosition" />}
             onClick={() => run("Swap position", () => swapPosition())}
           >
             Swap Position
@@ -44,6 +46,7 @@ export const TransformPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="MatchSize" />}
             onClick={() => run("Swap size", () => swapSize())}
           >
             Swap Size
@@ -51,6 +54,7 @@ export const TransformPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="SwapFillAndOutline" />}
             onClick={() =>
               run("Swap fill & outline", () => swapFillAndOutline())
             }
@@ -67,6 +71,7 @@ export const TransformPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="SizePositionCopy" />}
             onClick={() => run("Pick up size & position", () => pickUpSizePosition())}
           >
             Pick Up
@@ -74,6 +79,7 @@ export const TransformPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="SizePositionPaste" />}
             onClick={() => run("Apply size & position", () => applySizePosition())}
           >
             Apply

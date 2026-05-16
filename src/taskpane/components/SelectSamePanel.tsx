@@ -12,6 +12,7 @@ import { selectSame, type SameProperty } from "../../lib/selectSame";
 import { setSelectedShapesVisible, showAllShapes } from "../../lib/visibility";
 import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -26,20 +27,20 @@ const useStyles = makeStyles({
   },
 });
 
-const STYLE_PROPS: { property: SameProperty; label: string }[] = [
-  { property: "fillColor", label: "Fill Colour" },
-  { property: "lineColor", label: "Outline Colour" },
-  { property: "lineWeight", label: "Outline Weight" },
-  { property: "fontName", label: "Font" },
-  { property: "shapeType", label: "Shape Type" },
-  { property: "size", label: "Size" },
+const STYLE_PROPS: { property: SameProperty; label: string; icon: string }[] = [
+  { property: "fillColor", label: "Fill Colour", icon: "SelectSameFill" },
+  { property: "lineColor", label: "Outline Colour", icon: "SelectSameOutline" },
+  { property: "lineWeight", label: "Outline Weight", icon: "SelectSameOutlineWeight" },
+  { property: "fontName", label: "Font", icon: "SelectSameFontName" },
+  { property: "shapeType", label: "Shape Type", icon: "SelectSameType" },
+  { property: "size", label: "Size", icon: "SelectSameSize" },
 ];
 
-const POSITION_PROPS: { property: SameProperty; label: string }[] = [
-  { property: "positionTop", label: "Top" },
-  { property: "positionLeft", label: "Left" },
-  { property: "positionRight", label: "Right" },
-  { property: "positionBottom", label: "Bottom" },
+const POSITION_PROPS: { property: SameProperty; label: string; icon: string }[] = [
+  { property: "positionTop", label: "Top", icon: "SelectSamePositionTop" },
+  { property: "positionLeft", label: "Left", icon: "SelectSamePositionLeft" },
+  { property: "positionRight", label: "Right", icon: "SelectSamePositionRight" },
+  { property: "positionBottom", label: "Bottom", icon: "SelectSamePositionBottom" },
 ];
 
 export const SelectSamePanel: React.FC = () => {
@@ -47,10 +48,11 @@ export const SelectSamePanel: React.FC = () => {
   const { run, busy } = useActions();
   const visibilitySupported = isApiSupported("1.10");
 
-  const buttonFor = (property: SameProperty, label: string) => (
+  const buttonFor = (property: SameProperty, label: string, icon: string) => (
     <Button
       key={property}
       disabled={busy}
+      icon={<ToolIcon name={icon} />}
       onClick={() =>
         run(`Select same ${label.toLowerCase()}`, () => selectSame(property))
       }
@@ -67,12 +69,12 @@ export const SelectSamePanel: React.FC = () => {
       </Caption1>
       <Field label="Style &amp; size">
         <div className={styles.grid}>
-          {STYLE_PROPS.map((p) => buttonFor(p.property, p.label))}
+          {STYLE_PROPS.map((p) => buttonFor(p.property, p.label, p.icon))}
         </div>
       </Field>
       <Field label="Position (matching edge)">
         <div className={styles.grid}>
-          {POSITION_PROPS.map((p) => buttonFor(p.property, p.label))}
+          {POSITION_PROPS.map((p) => buttonFor(p.property, p.label, p.icon))}
         </div>
       </Field>
 
@@ -90,6 +92,7 @@ export const SelectSamePanel: React.FC = () => {
           <div className={styles.grid}>
             <Button
               disabled={busy || !visibilitySupported}
+              icon={<ToolIcon name="HideObject" />}
               onClick={() =>
                 run("Hide selected shapes", () =>
                   setSelectedShapesVisible(false),
@@ -100,6 +103,7 @@ export const SelectSamePanel: React.FC = () => {
             </Button>
             <Button
               disabled={busy || !visibilitySupported}
+              icon={<ToolIcon name="ShowAll" />}
               onClick={() => run("Show all shapes", () => showAllShapes())}
             >
               Show All

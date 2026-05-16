@@ -24,6 +24,7 @@ import {
   type TextStyle,
 } from "../../lib/text";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -37,17 +38,17 @@ const useStyles = makeStyles({
 
 const all = (v: number): Margins => ({ left: v, right: v, top: v, bottom: v });
 
-const MARGIN_PRESETS: { label: string; margins: Margins }[] = [
-  { label: "None", margins: all(0) },
-  { label: "Narrow", margins: all(3.6) },
-  { label: "Normal", margins: { left: 7.2, right: 7.2, top: 3.6, bottom: 3.6 } },
-  { label: "Wide", margins: all(14.4) },
+const MARGIN_PRESETS: { label: string; margins: Margins; icon: string }[] = [
+  { label: "None", margins: all(0), icon: "SetMarginsNone" },
+  { label: "Narrow", margins: all(3.6), icon: "SetMarginsNarrow" },
+  { label: "Normal", margins: { left: 7.2, right: 7.2, top: 3.6, bottom: 3.6 }, icon: "SetMarginsNormal" },
+  { label: "Wide", margins: all(14.4), icon: "SetMarginsWide" },
 ];
 
-const STYLES: { label: string; style: TextStyle }[] = [
-  { label: "Heading", style: { size: 28, bold: true } },
-  { label: "Subheading", style: { size: 20, bold: true } },
-  { label: "Body", style: { size: 14, bold: false } },
+const STYLES: { label: string; style: TextStyle; icon: string }[] = [
+  { label: "Heading", style: { size: 28, bold: true }, icon: "Heading1Text" },
+  { label: "Subheading", style: { size: 20, bold: true }, icon: "Subheading1Text" },
+  { label: "Body", style: { size: 14, bold: false }, icon: "Body1Text" },
 ];
 
 const SPECIAL_CHARS = ["—", "–", "•", "→", "←", "↑", "↓", "×", "✓", "€"];
@@ -59,11 +60,11 @@ export const TextPanel: React.FC = () => {
 
   // Built inside the component so the PowerPoint enum is read after Office.js
   // has loaded, not at module-evaluation time.
-  const ALIGNMENTS: { label: string; value: PowerPoint.ParagraphHorizontalAlignment }[] = [
-    { label: "Left", value: PowerPoint.ParagraphHorizontalAlignment.left },
-    { label: "Center", value: PowerPoint.ParagraphHorizontalAlignment.center },
-    { label: "Right", value: PowerPoint.ParagraphHorizontalAlignment.right },
-    { label: "Justify", value: PowerPoint.ParagraphHorizontalAlignment.justify },
+  const ALIGNMENTS: { label: string; value: PowerPoint.ParagraphHorizontalAlignment; icon: string }[] = [
+    { label: "Left", value: PowerPoint.ParagraphHorizontalAlignment.left, icon: "AlignLeft" },
+    { label: "Center", value: PowerPoint.ParagraphHorizontalAlignment.center, icon: "AlignCenter" },
+    { label: "Right", value: PowerPoint.ParagraphHorizontalAlignment.right, icon: "AlignRight" },
+    { label: "Justify", value: PowerPoint.ParagraphHorizontalAlignment.justify, icon: "AlignInGrid" },
   ];
 
   return (
@@ -73,6 +74,7 @@ export const TextPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="ResizeShapeToFitTextOn" />}
             onClick={() =>
               run("Resize shape to fit text", () =>
                 setAutoSize(PowerPoint.ShapeAutoSize.autoSizeShapeToFitText),
@@ -84,6 +86,7 @@ export const TextPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="ResizeShapeToFitTextMix" />}
             onClick={() =>
               run("Autofit off", () =>
                 setAutoSize(PowerPoint.ShapeAutoSize.autoSizeNone),
@@ -100,6 +103,7 @@ export const TextPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="WrapTextOn" />}
             onClick={() => run("Word wrap on", () => setWordWrap(true))}
           >
             On
@@ -107,6 +111,7 @@ export const TextPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="WrapTextMix" />}
             onClick={() => run("Word wrap off", () => setWordWrap(false))}
           >
             Off
@@ -123,6 +128,7 @@ export const TextPanel: React.FC = () => {
               key={p.label}
               className={styles.grow}
               disabled={busy}
+              icon={<ToolIcon name={p.icon} />}
               onClick={() =>
                 run(`Margins — ${p.label}`, () => setMargins(p.margins))
               }
@@ -147,6 +153,7 @@ export const TextPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="SetMargins" />}
             onClick={() =>
               run(`Margins — ${customMargin}pt`, () =>
                 setMargins(all(customMargin)),
@@ -167,6 +174,7 @@ export const TextPanel: React.FC = () => {
               key={a.label}
               className={styles.grow}
               disabled={busy}
+              icon={<ToolIcon name={a.icon} />}
               onClick={() =>
                 run(`Align text ${a.label.toLowerCase()}`, () =>
                   setParagraphAlignment(a.value),
@@ -185,6 +193,7 @@ export const TextPanel: React.FC = () => {
         <Button
           className={styles.grow}
           disabled={busy}
+          icon={<ToolIcon name="ClearLineBreaks" />}
           onClick={() => run("Clear line breaks", () => clearLineBreaks())}
         >
           Clear Line Breaks
@@ -192,6 +201,7 @@ export const TextPanel: React.FC = () => {
         <Button
           className={styles.grow}
           disabled={busy}
+          icon={<ToolIcon name="DeleteText" />}
           onClick={() => run("Clear text", () => clearText())}
         >
           Clear Text
@@ -209,6 +219,7 @@ export const TextPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="FixBullets" />}
             onClick={() => run("Bullets on", () => setBullets(true))}
           >
             On
@@ -216,6 +227,7 @@ export const TextPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="NoBullets" />}
             onClick={() => run("Bullets off", () => setBullets(false))}
           >
             Off
@@ -230,6 +242,7 @@ export const TextPanel: React.FC = () => {
               key={s.label}
               className={styles.grow}
               disabled={busy}
+              icon={<ToolIcon name={s.icon} />}
               onClick={() =>
                 run(`Apply ${s.label} style`, () => applyTextStyle(s.style))
               }
@@ -246,6 +259,7 @@ export const TextPanel: React.FC = () => {
         <Button
           className={styles.grow}
           disabled={busy}
+          icon={<ToolIcon name="MergeText" />}
           onClick={() => run("Merge text", () => mergeText())}
         >
           Merge Text
@@ -253,6 +267,7 @@ export const TextPanel: React.FC = () => {
         <Button
           className={styles.grow}
           disabled={busy}
+          icon={<ToolIcon name="SplitText" />}
           onClick={() => run("Split text", () => splitText())}
         >
           Split Text

@@ -16,6 +16,7 @@ import {
   groupAsLayout,
 } from "../../lib/shapes";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -36,13 +37,13 @@ export const ShapeCreationPanel: React.FC = () => {
 
   // Built inside the component so the PowerPoint enum is read after Office.js
   // has loaded, not at module-evaluation time.
-  const SHAPES: { label: string; type: PowerPoint.GeometricShapeType }[] = [
-    { label: "Rectangle", type: PowerPoint.GeometricShapeType.rectangle },
-    { label: "Rounded Rectangle", type: PowerPoint.GeometricShapeType.roundRectangle },
-    { label: "Oval", type: PowerPoint.GeometricShapeType.ellipse },
-    { label: "Triangle", type: PowerPoint.GeometricShapeType.triangle },
-    { label: "Right Arrow", type: PowerPoint.GeometricShapeType.rightArrow },
-    { label: "Chevron", type: PowerPoint.GeometricShapeType.chevron },
+  const SHAPES: { label: string; type: PowerPoint.GeometricShapeType; icon: string }[] = [
+    { label: "Rectangle", type: PowerPoint.GeometricShapeType.rectangle, icon: "ShapesRectangle" },
+    { label: "Rounded Rectangle", type: PowerPoint.GeometricShapeType.roundRectangle, icon: "ShapesRoundedRectangle" },
+    { label: "Oval", type: PowerPoint.GeometricShapeType.ellipse, icon: "ShapesOval" },
+    { label: "Triangle", type: PowerPoint.GeometricShapeType.triangle, icon: "ShapesLargeCaret" },
+    { label: "Right Arrow", type: PowerPoint.GeometricShapeType.rightArrow, icon: "SymbolsArrowRight" },
+    { label: "Chevron", type: PowerPoint.GeometricShapeType.chevron, icon: "ShapesChevron1" },
   ];
 
   return (
@@ -53,22 +54,29 @@ export const ShapeCreationPanel: React.FC = () => {
           <Button
             key={s.label}
             disabled={busy}
+            icon={<ToolIcon name={s.icon} />}
             onClick={() => run(`Insert ${s.label.toLowerCase()}`, () => insertShape(s.type))}
           >
             {s.label}
           </Button>
         ))}
-        <Button disabled={busy} onClick={() => run("Insert line", () => insertLine())}>
+        <Button
+          disabled={busy}
+          icon={<ToolIcon name="ShapesLine" />}
+          onClick={() => run("Insert line", () => insertLine())}
+        >
           Line
         </Button>
         <Button
           disabled={busy}
+          icon={<ToolIcon name="InsertTextBox" />}
           onClick={() => run("Insert text box", () => insertTextBox())}
         >
           Text Box
         </Button>
         <Button
           disabled={busy}
+          icon={<ToolIcon name="ShapesCircle" />}
           onClick={() =>
             run("Insert numbered circle", () => insertNumberedCircle("1"))
           }
@@ -77,6 +85,7 @@ export const ShapeCreationPanel: React.FC = () => {
         </Button>
         <Button
           disabled={busy}
+          icon={<ToolIcon name="ConnectObjects" />}
           onClick={() => run("Connect two shapes", () => insertConnector())}
         >
           Connect Two Shapes
@@ -89,15 +98,15 @@ export const ShapeCreationPanel: React.FC = () => {
         <div className={styles.grid}>
           <Button
             disabled={busy}
+            icon={<ToolIcon name="GroupAsRows" />}
             onClick={() => run("Group as row", () => groupAsLayout("row"))}
           >
             Row
           </Button>
           <Button
             disabled={busy}
-            onClick={() =>
-              run("Group as column", () => groupAsLayout("column"))
-            }
+            icon={<ToolIcon name="GroupAsColumns" />}
+            onClick={() => run("Group as column", () => groupAsLayout("column"))}
           >
             Column
           </Button>

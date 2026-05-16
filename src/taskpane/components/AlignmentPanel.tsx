@@ -15,6 +15,7 @@ import {
   type AlignTarget,
 } from "../../lib/alignment";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   grid: {
@@ -31,13 +32,13 @@ const useStyles = makeStyles({
   },
 });
 
-const ALIGN_BUTTONS: { edge: AlignEdge; label: string }[] = [
-  { edge: "left", label: "Left" },
-  { edge: "centerH", label: "Center" },
-  { edge: "right", label: "Right" },
-  { edge: "top", label: "Top" },
-  { edge: "middle", label: "Middle" },
-  { edge: "bottom", label: "Bottom" },
+const ALIGN_BUTTONS: { edge: AlignEdge; label: string; icon: string }[] = [
+  { edge: "left", label: "Left", icon: "AlignLeft" },
+  { edge: "centerH", label: "Center", icon: "AlignCenter" },
+  { edge: "right", label: "Right", icon: "AlignRight" },
+  { edge: "top", label: "Top", icon: "AlignTop" },
+  { edge: "middle", label: "Middle", icon: "AlignMiddle" },
+  { edge: "bottom", label: "Bottom", icon: "AlignBottom" },
 ];
 
 /** Custom UI for the Alignment category — needs a target selector that a
@@ -71,6 +72,7 @@ export const AlignmentPanel: React.FC = () => {
           <Button
             key={b.edge}
             disabled={busy}
+            icon={<ToolIcon name={b.icon} />}
             onClick={() => run(`Align ${b.label}`, () => align(b.edge, target))}
           >
             {b.label}
@@ -79,6 +81,7 @@ export const AlignmentPanel: React.FC = () => {
         <Button
           className={styles.wide}
           disabled={busy}
+          icon={<ToolIcon name="DistributeHorizontally" />}
           onClick={() =>
             run("Distribute horizontally", () => distribute("horizontal"))
           }
@@ -88,6 +91,7 @@ export const AlignmentPanel: React.FC = () => {
         <Button
           className={styles.wide}
           disabled={busy}
+          icon={<ToolIcon name="DistributeVertically" />}
           onClick={() =>
             run("Distribute vertically", () => distribute("vertical"))
           }

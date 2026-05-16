@@ -11,6 +11,7 @@ import {
 } from "@fluentui/react-components";
 import { replaceFonts, insertCagr, getFileSize } from "../../lib/utilities";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -68,6 +69,7 @@ export const UtilitiesPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="ReplaceFonts" />}
             onClick={() =>
               run("Replace fonts", async () => {
                 const count = await replaceFonts(fromFont, toFont);
@@ -119,6 +121,7 @@ export const UtilitiesPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="CAGR" />}
             onClick={() =>
               run("Insert CAGR", () =>
                 insertCagr(startValue, endValue, periods),
@@ -137,6 +140,7 @@ export const UtilitiesPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy || checkingSize}
+            icon={<ToolIcon name="FileSize" />}
             onClick={() => void checkFileSize()}
           >
             Check File Size

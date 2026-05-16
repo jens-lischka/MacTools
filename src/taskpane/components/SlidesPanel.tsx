@@ -15,6 +15,7 @@ import {
 } from "../../lib/slides";
 import { getSetting, setSetting } from "../../lib/settings";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -53,7 +54,11 @@ export const SlidesPanel: React.FC = () => {
 
   return (
     <div className={styles.section}>
-      <Button disabled={busy || exporting} onClick={() => void exportTitles()}>
+      <Button
+        disabled={busy || exporting}
+        icon={<ToolIcon name="ExportSlideTitles" />}
+        onClick={() => void exportTitles()}
+      >
         Export Slide Titles
       </Button>
       {titles && (
@@ -66,6 +71,7 @@ export const SlidesPanel: React.FC = () => {
 
       <Button
         disabled={busy}
+        icon={<ToolIcon name="TableOfContents" />}
         onClick={() =>
           run("Insert table of contents", () => insertTableOfContents())
         }
@@ -85,6 +91,7 @@ export const SlidesPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="AddNote" />}
             onClick={() =>
               run("Add sticky note", async () => {
                 await setSetting(INITIALS_KEY, initials, "roaming");

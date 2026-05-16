@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button, Caption1, makeStyles, tokens } from "@fluentui/react-components";
 import { insertSpecialShape, type SpecialKind } from "../../lib/specialShapes";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -16,12 +17,12 @@ const useStyles = makeStyles({
   },
 });
 
-const KINDS: { kind: SpecialKind; label: string }[] = [
-  { kind: "title", label: "Slide Title" },
-  { kind: "conclusion", label: "Conclusion" },
-  { kind: "footnote", label: "Footnote" },
-  { kind: "ghost", label: "Ghost" },
-  { kind: "label", label: "Label" },
+const KINDS: { kind: SpecialKind; label: string; icon: string }[] = [
+  { kind: "title", label: "Slide Title", icon: "SlideTitle" },
+  { kind: "conclusion", label: "Conclusion", icon: "Conclusion" },
+  { kind: "footnote", label: "Footnote", icon: "Footnote" },
+  { kind: "ghost", label: "Ghost", icon: "Ghost" },
+  { kind: "label", label: "Label", icon: "Labels" },
 ];
 
 export const SpecialShapesPanel: React.FC = () => {
@@ -36,6 +37,7 @@ export const SpecialShapesPanel: React.FC = () => {
           <Button
             key={k.kind}
             disabled={busy}
+            icon={<ToolIcon name={k.icon} />}
             onClick={() => run(`Insert ${k.label.toLowerCase()}`, () => insertSpecialShape(k.kind))}
           >
             {k.label}

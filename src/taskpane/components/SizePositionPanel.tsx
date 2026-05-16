@@ -23,6 +23,7 @@ import {
   type StretchTarget,
 } from "../../lib/sizePosition";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -30,25 +31,21 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  row: {
-    display: "flex",
-    gap: tokens.spacingHorizontalS,
-    flexWrap: "wrap",
-  },
+  row: { display: "flex", gap: tokens.spacingHorizontalS, flexWrap: "wrap" },
   grow: { flexGrow: 1 },
 });
 
-const MATCH: { dimension: MatchDimension; label: string }[] = [
-  { dimension: "width", label: "Width" },
-  { dimension: "height", label: "Height" },
-  { dimension: "both", label: "Both" },
+const MATCH: { dimension: MatchDimension; label: string; icon: string }[] = [
+  { dimension: "width", label: "Width", icon: "MatchWidth" },
+  { dimension: "height", label: "Height", icon: "MatchHeight" },
+  { dimension: "both", label: "Both", icon: "MatchSize" },
 ];
 
-const STRETCH: { edge: StretchEdge; label: string }[] = [
-  { edge: "left", label: "Left" },
-  { edge: "right", label: "Right" },
-  { edge: "top", label: "Top" },
-  { edge: "bottom", label: "Bottom" },
+const STRETCH: { edge: StretchEdge; label: string; icon: string }[] = [
+  { edge: "left", label: "Left", icon: "StretchLeft" },
+  { edge: "right", label: "Right", icon: "StretchRight" },
+  { edge: "top", label: "Top", icon: "StretchTop" },
+  { edge: "bottom", label: "Bottom", icon: "StretchBottom" },
 ];
 
 export const SizePositionPanel: React.FC = () => {
@@ -76,6 +73,7 @@ export const SizePositionPanel: React.FC = () => {
             key={m.dimension}
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name={m.icon} />}
             onClick={() =>
               run(`Match ${m.label.toLowerCase()}`, () =>
                 matchSize(m.dimension, reference),
@@ -104,6 +102,7 @@ export const SizePositionPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="ScaleToValue" />}
             onClick={() => run(`Scale to ${scale}%`, () => scaleShapes(scale))}
           >
             Apply
@@ -129,6 +128,7 @@ export const SizePositionPanel: React.FC = () => {
             key={s.edge}
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name={s.icon} />}
             onClick={() =>
               run(`Stretch ${s.label.toLowerCase()}`, () =>
                 stretchToEdge(s.edge, stretchTarget),
@@ -147,6 +147,7 @@ export const SizePositionPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="FillHorizontalGap" />}
             onClick={() => run("Fill horizontal gaps", () => fillGap("horizontal"))}
           >
             Fill Gaps →
@@ -154,6 +155,7 @@ export const SizePositionPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="FillVerticalGap" />}
             onClick={() => run("Fill vertical gaps", () => fillGap("vertical"))}
           >
             Fill Gaps ↓
@@ -161,6 +163,7 @@ export const SizePositionPanel: React.FC = () => {
           <Button
             className={styles.grow}
             disabled={busy}
+            icon={<ToolIcon name="UnifyCorners" />}
             onClick={() => run("Unify shapes", () => unifyShapes())}
           >
             Unify Size
@@ -172,6 +175,7 @@ export const SizePositionPanel: React.FC = () => {
 
       <Button
         disabled={busy}
+        icon={<ToolIcon name="StraightenLine" />}
         onClick={() => run("Straighten lines", () => straightenLines())}
       >
         Straighten Lines

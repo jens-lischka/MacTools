@@ -20,6 +20,7 @@ import {
 } from "../../lib/tables";
 import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
+import { ToolIcon } from "./ToolIcon";
 
 const useStyles = makeStyles({
   section: {
@@ -76,6 +77,7 @@ export const TablesPanel: React.FC = () => {
           />
           <Button
             disabled={busy}
+            icon={<ToolIcon name="FormatTable" />}
             onClick={() =>
               run("Insert table", () => insertTable(rows, columns))
             }
@@ -89,26 +91,28 @@ export const TablesPanel: React.FC = () => {
 
       <Caption1>The actions below apply to the selected table.</Caption1>
       <div className={styles.grid}>
-        <Button disabled={busy} onClick={() => run("Add row", () => addTableRow())}>
+        <Button disabled={busy} icon={<ToolIcon name="AddRowBottom" />} onClick={() => run("Add row", () => addTableRow())}>
           Add Row
         </Button>
-        <Button disabled={busy} onClick={() => run("Add column", () => addTableColumn())}>
+        <Button disabled={busy} icon={<ToolIcon name="AddColumnRight" />} onClick={() => run("Add column", () => addTableColumn())}>
           Add Column
         </Button>
         <Button
           disabled={busy}
+          icon={<ToolIcon name="RemoveLastRow" />}
           onClick={() => run("Delete last row", () => deleteLastTableRow())}
         >
           Delete Last Row
         </Button>
         <Button
           disabled={busy}
+          icon={<ToolIcon name="RemoveLastColumn" />}
           onClick={() => run("Delete last column", () => deleteLastTableColumn())}
         >
           Delete Last Column
         </Button>
       </div>
-      <Button disabled={busy} onClick={() => run("Table to text", () => tableToText())}>
+      <Button disabled={busy} icon={<ToolIcon name="TableToText" />} onClick={() => run("Table to text", () => tableToText())}>
         Convert Table to Text
       </Button>
     </div>
