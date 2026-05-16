@@ -69,6 +69,1335 @@
                 </Control>
               </Group>
             </OfficeTab>
+            <CustomTab id="StudioTools.Tab">
+              <Group id="StudioTools.Pane">
+                <Label resid="Grp.Pane" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16" />
+                  <bt:Image size="32" resid="Icon.32" />
+                  <bt:Image size="80" resid="Icon.80" />
+                </Icon>
+                <Control xsi:type="Button" id="OpenTaskpaneFromTab">
+                  <Label resid="Taskpane.Label" />
+                  <Supertip>
+                    <Title resid="Taskpane.Label" />
+                    <Description resid="Taskpane.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16" />
+                    <bt:Image size="32" resid="Icon.32" />
+                    <bt:Image size="80" resid="Icon.80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>MacToolsTaskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            <Group id="StudioTools.Align">
+              <Label resid="Grp.Align" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.AlignLeft" />
+                <bt:Image size="32" resid="Ic.AlignLeft" />
+                <bt:Image size="80" resid="Ic.AlignLeft" />
+              </Icon>
+              <Control xsi:type="Button" id="alignLeft">
+                <Label resid="Lbl.alignLeft" />
+                <Supertip>
+                  <Title resid="Lbl.alignLeft" />
+                  <Description resid="Lbl.alignLeft" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignLeft" />
+                  <bt:Image size="32" resid="Ic.AlignLeft" />
+                  <bt:Image size="80" resid="Ic.AlignLeft" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignLeft</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignCenter">
+                <Label resid="Lbl.alignCenter" />
+                <Supertip>
+                  <Title resid="Lbl.alignCenter" />
+                  <Description resid="Lbl.alignCenter" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignCenter" />
+                  <bt:Image size="32" resid="Ic.AlignCenter" />
+                  <bt:Image size="80" resid="Ic.AlignCenter" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignCenter</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignRight">
+                <Label resid="Lbl.alignRight" />
+                <Supertip>
+                  <Title resid="Lbl.alignRight" />
+                  <Description resid="Lbl.alignRight" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignRight" />
+                  <bt:Image size="32" resid="Ic.AlignRight" />
+                  <bt:Image size="80" resid="Ic.AlignRight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignRight</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignTop">
+                <Label resid="Lbl.alignTop" />
+                <Supertip>
+                  <Title resid="Lbl.alignTop" />
+                  <Description resid="Lbl.alignTop" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignTop" />
+                  <bt:Image size="32" resid="Ic.AlignTop" />
+                  <bt:Image size="80" resid="Ic.AlignTop" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignTop</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignMiddle">
+                <Label resid="Lbl.alignMiddle" />
+                <Supertip>
+                  <Title resid="Lbl.alignMiddle" />
+                  <Description resid="Lbl.alignMiddle" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignMiddle" />
+                  <bt:Image size="32" resid="Ic.AlignMiddle" />
+                  <bt:Image size="80" resid="Ic.AlignMiddle" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignMiddle</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignBottom">
+                <Label resid="Lbl.alignBottom" />
+                <Supertip>
+                  <Title resid="Lbl.alignBottom" />
+                  <Description resid="Lbl.alignBottom" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignBottom" />
+                  <bt:Image size="32" resid="Ic.AlignBottom" />
+                  <bt:Image size="80" resid="Ic.AlignBottom" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignBottom</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="distributeH">
+                <Label resid="Lbl.distributeH" />
+                <Supertip>
+                  <Title resid="Lbl.distributeH" />
+                  <Description resid="Lbl.distributeH" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.DistributeHorizontally" />
+                  <bt:Image size="32" resid="Ic.DistributeHorizontally" />
+                  <bt:Image size="80" resid="Ic.DistributeHorizontally" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>distributeH</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="distributeV">
+                <Label resid="Lbl.distributeV" />
+                <Supertip>
+                  <Title resid="Lbl.distributeV" />
+                  <Description resid="Lbl.distributeV" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.DistributeVertically" />
+                  <bt:Image size="32" resid="Ic.DistributeVertically" />
+                  <bt:Image size="80" resid="Ic.DistributeVertically" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>distributeV</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Size">
+              <Label resid="Grp.Size" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.MatchWidth" />
+                <bt:Image size="32" resid="Ic.MatchWidth" />
+                <bt:Image size="80" resid="Ic.MatchWidth" />
+              </Icon>
+              <Control xsi:type="Button" id="matchWidth">
+                <Label resid="Lbl.matchWidth" />
+                <Supertip>
+                  <Title resid="Lbl.matchWidth" />
+                  <Description resid="Lbl.matchWidth" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.MatchWidth" />
+                  <bt:Image size="32" resid="Ic.MatchWidth" />
+                  <bt:Image size="80" resid="Ic.MatchWidth" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>matchWidth</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="matchHeight">
+                <Label resid="Lbl.matchHeight" />
+                <Supertip>
+                  <Title resid="Lbl.matchHeight" />
+                  <Description resid="Lbl.matchHeight" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.MatchHeight" />
+                  <bt:Image size="32" resid="Ic.MatchHeight" />
+                  <bt:Image size="80" resid="Ic.MatchHeight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>matchHeight</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="matchSizeBoth">
+                <Label resid="Lbl.matchSizeBoth" />
+                <Supertip>
+                  <Title resid="Lbl.matchSizeBoth" />
+                  <Description resid="Lbl.matchSizeBoth" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.MatchSize" />
+                  <bt:Image size="32" resid="Ic.MatchSize" />
+                  <bt:Image size="80" resid="Ic.MatchSize" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>matchSizeBoth</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="stretchLeft">
+                <Label resid="Lbl.stretchLeft" />
+                <Supertip>
+                  <Title resid="Lbl.stretchLeft" />
+                  <Description resid="Lbl.stretchLeft" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.StretchLeft" />
+                  <bt:Image size="32" resid="Ic.StretchLeft" />
+                  <bt:Image size="80" resid="Ic.StretchLeft" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>stretchLeft</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="stretchRight">
+                <Label resid="Lbl.stretchRight" />
+                <Supertip>
+                  <Title resid="Lbl.stretchRight" />
+                  <Description resid="Lbl.stretchRight" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.StretchRight" />
+                  <bt:Image size="32" resid="Ic.StretchRight" />
+                  <bt:Image size="80" resid="Ic.StretchRight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>stretchRight</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="stretchTop">
+                <Label resid="Lbl.stretchTop" />
+                <Supertip>
+                  <Title resid="Lbl.stretchTop" />
+                  <Description resid="Lbl.stretchTop" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.StretchTop" />
+                  <bt:Image size="32" resid="Ic.StretchTop" />
+                  <bt:Image size="80" resid="Ic.StretchTop" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>stretchTop</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="stretchBottom">
+                <Label resid="Lbl.stretchBottom" />
+                <Supertip>
+                  <Title resid="Lbl.stretchBottom" />
+                  <Description resid="Lbl.stretchBottom" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.StretchBottom" />
+                  <bt:Image size="32" resid="Ic.StretchBottom" />
+                  <bt:Image size="80" resid="Ic.StretchBottom" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>stretchBottom</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="fillGapH">
+                <Label resid="Lbl.fillGapH" />
+                <Supertip>
+                  <Title resid="Lbl.fillGapH" />
+                  <Description resid="Lbl.fillGapH" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.FillHorizontalGap" />
+                  <bt:Image size="32" resid="Ic.FillHorizontalGap" />
+                  <bt:Image size="80" resid="Ic.FillHorizontalGap" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>fillGapH</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="fillGapV">
+                <Label resid="Lbl.fillGapV" />
+                <Supertip>
+                  <Title resid="Lbl.fillGapV" />
+                  <Description resid="Lbl.fillGapV" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.FillVerticalGap" />
+                  <bt:Image size="32" resid="Ic.FillVerticalGap" />
+                  <bt:Image size="80" resid="Ic.FillVerticalGap" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>fillGapV</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="unifySize">
+                <Label resid="Lbl.unifySize" />
+                <Supertip>
+                  <Title resid="Lbl.unifySize" />
+                  <Description resid="Lbl.unifySize" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.UnifyCorners" />
+                  <bt:Image size="32" resid="Ic.UnifyCorners" />
+                  <bt:Image size="80" resid="Ic.UnifyCorners" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>unifySize</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="straightenLines">
+                <Label resid="Lbl.straightenLines" />
+                <Supertip>
+                  <Title resid="Lbl.straightenLines" />
+                  <Description resid="Lbl.straightenLines" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.StraightenLine" />
+                  <bt:Image size="32" resid="Ic.StraightenLine" />
+                  <bt:Image size="80" resid="Ic.StraightenLine" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>straightenLines</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Select">
+              <Label resid="Grp.Select" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.SelectSameFill" />
+                <bt:Image size="32" resid="Ic.SelectSameFill" />
+                <bt:Image size="80" resid="Ic.SelectSameFill" />
+              </Icon>
+              <Control xsi:type="Button" id="selectFill">
+                <Label resid="Lbl.selectFill" />
+                <Supertip>
+                  <Title resid="Lbl.selectFill" />
+                  <Description resid="Lbl.selectFill" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSameFill" />
+                  <bt:Image size="32" resid="Ic.SelectSameFill" />
+                  <bt:Image size="80" resid="Ic.SelectSameFill" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectFill</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectOutline">
+                <Label resid="Lbl.selectOutline" />
+                <Supertip>
+                  <Title resid="Lbl.selectOutline" />
+                  <Description resid="Lbl.selectOutline" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSameOutline" />
+                  <bt:Image size="32" resid="Ic.SelectSameOutline" />
+                  <bt:Image size="80" resid="Ic.SelectSameOutline" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectOutline</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectWeight">
+                <Label resid="Lbl.selectWeight" />
+                <Supertip>
+                  <Title resid="Lbl.selectWeight" />
+                  <Description resid="Lbl.selectWeight" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSameOutlineWeight" />
+                  <bt:Image size="32" resid="Ic.SelectSameOutlineWeight" />
+                  <bt:Image size="80" resid="Ic.SelectSameOutlineWeight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectWeight</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectFont">
+                <Label resid="Lbl.selectFont" />
+                <Supertip>
+                  <Title resid="Lbl.selectFont" />
+                  <Description resid="Lbl.selectFont" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSameFontName" />
+                  <bt:Image size="32" resid="Ic.SelectSameFontName" />
+                  <bt:Image size="80" resid="Ic.SelectSameFontName" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectFont</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectType">
+                <Label resid="Lbl.selectType" />
+                <Supertip>
+                  <Title resid="Lbl.selectType" />
+                  <Description resid="Lbl.selectType" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSameType" />
+                  <bt:Image size="32" resid="Ic.SelectSameType" />
+                  <bt:Image size="80" resid="Ic.SelectSameType" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectType</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectSize">
+                <Label resid="Lbl.selectSize" />
+                <Supertip>
+                  <Title resid="Lbl.selectSize" />
+                  <Description resid="Lbl.selectSize" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSameSize" />
+                  <bt:Image size="32" resid="Ic.SelectSameSize" />
+                  <bt:Image size="80" resid="Ic.SelectSameSize" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectSize</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectPosTop">
+                <Label resid="Lbl.selectPosTop" />
+                <Supertip>
+                  <Title resid="Lbl.selectPosTop" />
+                  <Description resid="Lbl.selectPosTop" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSamePositionTop" />
+                  <bt:Image size="32" resid="Ic.SelectSamePositionTop" />
+                  <bt:Image size="80" resid="Ic.SelectSamePositionTop" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectPosTop</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectPosLeft">
+                <Label resid="Lbl.selectPosLeft" />
+                <Supertip>
+                  <Title resid="Lbl.selectPosLeft" />
+                  <Description resid="Lbl.selectPosLeft" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSamePositionLeft" />
+                  <bt:Image size="32" resid="Ic.SelectSamePositionLeft" />
+                  <bt:Image size="80" resid="Ic.SelectSamePositionLeft" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectPosLeft</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectPosRight">
+                <Label resid="Lbl.selectPosRight" />
+                <Supertip>
+                  <Title resid="Lbl.selectPosRight" />
+                  <Description resid="Lbl.selectPosRight" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSamePositionRight" />
+                  <bt:Image size="32" resid="Ic.SelectSamePositionRight" />
+                  <bt:Image size="80" resid="Ic.SelectSamePositionRight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectPosRight</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="selectPosBottom">
+                <Label resid="Lbl.selectPosBottom" />
+                <Supertip>
+                  <Title resid="Lbl.selectPosBottom" />
+                  <Description resid="Lbl.selectPosBottom" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SelectSamePositionBottom" />
+                  <bt:Image size="32" resid="Ic.SelectSamePositionBottom" />
+                  <bt:Image size="80" resid="Ic.SelectSamePositionBottom" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>selectPosBottom</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="hideShapes">
+                <Label resid="Lbl.hideShapes" />
+                <Supertip>
+                  <Title resid="Lbl.hideShapes" />
+                  <Description resid="Lbl.hideShapes" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.HideObject" />
+                  <bt:Image size="32" resid="Ic.HideObject" />
+                  <bt:Image size="80" resid="Ic.HideObject" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>hideShapes</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="showShapes">
+                <Label resid="Lbl.showShapes" />
+                <Supertip>
+                  <Title resid="Lbl.showShapes" />
+                  <Description resid="Lbl.showShapes" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShowAll" />
+                  <bt:Image size="32" resid="Ic.ShowAll" />
+                  <bt:Image size="80" resid="Ic.ShowAll" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>showShapes</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Text">
+              <Label resid="Grp.Text" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.ResizeShapeToFitTextOn" />
+                <bt:Image size="32" resid="Ic.ResizeShapeToFitTextOn" />
+                <bt:Image size="80" resid="Ic.ResizeShapeToFitTextOn" />
+              </Icon>
+              <Control xsi:type="Button" id="autofitOn">
+                <Label resid="Lbl.autofitOn" />
+                <Supertip>
+                  <Title resid="Lbl.autofitOn" />
+                  <Description resid="Lbl.autofitOn" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ResizeShapeToFitTextOn" />
+                  <bt:Image size="32" resid="Ic.ResizeShapeToFitTextOn" />
+                  <bt:Image size="80" resid="Ic.ResizeShapeToFitTextOn" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>autofitOn</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="autofitOff">
+                <Label resid="Lbl.autofitOff" />
+                <Supertip>
+                  <Title resid="Lbl.autofitOff" />
+                  <Description resid="Lbl.autofitOff" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ResizeShapeToFitTextMix" />
+                  <bt:Image size="32" resid="Ic.ResizeShapeToFitTextMix" />
+                  <bt:Image size="80" resid="Ic.ResizeShapeToFitTextMix" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>autofitOff</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="wrapOn">
+                <Label resid="Lbl.wrapOn" />
+                <Supertip>
+                  <Title resid="Lbl.wrapOn" />
+                  <Description resid="Lbl.wrapOn" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.WrapTextOn" />
+                  <bt:Image size="32" resid="Ic.WrapTextOn" />
+                  <bt:Image size="80" resid="Ic.WrapTextOn" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>wrapOn</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="wrapOff">
+                <Label resid="Lbl.wrapOff" />
+                <Supertip>
+                  <Title resid="Lbl.wrapOff" />
+                  <Description resid="Lbl.wrapOff" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.WrapTextMix" />
+                  <bt:Image size="32" resid="Ic.WrapTextMix" />
+                  <bt:Image size="80" resid="Ic.WrapTextMix" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>wrapOff</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="marginsNone">
+                <Label resid="Lbl.marginsNone" />
+                <Supertip>
+                  <Title resid="Lbl.marginsNone" />
+                  <Description resid="Lbl.marginsNone" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SetMarginsNone" />
+                  <bt:Image size="32" resid="Ic.SetMarginsNone" />
+                  <bt:Image size="80" resid="Ic.SetMarginsNone" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>marginsNone</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="marginsNarrow">
+                <Label resid="Lbl.marginsNarrow" />
+                <Supertip>
+                  <Title resid="Lbl.marginsNarrow" />
+                  <Description resid="Lbl.marginsNarrow" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SetMarginsNarrow" />
+                  <bt:Image size="32" resid="Ic.SetMarginsNarrow" />
+                  <bt:Image size="80" resid="Ic.SetMarginsNarrow" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>marginsNarrow</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="marginsNormal">
+                <Label resid="Lbl.marginsNormal" />
+                <Supertip>
+                  <Title resid="Lbl.marginsNormal" />
+                  <Description resid="Lbl.marginsNormal" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SetMarginsNormal" />
+                  <bt:Image size="32" resid="Ic.SetMarginsNormal" />
+                  <bt:Image size="80" resid="Ic.SetMarginsNormal" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>marginsNormal</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="marginsWide">
+                <Label resid="Lbl.marginsWide" />
+                <Supertip>
+                  <Title resid="Lbl.marginsWide" />
+                  <Description resid="Lbl.marginsWide" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SetMarginsWide" />
+                  <bt:Image size="32" resid="Ic.SetMarginsWide" />
+                  <bt:Image size="80" resid="Ic.SetMarginsWide" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>marginsWide</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignTextLeft">
+                <Label resid="Lbl.alignTextLeft" />
+                <Supertip>
+                  <Title resid="Lbl.alignTextLeft" />
+                  <Description resid="Lbl.alignTextLeft" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignLeft" />
+                  <bt:Image size="32" resid="Ic.AlignLeft" />
+                  <bt:Image size="80" resid="Ic.AlignLeft" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignTextLeft</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignTextCenter">
+                <Label resid="Lbl.alignTextCenter" />
+                <Supertip>
+                  <Title resid="Lbl.alignTextCenter" />
+                  <Description resid="Lbl.alignTextCenter" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignCenter" />
+                  <bt:Image size="32" resid="Ic.AlignCenter" />
+                  <bt:Image size="80" resid="Ic.AlignCenter" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignTextCenter</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignTextRight">
+                <Label resid="Lbl.alignTextRight" />
+                <Supertip>
+                  <Title resid="Lbl.alignTextRight" />
+                  <Description resid="Lbl.alignTextRight" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignRight" />
+                  <bt:Image size="32" resid="Ic.AlignRight" />
+                  <bt:Image size="80" resid="Ic.AlignRight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignTextRight</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="alignTextJustify">
+                <Label resid="Lbl.alignTextJustify" />
+                <Supertip>
+                  <Title resid="Lbl.alignTextJustify" />
+                  <Description resid="Lbl.alignTextJustify" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AlignInGrid" />
+                  <bt:Image size="32" resid="Ic.AlignInGrid" />
+                  <bt:Image size="80" resid="Ic.AlignInGrid" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>alignTextJustify</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="clearBreaks">
+                <Label resid="Lbl.clearBreaks" />
+                <Supertip>
+                  <Title resid="Lbl.clearBreaks" />
+                  <Description resid="Lbl.clearBreaks" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ClearLineBreaks" />
+                  <bt:Image size="32" resid="Ic.ClearLineBreaks" />
+                  <bt:Image size="80" resid="Ic.ClearLineBreaks" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>clearBreaks</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="clearTextRibbon">
+                <Label resid="Lbl.clearTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.clearTextRibbon" />
+                  <Description resid="Lbl.clearTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.DeleteText" />
+                  <bt:Image size="32" resid="Ic.DeleteText" />
+                  <bt:Image size="80" resid="Ic.DeleteText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>clearTextRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="bulletsOn">
+                <Label resid="Lbl.bulletsOn" />
+                <Supertip>
+                  <Title resid="Lbl.bulletsOn" />
+                  <Description resid="Lbl.bulletsOn" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.FixBullets" />
+                  <bt:Image size="32" resid="Ic.FixBullets" />
+                  <bt:Image size="80" resid="Ic.FixBullets" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>bulletsOn</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="bulletsOff">
+                <Label resid="Lbl.bulletsOff" />
+                <Supertip>
+                  <Title resid="Lbl.bulletsOff" />
+                  <Description resid="Lbl.bulletsOff" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.NoBullets" />
+                  <bt:Image size="32" resid="Ic.NoBullets" />
+                  <bt:Image size="80" resid="Ic.NoBullets" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>bulletsOff</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="styleHeading">
+                <Label resid="Lbl.styleHeading" />
+                <Supertip>
+                  <Title resid="Lbl.styleHeading" />
+                  <Description resid="Lbl.styleHeading" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Heading1Text" />
+                  <bt:Image size="32" resid="Ic.Heading1Text" />
+                  <bt:Image size="80" resid="Ic.Heading1Text" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>styleHeading</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="styleSubheading">
+                <Label resid="Lbl.styleSubheading" />
+                <Supertip>
+                  <Title resid="Lbl.styleSubheading" />
+                  <Description resid="Lbl.styleSubheading" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Subheading1Text" />
+                  <bt:Image size="32" resid="Ic.Subheading1Text" />
+                  <bt:Image size="80" resid="Ic.Subheading1Text" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>styleSubheading</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="styleBody">
+                <Label resid="Lbl.styleBody" />
+                <Supertip>
+                  <Title resid="Lbl.styleBody" />
+                  <Description resid="Lbl.styleBody" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Body1Text" />
+                  <bt:Image size="32" resid="Ic.Body1Text" />
+                  <bt:Image size="80" resid="Ic.Body1Text" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>styleBody</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="mergeTextRibbon">
+                <Label resid="Lbl.mergeTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.mergeTextRibbon" />
+                  <Description resid="Lbl.mergeTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.MergeText" />
+                  <bt:Image size="32" resid="Ic.MergeText" />
+                  <bt:Image size="80" resid="Ic.MergeText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>mergeTextRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="splitTextRibbon">
+                <Label resid="Lbl.splitTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.splitTextRibbon" />
+                  <Description resid="Lbl.splitTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SplitText" />
+                  <bt:Image size="32" resid="Ic.SplitText" />
+                  <bt:Image size="80" resid="Ic.SplitText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>splitTextRibbon</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Shapes">
+              <Label resid="Grp.Shapes" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.ShapesRectangle" />
+                <bt:Image size="32" resid="Ic.ShapesRectangle" />
+                <bt:Image size="80" resid="Ic.ShapesRectangle" />
+              </Icon>
+              <Control xsi:type="Button" id="insertRectangle">
+                <Label resid="Lbl.insertRectangle" />
+                <Supertip>
+                  <Title resid="Lbl.insertRectangle" />
+                  <Description resid="Lbl.insertRectangle" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesRectangle" />
+                  <bt:Image size="32" resid="Ic.ShapesRectangle" />
+                  <bt:Image size="80" resid="Ic.ShapesRectangle" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertRectangle</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertRoundRect">
+                <Label resid="Lbl.insertRoundRect" />
+                <Supertip>
+                  <Title resid="Lbl.insertRoundRect" />
+                  <Description resid="Lbl.insertRoundRect" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesRoundedRectangle" />
+                  <bt:Image size="32" resid="Ic.ShapesRoundedRectangle" />
+                  <bt:Image size="80" resid="Ic.ShapesRoundedRectangle" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertRoundRect</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertOval">
+                <Label resid="Lbl.insertOval" />
+                <Supertip>
+                  <Title resid="Lbl.insertOval" />
+                  <Description resid="Lbl.insertOval" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesOval" />
+                  <bt:Image size="32" resid="Ic.ShapesOval" />
+                  <bt:Image size="80" resid="Ic.ShapesOval" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertOval</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertTriangle">
+                <Label resid="Lbl.insertTriangle" />
+                <Supertip>
+                  <Title resid="Lbl.insertTriangle" />
+                  <Description resid="Lbl.insertTriangle" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesLargeCaret" />
+                  <bt:Image size="32" resid="Ic.ShapesLargeCaret" />
+                  <bt:Image size="80" resid="Ic.ShapesLargeCaret" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertTriangle</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertArrow">
+                <Label resid="Lbl.insertArrow" />
+                <Supertip>
+                  <Title resid="Lbl.insertArrow" />
+                  <Description resid="Lbl.insertArrow" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SymbolsArrowRight" />
+                  <bt:Image size="32" resid="Ic.SymbolsArrowRight" />
+                  <bt:Image size="80" resid="Ic.SymbolsArrowRight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertArrow</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertChevron">
+                <Label resid="Lbl.insertChevron" />
+                <Supertip>
+                  <Title resid="Lbl.insertChevron" />
+                  <Description resid="Lbl.insertChevron" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesChevron1" />
+                  <bt:Image size="32" resid="Ic.ShapesChevron1" />
+                  <bt:Image size="80" resid="Ic.ShapesChevron1" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertChevron</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertLineRibbon">
+                <Label resid="Lbl.insertLineRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.insertLineRibbon" />
+                  <Description resid="Lbl.insertLineRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesLine" />
+                  <bt:Image size="32" resid="Ic.ShapesLine" />
+                  <bt:Image size="80" resid="Ic.ShapesLine" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertLineRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertTextBoxRibbon">
+                <Label resid="Lbl.insertTextBoxRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.insertTextBoxRibbon" />
+                  <Description resid="Lbl.insertTextBoxRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.InsertTextBox" />
+                  <bt:Image size="32" resid="Ic.InsertTextBox" />
+                  <bt:Image size="80" resid="Ic.InsertTextBox" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertTextBoxRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="insertCircle">
+                <Label resid="Lbl.insertCircle" />
+                <Supertip>
+                  <Title resid="Lbl.insertCircle" />
+                  <Description resid="Lbl.insertCircle" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ShapesCircle" />
+                  <bt:Image size="32" resid="Ic.ShapesCircle" />
+                  <bt:Image size="80" resid="Ic.ShapesCircle" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertCircle</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="connectShapes">
+                <Label resid="Lbl.connectShapes" />
+                <Supertip>
+                  <Title resid="Lbl.connectShapes" />
+                  <Description resid="Lbl.connectShapes" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ConnectObjects" />
+                  <bt:Image size="32" resid="Ic.ConnectObjects" />
+                  <bt:Image size="80" resid="Ic.ConnectObjects" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>connectShapes</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="groupRow">
+                <Label resid="Lbl.groupRow" />
+                <Supertip>
+                  <Title resid="Lbl.groupRow" />
+                  <Description resid="Lbl.groupRow" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.GroupAsRows" />
+                  <bt:Image size="32" resid="Ic.GroupAsRows" />
+                  <bt:Image size="80" resid="Ic.GroupAsRows" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>groupRow</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="groupColumn">
+                <Label resid="Lbl.groupColumn" />
+                <Supertip>
+                  <Title resid="Lbl.groupColumn" />
+                  <Description resid="Lbl.groupColumn" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.GroupAsColumns" />
+                  <bt:Image size="32" resid="Ic.GroupAsColumns" />
+                  <bt:Image size="80" resid="Ic.GroupAsColumns" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>groupColumn</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Arrange">
+              <Label resid="Grp.Arrange" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.SwapPosition" />
+                <bt:Image size="32" resid="Ic.SwapPosition" />
+                <bt:Image size="80" resid="Ic.SwapPosition" />
+              </Icon>
+              <Control xsi:type="Button" id="swapPositionRibbon">
+                <Label resid="Lbl.swapPositionRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.swapPositionRibbon" />
+                  <Description resid="Lbl.swapPositionRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SwapPosition" />
+                  <bt:Image size="32" resid="Ic.SwapPosition" />
+                  <bt:Image size="80" resid="Ic.SwapPosition" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>swapPositionRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="swapSizeRibbon">
+                <Label resid="Lbl.swapSizeRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.swapSizeRibbon" />
+                  <Description resid="Lbl.swapSizeRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.MatchSize" />
+                  <bt:Image size="32" resid="Ic.MatchSize" />
+                  <bt:Image size="80" resid="Ic.MatchSize" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>swapSizeRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="swapFillRibbon">
+                <Label resid="Lbl.swapFillRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.swapFillRibbon" />
+                  <Description resid="Lbl.swapFillRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SwapFillAndOutline" />
+                  <bt:Image size="32" resid="Ic.SwapFillAndOutline" />
+                  <bt:Image size="80" resid="Ic.SwapFillAndOutline" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>swapFillRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="pickUpRibbon">
+                <Label resid="Lbl.pickUpRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.pickUpRibbon" />
+                  <Description resid="Lbl.pickUpRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SizePositionCopy" />
+                  <bt:Image size="32" resid="Ic.SizePositionCopy" />
+                  <bt:Image size="80" resid="Ic.SizePositionCopy" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>pickUpRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="applySizeRibbon">
+                <Label resid="Lbl.applySizeRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.applySizeRibbon" />
+                  <Description resid="Lbl.applySizeRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SizePositionPaste" />
+                  <bt:Image size="32" resid="Ic.SizePositionPaste" />
+                  <bt:Image size="80" resid="Ic.SizePositionPaste" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>applySizeRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="applyMatchingRibbon">
+                <Label resid="Lbl.applyMatchingRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.applyMatchingRibbon" />
+                  <Description resid="Lbl.applyMatchingRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SizePositionMatchingPaste" />
+                  <bt:Image size="32" resid="Ic.SizePositionMatchingPaste" />
+                  <bt:Image size="80" resid="Ic.SizePositionMatchingPaste" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>applyMatchingRibbon</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Tables">
+              <Label resid="Grp.Tables" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.AddRowBottom" />
+                <bt:Image size="32" resid="Ic.AddRowBottom" />
+                <bt:Image size="80" resid="Ic.AddRowBottom" />
+              </Icon>
+              <Control xsi:type="Button" id="addTableRowRibbon">
+                <Label resid="Lbl.addTableRowRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.addTableRowRibbon" />
+                  <Description resid="Lbl.addTableRowRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AddRowBottom" />
+                  <bt:Image size="32" resid="Ic.AddRowBottom" />
+                  <bt:Image size="80" resid="Ic.AddRowBottom" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>addTableRowRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="addTableColumnRibbon">
+                <Label resid="Lbl.addTableColumnRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.addTableColumnRibbon" />
+                  <Description resid="Lbl.addTableColumnRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AddColumnRight" />
+                  <bt:Image size="32" resid="Ic.AddColumnRight" />
+                  <bt:Image size="80" resid="Ic.AddColumnRight" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>addTableColumnRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="deleteTableRowRibbon">
+                <Label resid="Lbl.deleteTableRowRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.deleteTableRowRibbon" />
+                  <Description resid="Lbl.deleteTableRowRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.RemoveLastRow" />
+                  <bt:Image size="32" resid="Ic.RemoveLastRow" />
+                  <bt:Image size="80" resid="Ic.RemoveLastRow" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>deleteTableRowRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="deleteTableColumnRibbon">
+                <Label resid="Lbl.deleteTableColumnRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.deleteTableColumnRibbon" />
+                  <Description resid="Lbl.deleteTableColumnRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.RemoveLastColumn" />
+                  <bt:Image size="32" resid="Ic.RemoveLastColumn" />
+                  <bt:Image size="80" resid="Ic.RemoveLastColumn" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>deleteTableColumnRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="tableToTextRibbon">
+                <Label resid="Lbl.tableToTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.tableToTextRibbon" />
+                  <Description resid="Lbl.tableToTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.TableToText" />
+                  <bt:Image size="32" resid="Ic.TableToText" />
+                  <bt:Image size="80" resid="Ic.TableToText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>tableToTextRibbon</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Special">
+              <Label resid="Grp.Special" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.SlideTitle" />
+                <bt:Image size="32" resid="Ic.SlideTitle" />
+                <bt:Image size="80" resid="Ic.SlideTitle" />
+              </Icon>
+              <Control xsi:type="Button" id="specialTitle">
+                <Label resid="Lbl.specialTitle" />
+                <Supertip>
+                  <Title resid="Lbl.specialTitle" />
+                  <Description resid="Lbl.specialTitle" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SlideTitle" />
+                  <bt:Image size="32" resid="Ic.SlideTitle" />
+                  <bt:Image size="80" resid="Ic.SlideTitle" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>specialTitle</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="specialConclusion">
+                <Label resid="Lbl.specialConclusion" />
+                <Supertip>
+                  <Title resid="Lbl.specialConclusion" />
+                  <Description resid="Lbl.specialConclusion" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Conclusion" />
+                  <bt:Image size="32" resid="Ic.Conclusion" />
+                  <bt:Image size="80" resid="Ic.Conclusion" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>specialConclusion</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="specialFootnote">
+                <Label resid="Lbl.specialFootnote" />
+                <Supertip>
+                  <Title resid="Lbl.specialFootnote" />
+                  <Description resid="Lbl.specialFootnote" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Footnote" />
+                  <bt:Image size="32" resid="Ic.Footnote" />
+                  <bt:Image size="80" resid="Ic.Footnote" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>specialFootnote</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="specialGhost">
+                <Label resid="Lbl.specialGhost" />
+                <Supertip>
+                  <Title resid="Lbl.specialGhost" />
+                  <Description resid="Lbl.specialGhost" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Ghost" />
+                  <bt:Image size="32" resid="Ic.Ghost" />
+                  <bt:Image size="80" resid="Ic.Ghost" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>specialGhost</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="specialLabel">
+                <Label resid="Lbl.specialLabel" />
+                <Supertip>
+                  <Title resid="Lbl.specialLabel" />
+                  <Description resid="Lbl.specialLabel" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.Labels" />
+                  <bt:Image size="32" resid="Ic.Labels" />
+                  <bt:Image size="80" resid="Ic.Labels" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>specialLabel</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="StudioTools.Slides">
+              <Label resid="Grp.Slides" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.TableOfContents" />
+                <bt:Image size="32" resid="Ic.TableOfContents" />
+                <bt:Image size="80" resid="Ic.TableOfContents" />
+              </Icon>
+              <Control xsi:type="Button" id="insertTocRibbon">
+                <Label resid="Lbl.insertTocRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.insertTocRibbon" />
+                  <Description resid="Lbl.insertTocRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.TableOfContents" />
+                  <bt:Image size="32" resid="Ic.TableOfContents" />
+                  <bt:Image size="80" resid="Ic.TableOfContents" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>insertTocRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="addNoteRibbon">
+                <Label resid="Lbl.addNoteRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.addNoteRibbon" />
+                  <Description resid="Lbl.addNoteRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.AddNote" />
+                  <bt:Image size="32" resid="Ic.AddNote" />
+                  <bt:Image size="80" resid="Ic.AddNote" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>addNoteRibbon</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+              <Label resid="StudioTools.TabLabel" />
+            </CustomTab>
           </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
@@ -79,6 +1408,84 @@
         <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
         <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
         <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+        <bt:Image id="Ic.AddColumnRight" DefaultValue="https://localhost:3000/assets/icons/AddColumnRight.png" />
+        <bt:Image id="Ic.AddNote" DefaultValue="https://localhost:3000/assets/icons/AddNote.png" />
+        <bt:Image id="Ic.AddRowBottom" DefaultValue="https://localhost:3000/assets/icons/AddRowBottom.png" />
+        <bt:Image id="Ic.AlignBottom" DefaultValue="https://localhost:3000/assets/icons/AlignBottom.png" />
+        <bt:Image id="Ic.AlignCenter" DefaultValue="https://localhost:3000/assets/icons/AlignCenter.png" />
+        <bt:Image id="Ic.AlignInGrid" DefaultValue="https://localhost:3000/assets/icons/AlignInGrid.png" />
+        <bt:Image id="Ic.AlignLeft" DefaultValue="https://localhost:3000/assets/icons/AlignLeft.png" />
+        <bt:Image id="Ic.AlignMiddle" DefaultValue="https://localhost:3000/assets/icons/AlignMiddle.png" />
+        <bt:Image id="Ic.AlignRight" DefaultValue="https://localhost:3000/assets/icons/AlignRight.png" />
+        <bt:Image id="Ic.AlignTop" DefaultValue="https://localhost:3000/assets/icons/AlignTop.png" />
+        <bt:Image id="Ic.Body1Text" DefaultValue="https://localhost:3000/assets/icons/Body1Text.png" />
+        <bt:Image id="Ic.ClearLineBreaks" DefaultValue="https://localhost:3000/assets/icons/ClearLineBreaks.png" />
+        <bt:Image id="Ic.Conclusion" DefaultValue="https://localhost:3000/assets/icons/Conclusion.png" />
+        <bt:Image id="Ic.ConnectObjects" DefaultValue="https://localhost:3000/assets/icons/ConnectObjects.png" />
+        <bt:Image id="Ic.DeleteText" DefaultValue="https://localhost:3000/assets/icons/DeleteText.png" />
+        <bt:Image id="Ic.DistributeHorizontally" DefaultValue="https://localhost:3000/assets/icons/DistributeHorizontally.png" />
+        <bt:Image id="Ic.DistributeVertically" DefaultValue="https://localhost:3000/assets/icons/DistributeVertically.png" />
+        <bt:Image id="Ic.FillHorizontalGap" DefaultValue="https://localhost:3000/assets/icons/FillHorizontalGap.png" />
+        <bt:Image id="Ic.FillVerticalGap" DefaultValue="https://localhost:3000/assets/icons/FillVerticalGap.png" />
+        <bt:Image id="Ic.FixBullets" DefaultValue="https://localhost:3000/assets/icons/FixBullets.png" />
+        <bt:Image id="Ic.Footnote" DefaultValue="https://localhost:3000/assets/icons/Footnote.png" />
+        <bt:Image id="Ic.Ghost" DefaultValue="https://localhost:3000/assets/icons/Ghost.png" />
+        <bt:Image id="Ic.GroupAsColumns" DefaultValue="https://localhost:3000/assets/icons/GroupAsColumns.png" />
+        <bt:Image id="Ic.GroupAsRows" DefaultValue="https://localhost:3000/assets/icons/GroupAsRows.png" />
+        <bt:Image id="Ic.Heading1Text" DefaultValue="https://localhost:3000/assets/icons/Heading1Text.png" />
+        <bt:Image id="Ic.HideObject" DefaultValue="https://localhost:3000/assets/icons/HideObject.png" />
+        <bt:Image id="Ic.InsertTextBox" DefaultValue="https://localhost:3000/assets/icons/InsertTextBox.png" />
+        <bt:Image id="Ic.Labels" DefaultValue="https://localhost:3000/assets/icons/Labels.png" />
+        <bt:Image id="Ic.MatchHeight" DefaultValue="https://localhost:3000/assets/icons/MatchHeight.png" />
+        <bt:Image id="Ic.MatchSize" DefaultValue="https://localhost:3000/assets/icons/MatchSize.png" />
+        <bt:Image id="Ic.MatchWidth" DefaultValue="https://localhost:3000/assets/icons/MatchWidth.png" />
+        <bt:Image id="Ic.MergeText" DefaultValue="https://localhost:3000/assets/icons/MergeText.png" />
+        <bt:Image id="Ic.NoBullets" DefaultValue="https://localhost:3000/assets/icons/NoBullets.png" />
+        <bt:Image id="Ic.RemoveLastColumn" DefaultValue="https://localhost:3000/assets/icons/RemoveLastColumn.png" />
+        <bt:Image id="Ic.RemoveLastRow" DefaultValue="https://localhost:3000/assets/icons/RemoveLastRow.png" />
+        <bt:Image id="Ic.ResizeShapeToFitTextMix" DefaultValue="https://localhost:3000/assets/icons/ResizeShapeToFitTextMix.png" />
+        <bt:Image id="Ic.ResizeShapeToFitTextOn" DefaultValue="https://localhost:3000/assets/icons/ResizeShapeToFitTextOn.png" />
+        <bt:Image id="Ic.SelectSameFill" DefaultValue="https://localhost:3000/assets/icons/SelectSameFill.png" />
+        <bt:Image id="Ic.SelectSameFontName" DefaultValue="https://localhost:3000/assets/icons/SelectSameFontName.png" />
+        <bt:Image id="Ic.SelectSameOutline" DefaultValue="https://localhost:3000/assets/icons/SelectSameOutline.png" />
+        <bt:Image id="Ic.SelectSameOutlineWeight" DefaultValue="https://localhost:3000/assets/icons/SelectSameOutlineWeight.png" />
+        <bt:Image id="Ic.SelectSamePositionBottom" DefaultValue="https://localhost:3000/assets/icons/SelectSamePositionBottom.png" />
+        <bt:Image id="Ic.SelectSamePositionLeft" DefaultValue="https://localhost:3000/assets/icons/SelectSamePositionLeft.png" />
+        <bt:Image id="Ic.SelectSamePositionRight" DefaultValue="https://localhost:3000/assets/icons/SelectSamePositionRight.png" />
+        <bt:Image id="Ic.SelectSamePositionTop" DefaultValue="https://localhost:3000/assets/icons/SelectSamePositionTop.png" />
+        <bt:Image id="Ic.SelectSameSize" DefaultValue="https://localhost:3000/assets/icons/SelectSameSize.png" />
+        <bt:Image id="Ic.SelectSameType" DefaultValue="https://localhost:3000/assets/icons/SelectSameType.png" />
+        <bt:Image id="Ic.SetMarginsNarrow" DefaultValue="https://localhost:3000/assets/icons/SetMarginsNarrow.png" />
+        <bt:Image id="Ic.SetMarginsNone" DefaultValue="https://localhost:3000/assets/icons/SetMarginsNone.png" />
+        <bt:Image id="Ic.SetMarginsNormal" DefaultValue="https://localhost:3000/assets/icons/SetMarginsNormal.png" />
+        <bt:Image id="Ic.SetMarginsWide" DefaultValue="https://localhost:3000/assets/icons/SetMarginsWide.png" />
+        <bt:Image id="Ic.ShapesChevron1" DefaultValue="https://localhost:3000/assets/icons/ShapesChevron1.png" />
+        <bt:Image id="Ic.ShapesCircle" DefaultValue="https://localhost:3000/assets/icons/ShapesCircle.png" />
+        <bt:Image id="Ic.ShapesLargeCaret" DefaultValue="https://localhost:3000/assets/icons/ShapesLargeCaret.png" />
+        <bt:Image id="Ic.ShapesLine" DefaultValue="https://localhost:3000/assets/icons/ShapesLine.png" />
+        <bt:Image id="Ic.ShapesOval" DefaultValue="https://localhost:3000/assets/icons/ShapesOval.png" />
+        <bt:Image id="Ic.ShapesRectangle" DefaultValue="https://localhost:3000/assets/icons/ShapesRectangle.png" />
+        <bt:Image id="Ic.ShapesRoundedRectangle" DefaultValue="https://localhost:3000/assets/icons/ShapesRoundedRectangle.png" />
+        <bt:Image id="Ic.ShowAll" DefaultValue="https://localhost:3000/assets/icons/ShowAll.png" />
+        <bt:Image id="Ic.SizePositionCopy" DefaultValue="https://localhost:3000/assets/icons/SizePositionCopy.png" />
+        <bt:Image id="Ic.SizePositionMatchingPaste" DefaultValue="https://localhost:3000/assets/icons/SizePositionMatchingPaste.png" />
+        <bt:Image id="Ic.SizePositionPaste" DefaultValue="https://localhost:3000/assets/icons/SizePositionPaste.png" />
+        <bt:Image id="Ic.SlideTitle" DefaultValue="https://localhost:3000/assets/icons/SlideTitle.png" />
+        <bt:Image id="Ic.SplitText" DefaultValue="https://localhost:3000/assets/icons/SplitText.png" />
+        <bt:Image id="Ic.StraightenLine" DefaultValue="https://localhost:3000/assets/icons/StraightenLine.png" />
+        <bt:Image id="Ic.StretchBottom" DefaultValue="https://localhost:3000/assets/icons/StretchBottom.png" />
+        <bt:Image id="Ic.StretchLeft" DefaultValue="https://localhost:3000/assets/icons/StretchLeft.png" />
+        <bt:Image id="Ic.StretchRight" DefaultValue="https://localhost:3000/assets/icons/StretchRight.png" />
+        <bt:Image id="Ic.StretchTop" DefaultValue="https://localhost:3000/assets/icons/StretchTop.png" />
+        <bt:Image id="Ic.Subheading1Text" DefaultValue="https://localhost:3000/assets/icons/Subheading1Text.png" />
+        <bt:Image id="Ic.SwapFillAndOutline" DefaultValue="https://localhost:3000/assets/icons/SwapFillAndOutline.png" />
+        <bt:Image id="Ic.SwapPosition" DefaultValue="https://localhost:3000/assets/icons/SwapPosition.png" />
+        <bt:Image id="Ic.SymbolsArrowRight" DefaultValue="https://localhost:3000/assets/icons/SymbolsArrowRight.png" />
+        <bt:Image id="Ic.TableOfContents" DefaultValue="https://localhost:3000/assets/icons/TableOfContents.png" />
+        <bt:Image id="Ic.TableToText" DefaultValue="https://localhost:3000/assets/icons/TableToText.png" />
+        <bt:Image id="Ic.UnifyCorners" DefaultValue="https://localhost:3000/assets/icons/UnifyCorners.png" />
+        <bt:Image id="Ic.WrapTextMix" DefaultValue="https://localhost:3000/assets/icons/WrapTextMix.png" />
+        <bt:Image id="Ic.WrapTextOn" DefaultValue="https://localhost:3000/assets/icons/WrapTextOn.png" />
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
@@ -89,6 +1496,99 @@
         <bt:String id="GetStarted.Title" DefaultValue="StudioTools" />
         <bt:String id="Group.Label" DefaultValue="StudioTools" />
         <bt:String id="Taskpane.Label" DefaultValue="StudioTools" />
+        <bt:String id="StudioTools.TabLabel" DefaultValue="Tools" />
+        <bt:String id="Grp.Pane" DefaultValue="Task Pane" />
+        <bt:String id="Grp.Align" DefaultValue="Align" />
+        <bt:String id="Lbl.alignLeft" DefaultValue="Align Left" />
+        <bt:String id="Lbl.alignCenter" DefaultValue="Align Center" />
+        <bt:String id="Lbl.alignRight" DefaultValue="Align Right" />
+        <bt:String id="Lbl.alignTop" DefaultValue="Align Top" />
+        <bt:String id="Lbl.alignMiddle" DefaultValue="Align Middle" />
+        <bt:String id="Lbl.alignBottom" DefaultValue="Align Bottom" />
+        <bt:String id="Lbl.distributeH" DefaultValue="Distribute Horizontally" />
+        <bt:String id="Lbl.distributeV" DefaultValue="Distribute Vertically" />
+        <bt:String id="Grp.Size" DefaultValue="Size &amp; Position" />
+        <bt:String id="Lbl.matchWidth" DefaultValue="Match Width" />
+        <bt:String id="Lbl.matchHeight" DefaultValue="Match Height" />
+        <bt:String id="Lbl.matchSizeBoth" DefaultValue="Match Size" />
+        <bt:String id="Lbl.stretchLeft" DefaultValue="Stretch Left" />
+        <bt:String id="Lbl.stretchRight" DefaultValue="Stretch Right" />
+        <bt:String id="Lbl.stretchTop" DefaultValue="Stretch Top" />
+        <bt:String id="Lbl.stretchBottom" DefaultValue="Stretch Bottom" />
+        <bt:String id="Lbl.fillGapH" DefaultValue="Fill Horizontal Gaps" />
+        <bt:String id="Lbl.fillGapV" DefaultValue="Fill Vertical Gaps" />
+        <bt:String id="Lbl.unifySize" DefaultValue="Unify Size" />
+        <bt:String id="Lbl.straightenLines" DefaultValue="Straighten Lines" />
+        <bt:String id="Grp.Select" DefaultValue="Select Same" />
+        <bt:String id="Lbl.selectFill" DefaultValue="Select Same Fill" />
+        <bt:String id="Lbl.selectOutline" DefaultValue="Select Same Outline" />
+        <bt:String id="Lbl.selectWeight" DefaultValue="Select Same Outline Weight" />
+        <bt:String id="Lbl.selectFont" DefaultValue="Select Same Font" />
+        <bt:String id="Lbl.selectType" DefaultValue="Select Same Type" />
+        <bt:String id="Lbl.selectSize" DefaultValue="Select Same Size" />
+        <bt:String id="Lbl.selectPosTop" DefaultValue="Select Same Top Edge" />
+        <bt:String id="Lbl.selectPosLeft" DefaultValue="Select Same Left Edge" />
+        <bt:String id="Lbl.selectPosRight" DefaultValue="Select Same Right Edge" />
+        <bt:String id="Lbl.selectPosBottom" DefaultValue="Select Same Bottom Edge" />
+        <bt:String id="Lbl.hideShapes" DefaultValue="Hide Selected" />
+        <bt:String id="Lbl.showShapes" DefaultValue="Show All Shapes" />
+        <bt:String id="Grp.Text" DefaultValue="Text" />
+        <bt:String id="Lbl.autofitOn" DefaultValue="Resize Shape to Fit Text" />
+        <bt:String id="Lbl.autofitOff" DefaultValue="Turn Autofit Off" />
+        <bt:String id="Lbl.wrapOn" DefaultValue="Word Wrap On" />
+        <bt:String id="Lbl.wrapOff" DefaultValue="Word Wrap Off" />
+        <bt:String id="Lbl.marginsNone" DefaultValue="No Margins" />
+        <bt:String id="Lbl.marginsNarrow" DefaultValue="Narrow Margins" />
+        <bt:String id="Lbl.marginsNormal" DefaultValue="Normal Margins" />
+        <bt:String id="Lbl.marginsWide" DefaultValue="Wide Margins" />
+        <bt:String id="Lbl.alignTextLeft" DefaultValue="Align Text Left" />
+        <bt:String id="Lbl.alignTextCenter" DefaultValue="Align Text Center" />
+        <bt:String id="Lbl.alignTextRight" DefaultValue="Align Text Right" />
+        <bt:String id="Lbl.alignTextJustify" DefaultValue="Justify Text" />
+        <bt:String id="Lbl.clearBreaks" DefaultValue="Clear Line Breaks" />
+        <bt:String id="Lbl.clearTextRibbon" DefaultValue="Clear Text" />
+        <bt:String id="Lbl.bulletsOn" DefaultValue="Bullets On" />
+        <bt:String id="Lbl.bulletsOff" DefaultValue="Bullets Off" />
+        <bt:String id="Lbl.styleHeading" DefaultValue="Heading Style" />
+        <bt:String id="Lbl.styleSubheading" DefaultValue="Subheading Style" />
+        <bt:String id="Lbl.styleBody" DefaultValue="Body Style" />
+        <bt:String id="Lbl.mergeTextRibbon" DefaultValue="Merge Text" />
+        <bt:String id="Lbl.splitTextRibbon" DefaultValue="Split Text" />
+        <bt:String id="Grp.Shapes" DefaultValue="Shapes" />
+        <bt:String id="Lbl.insertRectangle" DefaultValue="Insert Rectangle" />
+        <bt:String id="Lbl.insertRoundRect" DefaultValue="Insert Rounded Rectangle" />
+        <bt:String id="Lbl.insertOval" DefaultValue="Insert Oval" />
+        <bt:String id="Lbl.insertTriangle" DefaultValue="Insert Triangle" />
+        <bt:String id="Lbl.insertArrow" DefaultValue="Insert Right Arrow" />
+        <bt:String id="Lbl.insertChevron" DefaultValue="Insert Chevron" />
+        <bt:String id="Lbl.insertLineRibbon" DefaultValue="Insert Line" />
+        <bt:String id="Lbl.insertTextBoxRibbon" DefaultValue="Insert Text Box" />
+        <bt:String id="Lbl.insertCircle" DefaultValue="Insert Numbered Circle" />
+        <bt:String id="Lbl.connectShapes" DefaultValue="Connect Two Shapes" />
+        <bt:String id="Lbl.groupRow" DefaultValue="Lay Out as a Row" />
+        <bt:String id="Lbl.groupColumn" DefaultValue="Lay Out as a Column" />
+        <bt:String id="Grp.Arrange" DefaultValue="Swap &amp; Apply" />
+        <bt:String id="Lbl.swapPositionRibbon" DefaultValue="Swap Position" />
+        <bt:String id="Lbl.swapSizeRibbon" DefaultValue="Swap Size" />
+        <bt:String id="Lbl.swapFillRibbon" DefaultValue="Swap Fill &amp; Outline" />
+        <bt:String id="Lbl.pickUpRibbon" DefaultValue="Pick Up Size &amp; Position" />
+        <bt:String id="Lbl.applySizeRibbon" DefaultValue="Apply Size &amp; Position" />
+        <bt:String id="Lbl.applyMatchingRibbon" DefaultValue="Apply to Matching Objects" />
+        <bt:String id="Grp.Tables" DefaultValue="Tables" />
+        <bt:String id="Lbl.addTableRowRibbon" DefaultValue="Add Table Row" />
+        <bt:String id="Lbl.addTableColumnRibbon" DefaultValue="Add Table Column" />
+        <bt:String id="Lbl.deleteTableRowRibbon" DefaultValue="Delete Last Row" />
+        <bt:String id="Lbl.deleteTableColumnRibbon" DefaultValue="Delete Last Column" />
+        <bt:String id="Lbl.tableToTextRibbon" DefaultValue="Convert Table to Text" />
+        <bt:String id="Grp.Special" DefaultValue="Special Shapes" />
+        <bt:String id="Lbl.specialTitle" DefaultValue="Insert Slide Title" />
+        <bt:String id="Lbl.specialConclusion" DefaultValue="Insert Conclusion" />
+        <bt:String id="Lbl.specialFootnote" DefaultValue="Insert Footnote" />
+        <bt:String id="Lbl.specialGhost" DefaultValue="Insert Ghost" />
+        <bt:String id="Lbl.specialLabel" DefaultValue="Insert Label" />
+        <bt:String id="Grp.Slides" DefaultValue="Slides" />
+        <bt:String id="Lbl.insertTocRibbon" DefaultValue="Insert Table of Contents" />
+        <bt:String id="Lbl.addNoteRibbon" DefaultValue="Add Sticky Note" />
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Open the StudioTools task pane — enhanced features for streamlined presentation workflows." />

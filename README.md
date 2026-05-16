@@ -7,8 +7,13 @@ A cross-platform PowerPoint add-in (web, Mac, Windows) — a rebuild of the
 legacy Windows-only VSTO "OWG Toolbox" on the Office.js platform.
 
 All features live in a single **task pane**, organised by category, with
-icon-only tool buttons. The repository is named `MacTools`, so the hosted
-URLs below keep that path.
+icon-only tool buttons. A custom **Tools ribbon tab** additionally exposes
+~80 one-click commands grouped by category. The repository is named
+`MacTools`, so the hosted URLs below keep that path.
+
+> The ribbon tab and `src/commands/commands.ts` are generated from
+> `scripts/gen-ribbon.py` — edit that script, then run
+> `python3 scripts/gen-ribbon.py`, never the generated files directly.
 
 ## Status
 
