@@ -2,6 +2,9 @@ import type { Category, Feature } from "../../lib/types";
 import { AlignmentPanel } from "../components/AlignmentPanel";
 import { SizePositionPanel } from "../components/SizePositionPanel";
 import { SelectSamePanel } from "../components/SelectSamePanel";
+import { TextPanel } from "../components/TextPanel";
+import { ShapeCreationPanel } from "../components/ShapeCreationPanel";
+import { TransformPanel } from "../components/TransformPanel";
 
 /**
  * Category registry driving the task pane.
@@ -51,40 +54,34 @@ export const categories: Category[] = [
   {
     id: "text",
     label: "Text & Paragraph",
+    panel: TextPanel,
     features: [
-      f("textStyles", "Text Styles (Body / Heading / …)", "ok"),
-      f("fitText", "Resize Shape to Fit Text", "ok"),
-      f("wrapText", "Wrap Text", "ok"),
-      f("margins", "Text-box Margins", "ok"),
-      f("clearText", "Clear Line Breaks / Text", "ok"),
-      f("mergeSplit", "Merge / Split / Copy Text", "ok"),
-      f("specialChars", "Special Characters", "ok"),
-      f("bullets", "Fix Bullets", "partial"),
-      f("paragraphSpacing", "Paragraph Spacing", "partial"),
+      f("textStyles", "Text Styles (Body / Heading / …)", "ok", "Planned for a later phase."),
+      f("mergeSplit", "Merge / Split / Copy Text", "ok", "Planned for a later phase."),
+      f("specialChars", "Special Characters", "ok", "Planned for a later phase."),
+      f("bullets", "Fix Bullets", "partial", "Bullet formatting API is limited; planned."),
+      f("paragraphSpacing", "Paragraph Spacing", "partial", "Space before/after API is limited; planned."),
     ],
   },
   {
     id: "insert",
     label: "Shape Creation",
+    panel: ShapeCreationPanel,
     features: [
-      f("insertShape", "Insert rectangle / oval / callout / …", "ok"),
-      f("insertLine", "Insert line / arrow / arc", "ok"),
-      f("insertTextBox", "Insert Text Box", "ok"),
-      f("multiply", "Multiply Shape", "ok"),
-      f("groupAs", "Group as Rows / Columns", "ok"),
-      f("numberedCircle", "Numbered Circle", "ok"),
-      f("connectors", "Connectors / Auto-Connect", "partial"),
+      f("multiply", "Multiply Shape", "partial", "No shape-duplicate API; planned via recreate."),
+      f("groupAs", "Group as Rows / Columns", "ok", "Planned for a later phase."),
+      f("numberedCircle", "Numbered Circle", "ok", "Planned for a later phase."),
+      f("connectors", "Connectors / Auto-Connect", "partial", "True connection sites not exposed."),
     ],
   },
   {
     id: "properties",
     label: "Swap, Pick up & Apply",
+    panel: TransformPanel,
     features: [
-      f("swap", "Swap Position / Text / Font", "ok"),
-      f("swapStyle", "Swap Fill / Outline / Line styles", "ok"),
-      f("pickUpApply", "Pick up & Apply Size / Position", "ok"),
-      f("applyMatching", "Apply to Matching Objects", "ok"),
-      f("tableProperties", "Pick up / Apply Table Formatting", "partial"),
+      f("swapStyle", "Swap Fill / Outline / Line styles", "ok", "Planned for a later phase."),
+      f("applyMatching", "Apply to Matching Objects", "ok", "Planned for a later phase."),
+      f("tableProperties", "Pick up / Apply Table Formatting", "partial", "Table API is limited; planned."),
     ],
   },
   {
@@ -131,7 +128,7 @@ export const categories: Category[] = [
       f("footnote", "Footnote", "ok"),
       f("ghost", "Ghost", "ok"),
       f("labels", "Labels", "ok"),
-      f("harvey", "Harvey Balls", "ok"),
+      f("harvey", "Harvey Balls", "partial", "Pie-segment angles are not settable via the API."),
     ],
   },
   {

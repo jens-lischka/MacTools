@@ -7,15 +7,19 @@ All features live in a single **task pane**, organised by category.
 
 ## Status
 
-Phase 2 in progress.
+Phases 2–3 implemented.
 
 - ✅ Task-pane shell with categorised, collapsible navigation
 - ✅ Settings store (per-document + per-user roaming)
-- ✅ **Alignment & Distribution** — implemented
+- ✅ **Alignment & Distribution**
 - ✅ **Size & Position** — match size, scale, stretch, straighten lines
 - ✅ **Select Same** — fill / outline colour, outline weight, type, size
-- 🚧 Remaining categories — listed with feasibility ratings; handlers land in
-  later phases
+- ✅ **Text & Paragraph** — autofit, word wrap, margins, alignment, clear text
+- ✅ **Shape Creation** — insert shapes, line, text box
+- ✅ **Swap / Pick up & Apply** — swap position/size, pick up & apply geometry
+- 🚧 Phase 4 (Tables, Sticky Notes, TOC, Conversion Assistant, bullets &
+  paragraph spacing) — these are the API-constrained "partial" features; each
+  is listed in-product with its rating and tackled next.
 
 See [`docs/powerpoint-cross-platform-overview.md`](docs/powerpoint-cross-platform-overview.md)
 for the full feature inventory and feasibility analysis.
