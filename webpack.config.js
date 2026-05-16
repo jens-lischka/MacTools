@@ -21,9 +21,11 @@ module.exports = async (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "[name].js",
-      // Empty publicPath keeps asset references relative, so the build works
-      // when served from a GitHub Pages project subpath (/MacTools/).
+      // Content hash in the filename: every build produces a new URL, so
+      // browsers and the Office runtime cannot serve a stale bundle. The
+      // HTML files (which the manifest points at) keep stable names and
+      // reference the hashed bundle.
+      filename: dev ? "[name].js" : "[name].[contenthash].js",
       publicPath: "",
       clean: true,
     },
