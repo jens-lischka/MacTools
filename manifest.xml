@@ -69,8 +69,8 @@
                 </Control>
               </Group>
             </OfficeTab>
-            <CustomTab id="StudioTools.Tab">
-              <Group id="StudioTools.Pane">
+            <CustomTab id="StudioToolsTab">
+              <Group id="toolsGrpPane">
                 <Label resid="Grp.Pane" />
                 <Icon>
                   <bt:Image size="16" resid="Icon.16" />
@@ -94,7 +94,7 @@
                   </Action>
                 </Control>
               </Group>
-            <Group id="StudioTools.Align">
+            <Group id="toolsGrpAlign">
               <Label resid="Grp.Align" />
               <Icon>
                 <bt:Image size="16" resid="Ic.AlignLeft" />
@@ -191,6 +191,14 @@
                   <FunctionName>alignBottom</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpDistribute">
+              <Label resid="Grp.Distribute" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.DistributeHorizontally" />
+                <bt:Image size="32" resid="Ic.DistributeHorizontally" />
+                <bt:Image size="80" resid="Ic.DistributeHorizontally" />
+              </Icon>
               <Control xsi:type="Button" id="distributeH">
                 <Label resid="Lbl.distributeH" />
                 <Supertip>
@@ -222,8 +230,8 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Size">
-              <Label resid="Grp.Size" />
+            <Group id="toolsGrpMatchSize">
+              <Label resid="Grp.MatchSize" />
               <Icon>
                 <bt:Image size="16" resid="Ic.MatchWidth" />
                 <bt:Image size="32" resid="Ic.MatchWidth" />
@@ -274,6 +282,14 @@
                   <FunctionName>matchSizeBoth</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpStretch">
+              <Label resid="Grp.Stretch" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.StretchLeft" />
+                <bt:Image size="32" resid="Ic.StretchLeft" />
+                <bt:Image size="80" resid="Ic.StretchLeft" />
+              </Icon>
               <Control xsi:type="Button" id="stretchLeft">
                 <Label resid="Lbl.stretchLeft" />
                 <Supertip>
@@ -334,6 +350,14 @@
                   <FunctionName>stretchBottom</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpAdjust">
+              <Label resid="Grp.Adjust" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.FillHorizontalGap" />
+                <bt:Image size="32" resid="Ic.FillHorizontalGap" />
+                <bt:Image size="80" resid="Ic.FillHorizontalGap" />
+              </Icon>
               <Control xsi:type="Button" id="fillGapH">
                 <Label resid="Lbl.fillGapH" />
                 <Supertip>
@@ -395,8 +419,8 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Select">
-              <Label resid="Grp.Select" />
+            <Group id="toolsGrpSelectSame">
+              <Label resid="Grp.SelectSame" />
               <Icon>
                 <bt:Image size="16" resid="Ic.SelectSameFill" />
                 <bt:Image size="32" resid="Ic.SelectSameFill" />
@@ -492,6 +516,14 @@
                   <FunctionName>selectSize</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpSelectPosition">
+              <Label resid="Grp.SelectPosition" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.SelectSamePositionTop" />
+                <bt:Image size="32" resid="Ic.SelectSamePositionTop" />
+                <bt:Image size="80" resid="Ic.SelectSamePositionTop" />
+              </Icon>
               <Control xsi:type="Button" id="selectPosTop">
                 <Label resid="Lbl.selectPosTop" />
                 <Supertip>
@@ -583,8 +615,8 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Text">
-              <Label resid="Grp.Text" />
+            <Group id="toolsGrpAutofitWrap">
+              <Label resid="Grp.AutofitWrap" />
               <Icon>
                 <bt:Image size="16" resid="Ic.ResizeShapeToFitTextOn" />
                 <bt:Image size="32" resid="Ic.ResizeShapeToFitTextOn" />
@@ -650,6 +682,14 @@
                   <FunctionName>wrapOff</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpMargins">
+              <Label resid="Grp.Margins" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.SetMarginsNone" />
+                <bt:Image size="32" resid="Ic.SetMarginsNone" />
+                <bt:Image size="80" resid="Ic.SetMarginsNone" />
+              </Icon>
               <Control xsi:type="Button" id="marginsNone">
                 <Label resid="Lbl.marginsNone" />
                 <Supertip>
@@ -710,6 +750,14 @@
                   <FunctionName>marginsWide</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpParagraph">
+              <Label resid="Grp.Paragraph" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.AlignLeft" />
+                <bt:Image size="32" resid="Ic.AlignLeft" />
+                <bt:Image size="80" resid="Ic.AlignLeft" />
+              </Icon>
               <Control xsi:type="Button" id="alignTextLeft">
                 <Label resid="Lbl.alignTextLeft" />
                 <Supertip>
@@ -770,36 +818,6 @@
                   <FunctionName>alignTextJustify</FunctionName>
                 </Action>
               </Control>
-              <Control xsi:type="Button" id="clearBreaks">
-                <Label resid="Lbl.clearBreaks" />
-                <Supertip>
-                  <Title resid="Lbl.clearBreaks" />
-                  <Description resid="Lbl.clearBreaks" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ClearLineBreaks" />
-                  <bt:Image size="32" resid="Ic.ClearLineBreaks" />
-                  <bt:Image size="80" resid="Ic.ClearLineBreaks" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>clearBreaks</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="clearTextRibbon">
-                <Label resid="Lbl.clearTextRibbon" />
-                <Supertip>
-                  <Title resid="Lbl.clearTextRibbon" />
-                  <Description resid="Lbl.clearTextRibbon" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.DeleteText" />
-                  <bt:Image size="32" resid="Ic.DeleteText" />
-                  <bt:Image size="80" resid="Ic.DeleteText" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>clearTextRibbon</FunctionName>
-                </Action>
-              </Control>
               <Control xsi:type="Button" id="bulletsOn">
                 <Label resid="Lbl.bulletsOn" />
                 <Supertip>
@@ -830,6 +848,82 @@
                   <FunctionName>bulletsOff</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpTextEdit">
+              <Label resid="Grp.TextEdit" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.ClearLineBreaks" />
+                <bt:Image size="32" resid="Ic.ClearLineBreaks" />
+                <bt:Image size="80" resid="Ic.ClearLineBreaks" />
+              </Icon>
+              <Control xsi:type="Button" id="clearBreaks">
+                <Label resid="Lbl.clearBreaks" />
+                <Supertip>
+                  <Title resid="Lbl.clearBreaks" />
+                  <Description resid="Lbl.clearBreaks" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.ClearLineBreaks" />
+                  <bt:Image size="32" resid="Ic.ClearLineBreaks" />
+                  <bt:Image size="80" resid="Ic.ClearLineBreaks" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>clearBreaks</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="clearTextRibbon">
+                <Label resid="Lbl.clearTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.clearTextRibbon" />
+                  <Description resid="Lbl.clearTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.DeleteText" />
+                  <bt:Image size="32" resid="Ic.DeleteText" />
+                  <bt:Image size="80" resid="Ic.DeleteText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>clearTextRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="mergeTextRibbon">
+                <Label resid="Lbl.mergeTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.mergeTextRibbon" />
+                  <Description resid="Lbl.mergeTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.MergeText" />
+                  <bt:Image size="32" resid="Ic.MergeText" />
+                  <bt:Image size="80" resid="Ic.MergeText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>mergeTextRibbon</FunctionName>
+                </Action>
+              </Control>
+              <Control xsi:type="Button" id="splitTextRibbon">
+                <Label resid="Lbl.splitTextRibbon" />
+                <Supertip>
+                  <Title resid="Lbl.splitTextRibbon" />
+                  <Description resid="Lbl.splitTextRibbon" />
+                </Supertip>
+                <Icon>
+                  <bt:Image size="16" resid="Ic.SplitText" />
+                  <bt:Image size="32" resid="Ic.SplitText" />
+                  <bt:Image size="80" resid="Ic.SplitText" />
+                </Icon>
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>splitTextRibbon</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+            <Group id="toolsGrpTextStyles">
+              <Label resid="Grp.TextStyles" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.Heading1Text" />
+                <bt:Image size="32" resid="Ic.Heading1Text" />
+                <bt:Image size="80" resid="Ic.Heading1Text" />
+              </Icon>
               <Control xsi:type="Button" id="styleHeading">
                 <Label resid="Lbl.styleHeading" />
                 <Supertip>
@@ -875,39 +969,9 @@
                   <FunctionName>styleBody</FunctionName>
                 </Action>
               </Control>
-              <Control xsi:type="Button" id="mergeTextRibbon">
-                <Label resid="Lbl.mergeTextRibbon" />
-                <Supertip>
-                  <Title resid="Lbl.mergeTextRibbon" />
-                  <Description resid="Lbl.mergeTextRibbon" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.MergeText" />
-                  <bt:Image size="32" resid="Ic.MergeText" />
-                  <bt:Image size="80" resid="Ic.MergeText" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>mergeTextRibbon</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="splitTextRibbon">
-                <Label resid="Lbl.splitTextRibbon" />
-                <Supertip>
-                  <Title resid="Lbl.splitTextRibbon" />
-                  <Description resid="Lbl.splitTextRibbon" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.SplitText" />
-                  <bt:Image size="32" resid="Ic.SplitText" />
-                  <bt:Image size="80" resid="Ic.SplitText" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>splitTextRibbon</FunctionName>
-                </Action>
-              </Control>
             </Group>
-            <Group id="StudioTools.Shapes">
-              <Label resid="Grp.Shapes" />
+            <Group id="toolsGrpInsertShapes">
+              <Label resid="Grp.InsertShapes" />
               <Icon>
                 <bt:Image size="16" resid="Ic.ShapesRectangle" />
                 <bt:Image size="32" resid="Ic.ShapesRectangle" />
@@ -1003,6 +1067,14 @@
                   <FunctionName>insertChevron</FunctionName>
                 </Action>
               </Control>
+            </Group>
+            <Group id="toolsGrpInsert">
+              <Label resid="Grp.Insert" />
+              <Icon>
+                <bt:Image size="16" resid="Ic.ShapesLine" />
+                <bt:Image size="32" resid="Ic.ShapesLine" />
+                <bt:Image size="80" resid="Ic.ShapesLine" />
+              </Icon>
               <Control xsi:type="Button" id="insertLineRibbon">
                 <Label resid="Lbl.insertLineRibbon" />
                 <Supertip>
@@ -1094,8 +1166,8 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Arrange">
-              <Label resid="Grp.Arrange" />
+            <Group id="toolsGrpSwapApply">
+              <Label resid="Grp.SwapApply" />
               <Icon>
                 <bt:Image size="16" resid="Ic.SwapPosition" />
                 <bt:Image size="32" resid="Ic.SwapPosition" />
@@ -1192,7 +1264,7 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Tables">
+            <Group id="toolsGrpTables">
               <Label resid="Grp.Tables" />
               <Icon>
                 <bt:Image size="16" resid="Ic.AddRowBottom" />
@@ -1275,7 +1347,7 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Special">
+            <Group id="toolsGrpSpecial">
               <Label resid="Grp.Special" />
               <Icon>
                 <bt:Image size="16" resid="Ic.SlideTitle" />
@@ -1358,7 +1430,7 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="StudioTools.Slides">
+            <Group id="toolsGrpSlides">
               <Label resid="Grp.Slides" />
               <Icon>
                 <bt:Image size="16" resid="Ic.TableOfContents" />
@@ -1396,7 +1468,7 @@
                 </Action>
               </Control>
             </Group>
-              <Label resid="StudioTools.TabLabel" />
+              <Label resid="StudioToolsTabLabel" />
             </CustomTab>
           </ExtensionPoint>
         </DesktopFormFactor>
@@ -1496,7 +1568,7 @@
         <bt:String id="GetStarted.Title" DefaultValue="StudioTools" />
         <bt:String id="Group.Label" DefaultValue="StudioTools" />
         <bt:String id="Taskpane.Label" DefaultValue="StudioTools" />
-        <bt:String id="StudioTools.TabLabel" DefaultValue="Tools" />
+        <bt:String id="StudioToolsTabLabel" DefaultValue="Tools" />
         <bt:String id="Grp.Pane" DefaultValue="Task Pane" />
         <bt:String id="Grp.Align" DefaultValue="Align" />
         <bt:String id="Lbl.alignLeft" DefaultValue="Align Left" />
@@ -1505,69 +1577,78 @@
         <bt:String id="Lbl.alignTop" DefaultValue="Align Top" />
         <bt:String id="Lbl.alignMiddle" DefaultValue="Align Middle" />
         <bt:String id="Lbl.alignBottom" DefaultValue="Align Bottom" />
+        <bt:String id="Grp.Distribute" DefaultValue="Distribute" />
         <bt:String id="Lbl.distributeH" DefaultValue="Distribute Horizontally" />
         <bt:String id="Lbl.distributeV" DefaultValue="Distribute Vertically" />
-        <bt:String id="Grp.Size" DefaultValue="Size &amp; Position" />
+        <bt:String id="Grp.MatchSize" DefaultValue="Match Size" />
         <bt:String id="Lbl.matchWidth" DefaultValue="Match Width" />
         <bt:String id="Lbl.matchHeight" DefaultValue="Match Height" />
         <bt:String id="Lbl.matchSizeBoth" DefaultValue="Match Size" />
+        <bt:String id="Grp.Stretch" DefaultValue="Stretch" />
         <bt:String id="Lbl.stretchLeft" DefaultValue="Stretch Left" />
         <bt:String id="Lbl.stretchRight" DefaultValue="Stretch Right" />
         <bt:String id="Lbl.stretchTop" DefaultValue="Stretch Top" />
         <bt:String id="Lbl.stretchBottom" DefaultValue="Stretch Bottom" />
+        <bt:String id="Grp.Adjust" DefaultValue="Adjust" />
         <bt:String id="Lbl.fillGapH" DefaultValue="Fill Horizontal Gaps" />
         <bt:String id="Lbl.fillGapV" DefaultValue="Fill Vertical Gaps" />
         <bt:String id="Lbl.unifySize" DefaultValue="Unify Size" />
         <bt:String id="Lbl.straightenLines" DefaultValue="Straighten Lines" />
-        <bt:String id="Grp.Select" DefaultValue="Select Same" />
+        <bt:String id="Grp.SelectSame" DefaultValue="Select Same" />
         <bt:String id="Lbl.selectFill" DefaultValue="Select Same Fill" />
         <bt:String id="Lbl.selectOutline" DefaultValue="Select Same Outline" />
         <bt:String id="Lbl.selectWeight" DefaultValue="Select Same Outline Weight" />
         <bt:String id="Lbl.selectFont" DefaultValue="Select Same Font" />
         <bt:String id="Lbl.selectType" DefaultValue="Select Same Type" />
         <bt:String id="Lbl.selectSize" DefaultValue="Select Same Size" />
+        <bt:String id="Grp.SelectPosition" DefaultValue="Select / Visibility" />
         <bt:String id="Lbl.selectPosTop" DefaultValue="Select Same Top Edge" />
         <bt:String id="Lbl.selectPosLeft" DefaultValue="Select Same Left Edge" />
         <bt:String id="Lbl.selectPosRight" DefaultValue="Select Same Right Edge" />
         <bt:String id="Lbl.selectPosBottom" DefaultValue="Select Same Bottom Edge" />
         <bt:String id="Lbl.hideShapes" DefaultValue="Hide Selected" />
         <bt:String id="Lbl.showShapes" DefaultValue="Show All Shapes" />
-        <bt:String id="Grp.Text" DefaultValue="Text" />
+        <bt:String id="Grp.AutofitWrap" DefaultValue="Autofit &amp; Wrap" />
         <bt:String id="Lbl.autofitOn" DefaultValue="Resize Shape to Fit Text" />
         <bt:String id="Lbl.autofitOff" DefaultValue="Turn Autofit Off" />
         <bt:String id="Lbl.wrapOn" DefaultValue="Word Wrap On" />
         <bt:String id="Lbl.wrapOff" DefaultValue="Word Wrap Off" />
+        <bt:String id="Grp.Margins" DefaultValue="Margins" />
         <bt:String id="Lbl.marginsNone" DefaultValue="No Margins" />
         <bt:String id="Lbl.marginsNarrow" DefaultValue="Narrow Margins" />
         <bt:String id="Lbl.marginsNormal" DefaultValue="Normal Margins" />
         <bt:String id="Lbl.marginsWide" DefaultValue="Wide Margins" />
+        <bt:String id="Grp.Paragraph" DefaultValue="Paragraph" />
         <bt:String id="Lbl.alignTextLeft" DefaultValue="Align Text Left" />
         <bt:String id="Lbl.alignTextCenter" DefaultValue="Align Text Center" />
         <bt:String id="Lbl.alignTextRight" DefaultValue="Align Text Right" />
         <bt:String id="Lbl.alignTextJustify" DefaultValue="Justify Text" />
-        <bt:String id="Lbl.clearBreaks" DefaultValue="Clear Line Breaks" />
-        <bt:String id="Lbl.clearTextRibbon" DefaultValue="Clear Text" />
         <bt:String id="Lbl.bulletsOn" DefaultValue="Bullets On" />
         <bt:String id="Lbl.bulletsOff" DefaultValue="Bullets Off" />
+        <bt:String id="Grp.TextEdit" DefaultValue="Edit Text" />
+        <bt:String id="Lbl.clearBreaks" DefaultValue="Clear Line Breaks" />
+        <bt:String id="Lbl.clearTextRibbon" DefaultValue="Clear Text" />
+        <bt:String id="Lbl.mergeTextRibbon" DefaultValue="Merge Text" />
+        <bt:String id="Lbl.splitTextRibbon" DefaultValue="Split Text" />
+        <bt:String id="Grp.TextStyles" DefaultValue="Text Styles" />
         <bt:String id="Lbl.styleHeading" DefaultValue="Heading Style" />
         <bt:String id="Lbl.styleSubheading" DefaultValue="Subheading Style" />
         <bt:String id="Lbl.styleBody" DefaultValue="Body Style" />
-        <bt:String id="Lbl.mergeTextRibbon" DefaultValue="Merge Text" />
-        <bt:String id="Lbl.splitTextRibbon" DefaultValue="Split Text" />
-        <bt:String id="Grp.Shapes" DefaultValue="Shapes" />
+        <bt:String id="Grp.InsertShapes" DefaultValue="Insert Shapes" />
         <bt:String id="Lbl.insertRectangle" DefaultValue="Insert Rectangle" />
         <bt:String id="Lbl.insertRoundRect" DefaultValue="Insert Rounded Rectangle" />
         <bt:String id="Lbl.insertOval" DefaultValue="Insert Oval" />
         <bt:String id="Lbl.insertTriangle" DefaultValue="Insert Triangle" />
         <bt:String id="Lbl.insertArrow" DefaultValue="Insert Right Arrow" />
         <bt:String id="Lbl.insertChevron" DefaultValue="Insert Chevron" />
+        <bt:String id="Grp.Insert" DefaultValue="Insert &amp; Group" />
         <bt:String id="Lbl.insertLineRibbon" DefaultValue="Insert Line" />
         <bt:String id="Lbl.insertTextBoxRibbon" DefaultValue="Insert Text Box" />
         <bt:String id="Lbl.insertCircle" DefaultValue="Insert Numbered Circle" />
         <bt:String id="Lbl.connectShapes" DefaultValue="Connect Two Shapes" />
         <bt:String id="Lbl.groupRow" DefaultValue="Lay Out as a Row" />
         <bt:String id="Lbl.groupColumn" DefaultValue="Lay Out as a Column" />
-        <bt:String id="Grp.Arrange" DefaultValue="Swap &amp; Apply" />
+        <bt:String id="Grp.SwapApply" DefaultValue="Swap &amp; Apply" />
         <bt:String id="Lbl.swapPositionRibbon" DefaultValue="Swap Position" />
         <bt:String id="Lbl.swapSizeRibbon" DefaultValue="Swap Size" />
         <bt:String id="Lbl.swapFillRibbon" DefaultValue="Swap Fill &amp; Outline" />

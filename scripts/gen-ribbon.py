@@ -2,10 +2,13 @@
 """Generate the StudioTools ribbon tab into both manifests and commands.ts.
 
 Single source of truth: GROUPS below. Run from the repo root:  python3 scripts/gen-ribbon.py
+
+A ribbon group may hold at most 6 controls, so categories are split into
+groups of <= 6 buttons.
 """
 import os
 
-# (group id suffix, group label, [(button id, label, icon, ts expression)])
+# (group id token, group label, [(button id, label, icon, ts expression)])
 GROUPS = [
     ("Align", "Align", [
         ("alignLeft", "Align Left", "AlignLeft", 'align("left", "selection")'),
@@ -14,29 +17,37 @@ GROUPS = [
         ("alignTop", "Align Top", "AlignTop", 'align("top", "selection")'),
         ("alignMiddle", "Align Middle", "AlignMiddle", 'align("middle", "selection")'),
         ("alignBottom", "Align Bottom", "AlignBottom", 'align("bottom", "selection")'),
+    ]),
+    ("Distribute", "Distribute", [
         ("distributeH", "Distribute Horizontally", "DistributeHorizontally", 'distribute("horizontal")'),
         ("distributeV", "Distribute Vertically", "DistributeVertically", 'distribute("vertical")'),
     ]),
-    ("Size", "Size & Position", [
+    ("MatchSize", "Match Size", [
         ("matchWidth", "Match Width", "MatchWidth", 'matchSize("width", "last")'),
         ("matchHeight", "Match Height", "MatchHeight", 'matchSize("height", "last")'),
         ("matchSizeBoth", "Match Size", "MatchSize", 'matchSize("both", "last")'),
+    ]),
+    ("Stretch", "Stretch", [
         ("stretchLeft", "Stretch Left", "StretchLeft", 'stretchToEdge("left", "selection")'),
         ("stretchRight", "Stretch Right", "StretchRight", 'stretchToEdge("right", "selection")'),
         ("stretchTop", "Stretch Top", "StretchTop", 'stretchToEdge("top", "selection")'),
         ("stretchBottom", "Stretch Bottom", "StretchBottom", 'stretchToEdge("bottom", "selection")'),
+    ]),
+    ("Adjust", "Adjust", [
         ("fillGapH", "Fill Horizontal Gaps", "FillHorizontalGap", 'fillGap("horizontal")'),
         ("fillGapV", "Fill Vertical Gaps", "FillVerticalGap", 'fillGap("vertical")'),
-        ("unifySize", "Unify Size", "UnifyCorners", 'unifyShapes()'),
-        ("straightenLines", "Straighten Lines", "StraightenLine", 'straightenLines()'),
+        ("unifySize", "Unify Size", "UnifyCorners", "unifyShapes()"),
+        ("straightenLines", "Straighten Lines", "StraightenLine", "straightenLines()"),
     ]),
-    ("Select", "Select Same", [
+    ("SelectSame", "Select Same", [
         ("selectFill", "Select Same Fill", "SelectSameFill", 'selectSame("fillColor")'),
         ("selectOutline", "Select Same Outline", "SelectSameOutline", 'selectSame("lineColor")'),
         ("selectWeight", "Select Same Outline Weight", "SelectSameOutlineWeight", 'selectSame("lineWeight")'),
         ("selectFont", "Select Same Font", "SelectSameFontName", 'selectSame("fontName")'),
         ("selectType", "Select Same Type", "SelectSameType", 'selectSame("shapeType")'),
         ("selectSize", "Select Same Size", "SelectSameSize", 'selectSame("size")'),
+    ]),
+    ("SelectPosition", "Select / Visibility", [
         ("selectPosTop", "Select Same Top Edge", "SelectSamePositionTop", 'selectSame("positionTop")'),
         ("selectPosLeft", "Select Same Left Edge", "SelectSamePositionLeft", 'selectSame("positionLeft")'),
         ("selectPosRight", "Select Same Right Edge", "SelectSamePositionRight", 'selectSame("positionRight")'),
@@ -44,36 +55,46 @@ GROUPS = [
         ("hideShapes", "Hide Selected", "HideObject", "setSelectedShapesVisible(false)"),
         ("showShapes", "Show All Shapes", "ShowAll", "showAllShapes()"),
     ]),
-    ("Text", "Text", [
+    ("AutofitWrap", "Autofit & Wrap", [
         ("autofitOn", "Resize Shape to Fit Text", "ResizeShapeToFitTextOn", "setAutoSize(PowerPoint.ShapeAutoSize.autoSizeShapeToFitText)"),
         ("autofitOff", "Turn Autofit Off", "ResizeShapeToFitTextMix", "setAutoSize(PowerPoint.ShapeAutoSize.autoSizeNone)"),
         ("wrapOn", "Word Wrap On", "WrapTextOn", "setWordWrap(true)"),
         ("wrapOff", "Word Wrap Off", "WrapTextMix", "setWordWrap(false)"),
+    ]),
+    ("Margins", "Margins", [
         ("marginsNone", "No Margins", "SetMarginsNone", "setMargins({ left: 0, right: 0, top: 0, bottom: 0 })"),
         ("marginsNarrow", "Narrow Margins", "SetMarginsNarrow", "setMargins({ left: 3.6, right: 3.6, top: 3.6, bottom: 3.6 })"),
         ("marginsNormal", "Normal Margins", "SetMarginsNormal", "setMargins({ left: 7.2, right: 7.2, top: 3.6, bottom: 3.6 })"),
         ("marginsWide", "Wide Margins", "SetMarginsWide", "setMargins({ left: 14.4, right: 14.4, top: 14.4, bottom: 14.4 })"),
+    ]),
+    ("Paragraph", "Paragraph", [
         ("alignTextLeft", "Align Text Left", "AlignLeft", "setParagraphAlignment(PowerPoint.ParagraphHorizontalAlignment.left)"),
         ("alignTextCenter", "Align Text Center", "AlignCenter", "setParagraphAlignment(PowerPoint.ParagraphHorizontalAlignment.center)"),
         ("alignTextRight", "Align Text Right", "AlignRight", "setParagraphAlignment(PowerPoint.ParagraphHorizontalAlignment.right)"),
         ("alignTextJustify", "Justify Text", "AlignInGrid", "setParagraphAlignment(PowerPoint.ParagraphHorizontalAlignment.justify)"),
-        ("clearBreaks", "Clear Line Breaks", "ClearLineBreaks", "clearLineBreaks()"),
-        ("clearTextRibbon", "Clear Text", "DeleteText", "clearText()"),
         ("bulletsOn", "Bullets On", "FixBullets", "setBullets(true)"),
         ("bulletsOff", "Bullets Off", "NoBullets", "setBullets(false)"),
-        ("styleHeading", "Heading Style", "Heading1Text", "applyTextStyle({ size: 28, bold: true })"),
-        ("styleSubheading", "Subheading Style", "Subheading1Text", "applyTextStyle({ size: 20, bold: true })"),
-        ("styleBody", "Body Style", "Body1Text", "applyTextStyle({ size: 14, bold: false })"),
+    ]),
+    ("TextEdit", "Edit Text", [
+        ("clearBreaks", "Clear Line Breaks", "ClearLineBreaks", "clearLineBreaks()"),
+        ("clearTextRibbon", "Clear Text", "DeleteText", "clearText()"),
         ("mergeTextRibbon", "Merge Text", "MergeText", "mergeText()"),
         ("splitTextRibbon", "Split Text", "SplitText", "splitText()"),
     ]),
-    ("Shapes", "Shapes", [
+    ("TextStyles", "Text Styles", [
+        ("styleHeading", "Heading Style", "Heading1Text", "applyTextStyle({ size: 28, bold: true })"),
+        ("styleSubheading", "Subheading Style", "Subheading1Text", "applyTextStyle({ size: 20, bold: true })"),
+        ("styleBody", "Body Style", "Body1Text", "applyTextStyle({ size: 14, bold: false })"),
+    ]),
+    ("InsertShapes", "Insert Shapes", [
         ("insertRectangle", "Insert Rectangle", "ShapesRectangle", "insertShape(PowerPoint.GeometricShapeType.rectangle)"),
         ("insertRoundRect", "Insert Rounded Rectangle", "ShapesRoundedRectangle", "insertShape(PowerPoint.GeometricShapeType.roundRectangle)"),
         ("insertOval", "Insert Oval", "ShapesOval", "insertShape(PowerPoint.GeometricShapeType.ellipse)"),
         ("insertTriangle", "Insert Triangle", "ShapesLargeCaret", "insertShape(PowerPoint.GeometricShapeType.triangle)"),
         ("insertArrow", "Insert Right Arrow", "SymbolsArrowRight", "insertShape(PowerPoint.GeometricShapeType.rightArrow)"),
         ("insertChevron", "Insert Chevron", "ShapesChevron1", "insertShape(PowerPoint.GeometricShapeType.chevron)"),
+    ]),
+    ("Insert", "Insert & Group", [
         ("insertLineRibbon", "Insert Line", "ShapesLine", "insertLine()"),
         ("insertTextBoxRibbon", "Insert Text Box", "InsertTextBox", "insertTextBox()"),
         ("insertCircle", "Insert Numbered Circle", "ShapesCircle", 'insertNumberedCircle("1")'),
@@ -81,7 +102,7 @@ GROUPS = [
         ("groupRow", "Lay Out as a Row", "GroupAsRows", 'groupAsLayout("row")'),
         ("groupColumn", "Lay Out as a Column", "GroupAsColumns", 'groupAsLayout("column")'),
     ]),
-    ("Arrange", "Swap & Apply", [
+    ("SwapApply", "Swap & Apply", [
         ("swapPositionRibbon", "Swap Position", "SwapPosition", "swapPosition()"),
         ("swapSizeRibbon", "Swap Size", "MatchSize", "swapSize()"),
         ("swapFillRibbon", "Swap Fill & Outline", "SwapFillAndOutline", "swapFillAndOutline()"),
@@ -135,10 +156,11 @@ def esc(s):
 def gen_extension_point():
     """The CustomTab block plus the existing Home-tab button."""
     groups_xml = []
-    for gid, glabel, buttons in GROUPS:
+    for gid, _glabel, buttons in GROUPS:
+        assert len(buttons) <= 6, f"group {gid} has {len(buttons)} controls (max 6)"
         group_icon = buttons[0][2]
         controls = []
-        for bid, label, icon, _expr in buttons:
+        for bid, _label, icon, _expr in buttons:
             controls.append(f"""              <Control xsi:type="Button" id="{bid}">
                 <Label resid="Lbl.{bid}" />
                 <Supertip>
@@ -154,7 +176,7 @@ def gen_extension_point():
                   <FunctionName>{bid}</FunctionName>
                 </Action>
               </Control>""")
-        groups_xml.append(f"""            <Group id="StudioTools.{gid}">
+        groups_xml.append(f"""            <Group id="toolsGrp{gid}">
               <Label resid="Grp.{gid}" />
               <Icon>
                 <bt:Image size="16" resid="Ic.{group_icon}" />
@@ -190,8 +212,8 @@ def gen_extension_point():
                 </Control>
               </Group>
             </OfficeTab>
-            <CustomTab id="StudioTools.Tab">
-              <Group id="StudioTools.Pane">
+            <CustomTab id="StudioToolsTab">
+              <Group id="toolsGrpPane">
                 <Label resid="Grp.Pane" />
                 <Icon>
                   <bt:Image size="16" resid="Icon.16" />
@@ -216,7 +238,7 @@ def gen_extension_point():
                 </Control>
               </Group>
 {chr(10).join(groups_xml)}
-              <Label resid="StudioTools.TabLabel" />
+              <Label resid="StudioToolsTabLabel" />
             </CustomTab>
           </ExtensionPoint>"""
 
@@ -237,7 +259,7 @@ def gen_resources(host):
         '        <bt:String id="GetStarted.Title" DefaultValue="StudioTools" />',
         '        <bt:String id="Group.Label" DefaultValue="StudioTools" />',
         '        <bt:String id="Taskpane.Label" DefaultValue="StudioTools" />',
-        '        <bt:String id="StudioTools.TabLabel" DefaultValue="Tools" />',
+        '        <bt:String id="StudioToolsTabLabel" DefaultValue="Tools" />',
         '        <bt:String id="Grp.Pane" DefaultValue="Task Pane" />',
     ]
     for gid, glabel, buttons in GROUPS:
