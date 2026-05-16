@@ -6,6 +6,8 @@
  * `placeholderFormat` on shapes that are not placeholders.
  */
 
+import { getActiveSlide } from "./powerpoint";
+
 function cleanLine(text: string): string {
   return text.replace(/[\r\n\v\f]+/g, " ").trim();
 }
@@ -52,12 +54,8 @@ export async function addStickyNote(initials: string): Promise<void> {
   const stamp = new Date().toLocaleDateString();
 
   await PowerPoint.run(async (context) => {
-    const slides = context.presentation.getSelectedSlides();
-    slides.load("items/id");
-    await context.sync();
-    if (slides.items.length === 0) throw new Error("Open a slide first.");
-
-    const note = slides.items[0].shapes.addTextBox(`${author} — ${stamp}\n`, {
+    const slide = await getActiveSlide(context);
+    const note = slide.shapes.addTextBox(`${author} — ${stamp}\n`, {
       left: 700,
       top: 24,
       width: 220,
@@ -77,17 +75,8 @@ export async function insertTableOfContents(): Promise<void> {
   const body = titles.map((title, i) => `${i + 1}.  ${title}`).join("\n");
 
   await PowerPoint.run(async (context) => {
-    const slides = context.presentation.getSelectedSlides();
-    slides.load("items/id");
-    await context.sync();
-    if (slides.items.length === 0) throw new Error("Open a slide first.");
-
-    slides.items[0].shapes.addTextBox(body, {
-      left: 60,
-      top: 60,
-      width: 600,
-      height: 400,
-    });
+    const slide = await getActiveSlide(context);
+    slide.shapes.addTextBox(body, { left: 60, top: 60, width: 600, height: 400 });
     await context.sync();
   });
 }

@@ -6,18 +6,7 @@
  * break the batch.
  */
 
-/**
- * True for shape types that carry a text frame. Defined as a function (not a
- * module-level constant) so the `PowerPoint` enum is read lazily — referencing
- * it at module load can run before Office.js has defined the namespace.
- */
-function isTextShape(type: PowerPoint.Shape["type"]): boolean {
-  return (
-    type === PowerPoint.ShapeType.geometricShape ||
-    type === PowerPoint.ShapeType.textBox ||
-    type === PowerPoint.ShapeType.placeholder
-  );
-}
+import { isTextShape } from "./powerpoint";
 
 async function withTextShapes(
   callback: (

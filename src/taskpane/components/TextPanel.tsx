@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Button,
-  Field,
-  SpinButton,
-  Divider,
-  makeStyles,
-  tokens,
-} from "@fluentui/react-components";
+import { Button, Field, SpinButton, Divider, makeStyles } from "@fluentui/react-components";
 import {
   setAutoSize,
   setWordWrap,
@@ -24,20 +17,10 @@ import {
 } from "../../lib/text";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
+import { usePanelStyles } from "./panelStyles";
+import { spinHandler } from "./spin";
 
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: tokens.spacingHorizontalS,
-    alignItems: "center",
-  },
-  spin: { width: "96px" },
+const useTextStyles = makeStyles({
   squareButton: {
     minWidth: "36px",
     maxWidth: "36px",
@@ -65,7 +48,8 @@ const STYLES: { label: string; style: TextStyle; icon: string }[] = [
 const SPECIAL_CHARS = ["—", "–", "•", "→", "←", "↑", "↓", "×", "✓", "€"];
 
 export const TextPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
+  const textStyles = useTextStyles();
   const { run, busy } = useActions();
   const [customMargin, setCustomMargin] = React.useState(6);
 
@@ -145,10 +129,7 @@ export const TextPanel: React.FC = () => {
             max={200}
             step={1}
             value={customMargin}
-            onChange={(_, d) => {
-              const next = d.value ?? Number(d.displayValue);
-              if (Number.isFinite(next)) setCustomMargin(next as number);
-            }}
+            onChange={spinHandler(setCustomMargin)}
           />
           <ToolButton
             icon="SetMargins"
@@ -248,7 +229,7 @@ export const TextPanel: React.FC = () => {
           {SPECIAL_CHARS.map((ch) => (
             <Button
               key={ch}
-              className={styles.squareButton}
+              className={textStyles.squareButton}
               disabled={busy}
               aria-label={`Insert ${ch}`}
               onClick={() => run(`Insert ${ch}`, () => insertSpecialCharacter(ch))}

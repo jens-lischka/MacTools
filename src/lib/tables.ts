@@ -5,15 +5,7 @@
  * on clients that support the table API.
  */
 
-async function getActiveSlide(
-  context: PowerPoint.RequestContext,
-): Promise<PowerPoint.Slide> {
-  const slides = context.presentation.getSelectedSlides();
-  slides.load("items/id");
-  await context.sync();
-  if (slides.items.length === 0) throw new Error("Open a slide first.");
-  return slides.items[0];
-}
+import { getActiveSlide } from "./powerpoint";
 
 /** Find the selected table, or throw a friendly error. */
 async function getSelectedTable(

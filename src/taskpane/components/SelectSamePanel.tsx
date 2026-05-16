@@ -1,19 +1,12 @@
 import * as React from "react";
-import { Field, Divider, Caption1, makeStyles, tokens } from "@fluentui/react-components";
+import { Field, Divider, Caption1 } from "@fluentui/react-components";
 import { selectSame, type SameProperty } from "../../lib/selectSame";
 import { setSelectedShapesVisible, showAllShapes } from "../../lib/visibility";
 import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
+import { usePanelStyles } from "./panelStyles";
 
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
-});
 
 const STYLE_PROPS: { property: SameProperty; label: string; icon: string }[] = [
   { property: "fillColor", label: "Same Fill Colour", icon: "SelectSameFill" },
@@ -32,7 +25,7 @@ const POSITION_PROPS: { property: SameProperty; label: string; icon: string }[] 
 ];
 
 export const SelectSamePanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const visibilitySupported = isApiSupported("1.10");
 

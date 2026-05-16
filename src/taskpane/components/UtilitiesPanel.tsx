@@ -6,8 +6,6 @@ import {
   Field,
   Divider,
   Caption1,
-  makeStyles,
-  tokens,
 } from "@fluentui/react-components";
 import {
   replaceFonts,
@@ -17,22 +15,8 @@ import {
 } from "../../lib/utilities";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
-
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: tokens.spacingHorizontalS,
-    alignItems: "center",
-  },
-  grow: { flexGrow: 1, minWidth: "140px" },
-  spin: { width: "96px" },
-});
+import { usePanelStyles } from "./panelStyles";
+import { spinHandler } from "./spin";
 
 /** Common fonts offered in "Replace with" — the JS API cannot list the
  *  system-installed fonts, so this is a curated set; any font may be typed. */
@@ -43,13 +27,8 @@ const COMMON_FONTS = [
   "Segoe UI", "Tahoma", "Times New Roman", "Trebuchet MS", "Verdana",
 ];
 
-function spinValue(value: number | undefined, displayValue: string | undefined): number | null {
-  const next = value ?? Number(displayValue);
-  return Number.isFinite(next) ? (next as number) : null;
-}
-
 export const UtilitiesPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const [fromFont, setFromFont] = React.useState("");
   const [toFont, setToFont] = React.useState("");
@@ -60,9 +39,16 @@ export const UtilitiesPanel: React.FC = () => {
   const [fileSize, setFileSize] = React.useState("");
   const [checkingSize, setCheckingSize] = React.useState(false);
 
-  React.useEffect(() => {
-    void getUsedFonts().then(setUsedFonts).catch(() => setUsedFonts([]));
-  }, []);
+  // The used-font scan walks every slide; defer it until a font dropdown is
+  // first opened so it never runs on the app's startup path.
+  const fontsRequested = React.useRef(false);
+  const ensureFonts = () => {
+    if (fontsRequested.current) return;
+    fontsRequested.current = true;
+    void getUsedFonts()
+      .then(setUsedFonts)
+      .catch(() => setUsedFonts([]));
+  };
 
   const replaceWithOptions = React.useMemo(
     () => Array.from(new Set([...usedFonts, ...COMMON_FONTS])).sort((a, b) => a.localeCompare(b)),
@@ -88,6 +74,7 @@ export const UtilitiesPanel: React.FC = () => {
           freeform
           placeholder="Fonts used in this presentation"
           value={fromFont}
+          onOpenChange={(_, d) => d.open && ensureFonts()}
           onChange={(ev) => setFromFont(ev.target.value)}
           onOptionSelect={(_, d) => setFromFont(d.optionText ?? "")}
         >
@@ -103,6 +90,7 @@ export const UtilitiesPanel: React.FC = () => {
             freeform
             placeholder="Pick a font or type any name"
             value={toFont}
+            onOpenChange={(_, d) => d.open && ensureFonts()}
             onChange={(ev) => setToFont(ev.target.value)}
             onOptionSelect={(_, d) => setToFont(d.optionText ?? "")}
           >
@@ -138,30 +126,21 @@ export const UtilitiesPanel: React.FC = () => {
             min={0}
             step={10}
             value={startValue}
-            onChange={(_, d) => {
-              const v = spinValue(d.value ?? undefined, d.displayValue);
-              if (v !== null) setStartValue(v);
-            }}
+            onChange={spinHandler(setStartValue)}
           />
           <SpinButton
             className={styles.spin}
             min={0}
             step={10}
             value={endValue}
-            onChange={(_, d) => {
-              const v = spinValue(d.value ?? undefined, d.displayValue);
-              if (v !== null) setEndValue(v);
-            }}
+            onChange={spinHandler(setEndValue)}
           />
           <SpinButton
             className={styles.spin}
             min={1}
             step={1}
             value={periods}
-            onChange={(_, d) => {
-              const v = spinValue(d.value ?? undefined, d.displayValue);
-              if (v !== null) setPeriods(v);
-            }}
+            onChange={spinHandler(setPeriods)}
           />
           <ToolButton
             icon="CAGR"

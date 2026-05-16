@@ -1,32 +1,10 @@
 import * as React from "react";
-import {
-  Field,
-  Input,
-  SpinButton,
-  Divider,
-  Caption1,
-  makeStyles,
-  tokens,
-} from "@fluentui/react-components";
+import { Field, Input, SpinButton, Divider, Caption1 } from "@fluentui/react-components";
 import { getSetting, setSetting } from "../../lib/settings";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
-
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: tokens.spacingHorizontalS,
-    alignItems: "center",
-  },
-  grow: { flexGrow: 1 },
-  spin: { width: "96px" },
-});
+import { usePanelStyles } from "./panelStyles";
+import { spinHandler } from "./spin";
 
 interface SlideSize {
   width: number;
@@ -35,24 +13,26 @@ interface SlideSize {
 
 const DEFAULT_SLIDE_SIZE: SlideSize = { width: 960, height: 540 };
 
-function spinValue(value: number | undefined, displayValue: string | undefined): number | null {
-  const next = value ?? Number(displayValue);
-  return Number.isFinite(next) ? (next as number) : null;
-}
-
 export const SettingsPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const [width, setWidth] = React.useState(DEFAULT_SLIDE_SIZE.width);
   const [height, setHeight] = React.useState(DEFAULT_SLIDE_SIZE.height);
   const [initials, setInitials] = React.useState("");
 
   React.useEffect(() => {
+    let cancelled = false;
     void getSetting<SlideSize>("slideSize", DEFAULT_SLIDE_SIZE).then((s) => {
+      if (cancelled) return;
       setWidth(s.width);
       setHeight(s.height);
     });
-    void getSetting<string>("stickyNote:initials", "").then(setInitials);
+    void getSetting<string>("stickyNote:initials", "").then((value) => {
+      if (!cancelled) setInitials(value);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
@@ -68,20 +48,14 @@ export const SettingsPanel: React.FC = () => {
             min={1}
             step={10}
             value={width}
-            onChange={(_, d) => {
-              const v = spinValue(d.value ?? undefined, d.displayValue);
-              if (v !== null) setWidth(v);
-            }}
+            onChange={spinHandler(setWidth)}
           />
           <SpinButton
             className={styles.spin}
             min={1}
             step={10}
             value={height}
-            onChange={(_, d) => {
-              const v = spinValue(d.value ?? undefined, d.displayValue);
-              if (v !== null) setHeight(v);
-            }}
+            onChange={spinHandler(setHeight)}
           />
           <ToolButton
             icon="Save"

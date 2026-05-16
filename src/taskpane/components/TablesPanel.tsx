@@ -6,8 +6,6 @@ import {
   Caption1,
   MessageBar,
   MessageBarBody,
-  makeStyles,
-  tokens,
 } from "@fluentui/react-components";
 import {
   insertTable,
@@ -20,24 +18,11 @@ import {
 import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
-
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: tokens.spacingHorizontalS,
-    alignItems: "center",
-  },
-  spin: { width: "84px" },
-});
+import { usePanelStyles } from "./panelStyles";
+import { spinHandler } from "./spin";
 
 export const TablesPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const [rows, setRows] = React.useState(3);
   const [columns, setColumns] = React.useState(3);
@@ -53,13 +38,6 @@ export const TablesPanel: React.FC = () => {
     );
   }
 
-  const spin =
-    (set: (n: number) => void): React.ComponentProps<typeof SpinButton>["onChange"] =>
-    (_, d) => {
-      const next = d.value ?? Number(d.displayValue);
-      if (Number.isFinite(next)) set(next as number);
-    };
-
   return (
     <div className={styles.section}>
       <Field label="Insert table — rows &amp; columns">
@@ -69,14 +47,14 @@ export const TablesPanel: React.FC = () => {
             min={1}
             max={50}
             value={rows}
-            onChange={spin(setRows)}
+            onChange={spinHandler(setRows)}
           />
           <SpinButton
             className={styles.spin}
             min={1}
             max={50}
             value={columns}
-            onChange={spin(setColumns)}
+            onChange={spinHandler(setColumns)}
           />
           <ToolButton
             icon="FormatTable"

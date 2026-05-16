@@ -1,17 +1,10 @@
 import * as React from "react";
-import { Caption1, makeStyles, tokens } from "@fluentui/react-components";
+import { Caption1 } from "@fluentui/react-components";
 import { insertSpecialShape, type SpecialKind } from "../../lib/specialShapes";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
+import { usePanelStyles } from "./panelStyles";
 
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
-});
 
 const KINDS: { kind: SpecialKind; label: string; icon: string }[] = [
   { kind: "title", label: "Insert Slide Title", icon: "SlideTitle" },
@@ -22,7 +15,7 @@ const KINDS: { kind: SpecialKind; label: string; icon: string }[] = [
 ];
 
 export const SpecialShapesPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
 
   return (

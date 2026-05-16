@@ -7,7 +7,7 @@
  * settings-driven version can replace these static defaults later.
  */
 
-import { getActiveSlide } from "./shapes";
+import { getActiveSlide } from "./powerpoint";
 
 export type SpecialKind = "title" | "conclusion" | "footnote" | "ghost" | "label";
 

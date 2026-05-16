@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Field, Divider, Caption1, makeStyles, tokens } from "@fluentui/react-components";
+import { Field, Divider, Caption1 } from "@fluentui/react-components";
 import {
   insertShape,
   insertLine,
@@ -10,18 +10,11 @@ import {
 } from "../../lib/shapes";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
+import { usePanelStyles } from "./panelStyles";
 
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
-});
 
 export const ShapeCreationPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
 
   // Built inside the component so the PowerPoint enum is read after Office.js

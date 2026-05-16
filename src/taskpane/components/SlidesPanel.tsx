@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Textarea,
-  Input,
-  Field,
-  Divider,
-  makeStyles,
-  tokens,
-} from "@fluentui/react-components";
+import { Textarea, Input, Field, Divider } from "@fluentui/react-components";
 import {
   getSlideTitles,
   insertTableOfContents,
@@ -15,33 +8,25 @@ import {
 import { getSetting, setSetting } from "../../lib/settings";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
-
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: tokens.spacingHorizontalS,
-    alignItems: "center",
-  },
-  grow: { flexGrow: 1 },
-});
+import { usePanelStyles } from "./panelStyles";
 
 const INITIALS_KEY = "stickyNote:initials";
 
 export const SlidesPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const [titles, setTitles] = React.useState("");
   const [exporting, setExporting] = React.useState(false);
   const [initials, setInitials] = React.useState("");
 
   React.useEffect(() => {
-    void getSetting<string>(INITIALS_KEY, "").then(setInitials);
+    let cancelled = false;
+    void getSetting<string>(INITIALS_KEY, "").then((value) => {
+      if (!cancelled) setInitials(value);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const exportTitles = async () => {

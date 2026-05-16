@@ -4,8 +4,6 @@ import {
   Radio,
   RadioGroup,
   Caption1,
-  makeStyles,
-  tokens,
 } from "@fluentui/react-components";
 import {
   align,
@@ -15,15 +13,8 @@ import {
 } from "../../lib/alignment";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
+import { usePanelStyles } from "./panelStyles";
 
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
-});
 
 const ALIGN_BUTTONS: { edge: AlignEdge; label: string; icon: string }[] = [
   { edge: "left", label: "Align Left", icon: "AlignLeft" },
@@ -35,7 +26,7 @@ const ALIGN_BUTTONS: { edge: AlignEdge; label: string; icon: string }[] = [
 ];
 
 export const AlignmentPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const [target, setTarget] = React.useState<AlignTarget>("selection");
 

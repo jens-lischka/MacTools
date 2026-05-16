@@ -1,15 +1,32 @@
-/**
- * Utility operations — Phase 4.
- */
+import { isTextShape, getActiveSlide } from "./powerpoint";
 
-/** True for shape types that carry a text frame. A function (not a
- *  module-level constant) so the `PowerPoint` enum is read lazily. */
-function isTextShape(type: PowerPoint.Shape["type"]): boolean {
-  return (
-    type === PowerPoint.ShapeType.geometricShape ||
-    type === PowerPoint.ShapeType.textBox ||
-    type === PowerPoint.ShapeType.placeholder
-  );
+/** Load the predominant font of every text shape across the presentation. */
+async function collectTextFonts(
+  context: PowerPoint.RequestContext,
+): Promise<PowerPoint.ShapeFont[]> {
+  const slides = context.presentation.slides;
+  slides.load("items/id");
+  await context.sync();
+
+  const shapeCollections = slides.items.map((slide) => {
+    const shapes = slide.shapes;
+    shapes.load("items/type");
+    return shapes;
+  });
+  await context.sync();
+
+  const fonts: PowerPoint.ShapeFont[] = [];
+  shapeCollections.forEach((shapes) => {
+    shapes.items
+      .filter((s) => isTextShape(s.type))
+      .forEach((s) => {
+        const font = s.textFrame.textRange.font;
+        font.load("name");
+        fonts.push(font);
+      });
+  });
+  await context.sync();
+  return fonts;
 }
 
 /**
@@ -27,29 +44,7 @@ export async function replaceFonts(
 
   let changed = 0;
   await PowerPoint.run(async (context) => {
-    const slides = context.presentation.slides;
-    slides.load("items/id");
-    await context.sync();
-
-    const shapeCollections = slides.items.map((slide) => {
-      const shapes = slide.shapes;
-      shapes.load("items/type");
-      return shapes;
-    });
-    await context.sync();
-
-    const fonts: PowerPoint.ShapeFont[] = [];
-    shapeCollections.forEach((shapes) => {
-      shapes.items
-        .filter((s) => isTextShape(s.type))
-        .forEach((s) => {
-          const font = s.textFrame.textRange.font;
-          font.load("name");
-          fonts.push(font);
-        });
-    });
-    await context.sync();
-
+    const fonts = await collectTextFonts(context);
     fonts.forEach((font) => {
       if (!source || font.name === source) {
         font.name = target;
@@ -65,29 +60,7 @@ export async function replaceFonts(
 export async function getUsedFonts(): Promise<string[]> {
   const names = new Set<string>();
   await PowerPoint.run(async (context) => {
-    const slides = context.presentation.slides;
-    slides.load("items/id");
-    await context.sync();
-
-    const shapeCollections = slides.items.map((slide) => {
-      const shapes = slide.shapes;
-      shapes.load("items/type");
-      return shapes;
-    });
-    await context.sync();
-
-    const fonts: PowerPoint.ShapeFont[] = [];
-    shapeCollections.forEach((shapes) => {
-      shapes.items
-        .filter((s) => isTextShape(s.type))
-        .forEach((s) => {
-          const font = s.textFrame.textRange.font;
-          font.load("name");
-          fonts.push(font);
-        });
-    });
-    await context.sync();
-
+    const fonts = await collectTextFonts(context);
     fonts.forEach((font) => {
       if (font.name) names.add(font.name);
     });
@@ -130,17 +103,8 @@ export async function insertCagr(
   const text = `CAGR  ${(cagr * 100).toFixed(1)}%`;
 
   await PowerPoint.run(async (context) => {
-    const slides = context.presentation.getSelectedSlides();
-    slides.load("items/id");
-    await context.sync();
-    if (slides.items.length === 0) throw new Error("Open a slide first.");
-
-    slides.items[0].shapes.addTextBox(text, {
-      left: 120,
-      top: 120,
-      width: 200,
-      height: 50,
-    });
+    const slide = await getActiveSlide(context);
+    slide.shapes.addTextBox(text, { left: 120, top: 120, width: 200, height: 50 });
     await context.sync();
   });
 }

@@ -8,5 +8,8 @@ export const ToolIcon: React.FC<{ name: string }> = ({ name }) => (
     width={20}
     height={20}
     style={{ display: "block" }}
+    onError={(e) => {
+      e.currentTarget.style.visibility = "hidden";
+    }}
   />
 );

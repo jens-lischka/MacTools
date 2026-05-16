@@ -5,22 +5,10 @@
  * position; the user then moves them as needed.
  */
 
-import { withSelectedShapes } from "./powerpoint";
+import { withSelectedShapes, getActiveSlide } from "./powerpoint";
 
 /** Default placement for a newly inserted shape, points. */
 const DEFAULT_PLACEMENT = { left: 120, top: 120, width: 200, height: 120 };
-
-export async function getActiveSlide(
-  context: PowerPoint.RequestContext,
-): Promise<PowerPoint.Slide> {
-  const slides = context.presentation.getSelectedSlides();
-  slides.load("items/id");
-  await context.sync();
-  if (slides.items.length === 0) {
-    throw new Error("Open a slide before inserting a shape.");
-  }
-  return slides.items[0];
-}
 
 /** Insert a geometric shape (rectangle, oval, …) on the active slide. */
 export async function insertShape(

@@ -64,6 +64,30 @@ export async function withSelectedShapes(
   });
 }
 
+/**
+ * True for shape types that carry a text frame. A function (not a
+ * module-level constant) so the `PowerPoint` enum is read lazily — referencing
+ * it at module load can run before Office.js has defined the namespace.
+ */
+export function isTextShape(type: PowerPoint.Shape["type"]): boolean {
+  return (
+    type === PowerPoint.ShapeType.geometricShape ||
+    type === PowerPoint.ShapeType.textBox ||
+    type === PowerPoint.ShapeType.placeholder
+  );
+}
+
+/** The first selected slide, or throw if no slide is in view. */
+export async function getActiveSlide(
+  context: PowerPoint.RequestContext,
+): Promise<PowerPoint.Slide> {
+  const slides = context.presentation.getSelectedSlides();
+  slides.load("items/id");
+  await context.sync();
+  if (slides.items.length === 0) throw new Error("Open a slide first.");
+  return slides.items[0];
+}
+
 /** Bounding box that encloses every box in the list. */
 export function unionBox(boxes: Box[]): Box {
   const left = Math.min(...boxes.map((b) => b.left));

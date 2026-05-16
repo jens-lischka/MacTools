@@ -5,8 +5,6 @@ import {
   RadioGroup,
   SpinButton,
   Divider,
-  makeStyles,
-  tokens,
 } from "@fluentui/react-components";
 import {
   matchSize,
@@ -22,21 +20,8 @@ import {
 } from "../../lib/sizePosition";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
-
-const useStyles = makeStyles({
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: tokens.spacingVerticalS,
-  },
-  toolbar: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: tokens.spacingHorizontalS,
-    alignItems: "center",
-  },
-  spin: { width: "96px" },
-});
+import { usePanelStyles } from "./panelStyles";
+import { spinHandler } from "./spin";
 
 const MATCH: { dimension: MatchDimension; label: string; icon: string }[] = [
   { dimension: "width", label: "Match Width", icon: "MatchWidth" },
@@ -52,7 +37,7 @@ const STRETCH: { edge: StretchEdge; label: string; icon: string }[] = [
 ];
 
 export const SizePositionPanel: React.FC = () => {
-  const styles = useStyles();
+  const styles = usePanelStyles();
   const { run, busy } = useActions();
   const [reference, setReference] = React.useState<Reference>("last");
   const [stretchTarget, setStretchTarget] = React.useState<StretchTarget>("selection");
@@ -92,10 +77,7 @@ export const SizePositionPanel: React.FC = () => {
             max={1000}
             step={5}
             value={scale}
-            onChange={(_, d) => {
-              const next = d.value ?? Number(d.displayValue);
-              if (Number.isFinite(next)) setScale(next as number);
-            }}
+            onChange={spinHandler(setScale)}
           />
           <ToolButton
             icon="ScaleToValue"

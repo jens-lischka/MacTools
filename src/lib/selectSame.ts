@@ -26,15 +26,7 @@ export type SameProperty =
 const SIZE_TOLERANCE = 0.5;
 const WEIGHT_TOLERANCE = 0.01;
 
-/** True for shape types that carry a text frame. A function (not a
- *  module-level constant) so the `PowerPoint` enum is read lazily. */
-function isTextShape(type: PowerPoint.Shape["type"]): boolean {
-  return (
-    type === PowerPoint.ShapeType.geometricShape ||
-    type === PowerPoint.ShapeType.textBox ||
-    type === PowerPoint.ShapeType.placeholder
-  );
-}
+import { isTextShape } from "./powerpoint";
 
 function near(a: number, b: number, tolerance: number): boolean {
   return Math.abs(a - b) < tolerance;
