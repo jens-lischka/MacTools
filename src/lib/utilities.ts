@@ -61,6 +61,40 @@ export async function replaceFonts(
   return changed;
 }
 
+/** Distinct font names used by text shapes across the presentation, sorted. */
+export async function getUsedFonts(): Promise<string[]> {
+  const names = new Set<string>();
+  await PowerPoint.run(async (context) => {
+    const slides = context.presentation.slides;
+    slides.load("items/id");
+    await context.sync();
+
+    const shapeCollections = slides.items.map((slide) => {
+      const shapes = slide.shapes;
+      shapes.load("items/type");
+      return shapes;
+    });
+    await context.sync();
+
+    const fonts: PowerPoint.ShapeFont[] = [];
+    shapeCollections.forEach((shapes) => {
+      shapes.items
+        .filter((s) => isTextShape(s.type))
+        .forEach((s) => {
+          const font = s.textFrame.textRange.font;
+          font.load("name");
+          fonts.push(font);
+        });
+    });
+    await context.sync();
+
+    fonts.forEach((font) => {
+      if (font.name) names.add(font.name);
+    });
+  });
+  return [...names].sort((a, b) => a.localeCompare(b));
+}
+
 /** Return the current presentation's file size as a human-readable string. */
 export async function getFileSize(): Promise<string> {
   return new Promise<string>((resolve, reject) => {

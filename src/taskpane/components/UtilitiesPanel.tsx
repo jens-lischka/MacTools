@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
-  Input,
+  Combobox,
+  Option,
   SpinButton,
   Field,
   Divider,
@@ -8,7 +9,12 @@ import {
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
-import { replaceFonts, insertCagr, getFileSize } from "../../lib/utilities";
+import {
+  replaceFonts,
+  insertCagr,
+  getFileSize,
+  getUsedFonts,
+} from "../../lib/utilities";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
 
@@ -24,9 +30,18 @@ const useStyles = makeStyles({
     gap: tokens.spacingHorizontalS,
     alignItems: "center",
   },
-  grow: { flexGrow: 1 },
+  grow: { flexGrow: 1, minWidth: "140px" },
   spin: { width: "96px" },
 });
+
+/** Common fonts offered in "Replace with" — the JS API cannot list the
+ *  system-installed fonts, so this is a curated set; any font may be typed. */
+const COMMON_FONTS = [
+  "Aptos", "Arial", "Calibri", "Cambria", "Candara", "Comic Sans MS",
+  "Consolas", "Constantia", "Corbel", "Courier New", "Franklin Gothic",
+  "Garamond", "Georgia", "Helvetica", "Lucida Sans", "Noto Sans",
+  "Segoe UI", "Tahoma", "Times New Roman", "Trebuchet MS", "Verdana",
+];
 
 function spinValue(value: number | undefined, displayValue: string | undefined): number | null {
   const next = value ?? Number(displayValue);
@@ -38,11 +53,21 @@ export const UtilitiesPanel: React.FC = () => {
   const { run, busy } = useActions();
   const [fromFont, setFromFont] = React.useState("");
   const [toFont, setToFont] = React.useState("");
+  const [usedFonts, setUsedFonts] = React.useState<string[]>([]);
   const [startValue, setStartValue] = React.useState(100);
   const [endValue, setEndValue] = React.useState(200);
   const [periods, setPeriods] = React.useState(5);
   const [fileSize, setFileSize] = React.useState("");
   const [checkingSize, setCheckingSize] = React.useState(false);
+
+  React.useEffect(() => {
+    void getUsedFonts().then(setUsedFonts).catch(() => setUsedFonts([]));
+  }, []);
+
+  const replaceWithOptions = React.useMemo(
+    () => Array.from(new Set([...usedFonts, ...COMMON_FONTS])).sort((a, b) => a.localeCompare(b)),
+    [usedFonts],
+  );
 
   const checkFileSize = async () => {
     setCheckingSize(true);
@@ -58,20 +83,33 @@ export const UtilitiesPanel: React.FC = () => {
   return (
     <div className={styles.section}>
       <Field label="Replace font — from (blank = all fonts)">
-        <Input
+        <Combobox
+          className={styles.grow}
+          freeform
+          placeholder="Fonts used in this presentation"
           value={fromFont}
-          placeholder="e.g. Calibri"
-          onChange={(_, d) => setFromFont(d.value)}
-        />
+          onChange={(ev) => setFromFont(ev.target.value)}
+          onOptionSelect={(_, d) => setFromFont(d.optionText ?? "")}
+        >
+          {usedFonts.map((font) => (
+            <Option key={font}>{font}</Option>
+          ))}
+        </Combobox>
       </Field>
-      <Field label="Replace font — to">
+      <Field label="Replace font — with">
         <div className={styles.toolbar}>
-          <Input
+          <Combobox
             className={styles.grow}
+            freeform
+            placeholder="Pick a font or type any name"
             value={toFont}
-            placeholder="e.g. Arial"
-            onChange={(_, d) => setToFont(d.value)}
-          />
+            onChange={(ev) => setToFont(ev.target.value)}
+            onOptionSelect={(_, d) => setToFont(d.optionText ?? "")}
+          >
+            {replaceWithOptions.map((font) => (
+              <Option key={font}>{font}</Option>
+            ))}
+          </Combobox>
           <ToolButton
             icon="ReplaceFonts"
             label="Replace fonts"
@@ -85,7 +123,11 @@ export const UtilitiesPanel: React.FC = () => {
           />
         </div>
       </Field>
-      <Caption1>Replaces the font across the whole presentation.</Caption1>
+      <Caption1>
+        &ldquo;From&rdquo; lists the fonts used in this presentation. The
+        system&apos;s installed fonts cannot be listed by the API, so
+        &ldquo;with&rdquo; offers common fonts — type any other name to use it.
+      </Caption1>
 
       <Divider />
 
