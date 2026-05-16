@@ -11,7 +11,6 @@ import {
   Spinner,
   Subtitle2,
   Caption1,
-  webLightTheme,
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
@@ -19,6 +18,7 @@ import { categories } from "../categories";
 import { FeatureList } from "./FeatureList";
 import { ActionContext, type ActionRunner } from "./ActionContext";
 import { highestSupportedApi } from "../../lib/capabilities";
+import { macToolsTheme } from "../theme";
 
 const useStyles = makeStyles({
   root: {
@@ -69,7 +69,7 @@ const App: React.FC = () => {
   );
 
   return (
-    <FluentProvider theme={webLightTheme}>
+    <FluentProvider theme={macToolsTheme}>
       <ActionContext.Provider value={runner}>
         <div className={styles.root}>
           <div className={styles.header}>

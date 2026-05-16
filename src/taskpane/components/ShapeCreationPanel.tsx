@@ -12,6 +12,7 @@ import {
   insertLine,
   insertTextBox,
   insertNumberedCircle,
+  insertConnector,
   groupAsLayout,
 } from "../../lib/shapes";
 import { useActions } from "./ActionContext";
@@ -73,6 +74,12 @@ export const ShapeCreationPanel: React.FC = () => {
           }
         >
           Numbered Circle
+        </Button>
+        <Button
+          disabled={busy}
+          onClick={() => run("Connect two shapes", () => insertConnector())}
+        >
+          Connect Two Shapes
         </Button>
       </div>
 

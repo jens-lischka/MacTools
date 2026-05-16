@@ -39,8 +39,6 @@ export const categories: Category[] = [
     label: "Size & Position",
     panel: SizePositionPanel,
     features: [
-      f("fillGap", "Fill to gap", "partial", "Planned for a later phase."),
-      f("unifyShapes", "Unify Shapes / Arrows", "partial", "Planned for a later phase."),
       f("cropToCircle", "Crop to Circle", "blocked", "Picture crop API not exposed."),
       f("aspectRatioLock", "Lock Aspect Ratio", "blocked", "Property not exposed."),
     ],
@@ -64,7 +62,6 @@ export const categories: Category[] = [
     panel: ShapeCreationPanel,
     features: [
       f("multiply", "Multiply Shape", "blocked", "No shape-duplicate API."),
-      f("connectors", "Connectors / Auto-Connect", "partial", "True connection sites not exposed."),
     ],
   },
   {

@@ -15,6 +15,8 @@ import {
   scaleShapes,
   stretchToEdge,
   straightenLines,
+  fillGap,
+  unifyShapes,
   type MatchDimension,
   type Reference,
   type StretchEdge,
@@ -137,6 +139,34 @@ export const SizePositionPanel: React.FC = () => {
           </Button>
         ))}
       </div>
+
+      <Divider />
+
+      <Field label="Close gaps / unify">
+        <div className={styles.row}>
+          <Button
+            className={styles.grow}
+            disabled={busy}
+            onClick={() => run("Fill horizontal gaps", () => fillGap("horizontal"))}
+          >
+            Fill Gaps →
+          </Button>
+          <Button
+            className={styles.grow}
+            disabled={busy}
+            onClick={() => run("Fill vertical gaps", () => fillGap("vertical"))}
+          >
+            Fill Gaps ↓
+          </Button>
+          <Button
+            className={styles.grow}
+            disabled={busy}
+            onClick={() => run("Unify shapes", () => unifyShapes())}
+          >
+            Unify Size
+          </Button>
+        </div>
+      </Field>
 
       <Divider />
 

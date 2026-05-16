@@ -108,14 +108,46 @@ export async function straightenLines(): Promise<void> {
       const g = geometry[i];
       if (g.type !== PowerPoint.ShapeType.line) return;
       if (g.width >= g.height) {
-        // Closer to horizontal — flatten vertically about the line's centre.
         shape.top = g.top + g.height / 2;
         shape.height = 0;
       } else {
-        // Closer to vertical — flatten horizontally about the line's centre.
         shape.left = g.left + g.width / 2;
         shape.width = 0;
       }
+    });
+  });
+}
+
+/** Close the gaps between selected shapes by extending each to its neighbour. */
+export async function fillGap(axis: "horizontal" | "vertical"): Promise<void> {
+  await withSelectedShapes(2, (shapes, geometry) => {
+    const order = geometry
+      .map((g, i) => ({ g, i }))
+      .sort((a, b) =>
+        axis === "horizontal" ? a.g.left - b.g.left : a.g.top - b.g.top,
+      );
+    for (let k = 0; k < order.length - 1; k++) {
+      const current = order[k];
+      const next = order[k + 1];
+      const shape = shapes[current.i];
+      if (axis === "horizontal") {
+        shape.width = Math.max(MIN_SIZE, next.g.left - current.g.left);
+      } else {
+        shape.height = Math.max(MIN_SIZE, next.g.top - current.g.top);
+      }
+    }
+  });
+}
+
+/** Resize every selected shape to match the largest one (by area). */
+export async function unifyShapes(): Promise<void> {
+  await withSelectedShapes(2, (shapes, geometry) => {
+    const largest = geometry.reduce((a, b) =>
+      a.width * a.height >= b.width * b.height ? a : b,
+    );
+    shapes.forEach((shape) => {
+      shape.width = largest.width;
+      shape.height = largest.height;
     });
   });
 }

@@ -56,6 +56,32 @@ export async function insertTextBox(): Promise<void> {
   });
 }
 
+/** Connect the centres of exactly two selected shapes with a straight line. */
+export async function insertConnector(): Promise<void> {
+  await PowerPoint.run(async (context) => {
+    const slide = await getActiveSlide(context);
+    const selected = context.presentation.getSelectedShapes();
+    selected.load("items/left,items/top,items/width,items/height");
+    await context.sync();
+    if (selected.items.length !== 2) {
+      throw new Error("Select exactly two shapes to connect.");
+    }
+    const centre = (s: PowerPoint.Shape) => ({
+      x: s.left + s.width / 2,
+      y: s.top + s.height / 2,
+    });
+    const a = centre(selected.items[0]);
+    const b = centre(selected.items[1]);
+    slide.shapes.addLine(PowerPoint.ConnectorType.straight, {
+      left: Math.min(a.x, b.x),
+      top: Math.min(a.y, b.y),
+      width: Math.abs(b.x - a.x),
+      height: Math.abs(b.y - a.y),
+    });
+    await context.sync();
+  });
+}
+
 /** Insert a numbered circle (an ellipse with a centred label). */
 export async function insertNumberedCircle(label: string): Promise<void> {
   await PowerPoint.run(async (context) => {
