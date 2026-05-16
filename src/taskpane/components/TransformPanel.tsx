@@ -6,6 +6,7 @@ import {
   swapFillAndOutline,
   pickUpSizePosition,
   applySizePosition,
+  applyToMatchingObjects,
 } from "../../lib/transform";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
@@ -64,11 +65,20 @@ export const TransformPanel: React.FC = () => {
             disabled={busy}
             onClick={() => run("Apply size & position", () => applySizePosition())}
           />
+          <ToolButton
+            icon="SizePositionMatchingPaste"
+            label="Apply to matching objects"
+            disabled={busy}
+            onClick={() =>
+              run("Apply to matching objects", () => applyToMatchingObjects())
+            }
+          />
         </div>
       </Field>
       <Caption1>
-        Pick Up stores one shape&apos;s size and position; Apply sets it on
-        every selected shape. The pickup is remembered across documents.
+        Pick Up stores one shape&apos;s size and position. Apply sets it on
+        every selected shape; Apply to Matching sets it on every shape in the
+        presentation of the same type and size as the selected reference.
       </Caption1>
     </div>
   );

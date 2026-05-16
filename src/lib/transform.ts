@@ -114,3 +114,67 @@ export async function applySizePosition(): Promise<void> {
     });
   });
 }
+
+/** Size match tolerance, points. */
+const MATCH_TOLERANCE = 0.5;
+
+/**
+ * Apply the picked-up size and position to every shape — on any slide — that
+ * matches the single selected reference shape by type and current size.
+ *
+ * Use it to snap a recurring shape (a logo, a footer box) to one correct
+ * geometry across the whole presentation: place one shape correctly, pick it
+ * up, select it, then apply to matching objects.
+ */
+export async function applyToMatchingObjects(): Promise<void> {
+  const picked = await getSetting<Box | null>(PICKUP_KEY, null);
+  if (!picked) {
+    throw new Error("Pick up size & position from a shape first.");
+  }
+
+  let applied = 0;
+  await PowerPoint.run(async (context) => {
+    const selected = context.presentation.getSelectedShapes();
+    selected.load("items/type,items/width,items/height");
+    await context.sync();
+    if (selected.items.length !== 1) {
+      throw new Error("Select exactly one reference shape.");
+    }
+    const reference = selected.items[0];
+    const refType = reference.type;
+    const refWidth = reference.width;
+    const refHeight = reference.height;
+
+    const slides = context.presentation.slides;
+    slides.load("items/id");
+    await context.sync();
+
+    const shapeCollections = slides.items.map((slide) => {
+      const shapes = slide.shapes;
+      shapes.load("items/type,items/width,items/height");
+      return shapes;
+    });
+    await context.sync();
+
+    shapeCollections.forEach((shapes) => {
+      shapes.items.forEach((shape) => {
+        const matches =
+          shape.type === refType &&
+          Math.abs(shape.width - refWidth) < MATCH_TOLERANCE &&
+          Math.abs(shape.height - refHeight) < MATCH_TOLERANCE;
+        if (matches) {
+          shape.left = picked.left;
+          shape.top = picked.top;
+          shape.width = picked.width;
+          shape.height = picked.height;
+          applied += 1;
+        }
+      });
+    });
+    await context.sync();
+  });
+
+  if (applied === 0) {
+    throw new Error("No shapes matching the reference were found.");
+  }
+}
