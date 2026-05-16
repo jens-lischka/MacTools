@@ -17,6 +17,7 @@ import {
 import { categories } from "../categories";
 import { FeatureList } from "./FeatureList";
 import { ActionContext, type ActionRunner } from "./ActionContext";
+import { HelpDialog } from "./HelpDialog";
 import { highestSupportedApi } from "../../lib/capabilities";
 import { macToolsTheme } from "../theme";
 
@@ -30,6 +31,10 @@ const useStyles = makeStyles({
   header: {
     padding: tokens.spacingVerticalM,
     paddingBottom: tokens.spacingVerticalS,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    gap: tokens.spacingHorizontalS,
   },
   scroll: { flexGrow: 1, overflowY: "auto" },
   status: { margin: tokens.spacingVerticalS },
@@ -73,12 +78,15 @@ const App: React.FC = () => {
       <ActionContext.Provider value={runner}>
         <div className={styles.root}>
           <div className={styles.header}>
-            <Subtitle2>MacTools for PowerPoint</Subtitle2>
-            <br />
-            <Caption1>
-              Cross-platform tools — PowerPoint API {highestSupportedApi()}{" "}
-              detected.
-            </Caption1>
+            <div>
+              <Subtitle2>MacTools for PowerPoint</Subtitle2>
+              <br />
+              <Caption1>
+                Cross-platform tools — PowerPoint API {highestSupportedApi()}{" "}
+                detected.
+              </Caption1>
+            </div>
+            <HelpDialog />
           </div>
 
           {status && (

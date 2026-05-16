@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MacTools for PowerPoint — Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #000f47;
+        --navy-soft: #41496f;
+        --line: #e3e5ee;
+        --bg: #f6f7fb;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Noto Sans", "Segoe UI", sans-serif;
+        color: #1c1e2b;
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      header {
+        background: var(--navy);
+        color: #fff;
+        padding: 56px 24px;
+        text-align: center;
+      }
+      header h1 { margin: 0 0 8px; font-size: 30px; font-weight: 700; }
+      header p { margin: 0; color: #b9bed4; font-size: 16px; }
+      main { max-width: 880px; margin: 0 auto; padding: 32px 24px 64px; }
+      h2 {
+        color: var(--navy);
+        font-size: 22px;
+        margin: 40px 0 4px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid var(--navy);
+      }
+      h3 { color: var(--navy); font-size: 16px; margin: 24px 0 8px; }
+      p.lead { font-size: 16px; }
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 4px 20px;
+        margin: 16px 0;
+      }
+      table { width: 100%; border-collapse: collapse; }
+      td { padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      tr:last-child td { border-bottom: none; }
+      td.feat { font-weight: 600; color: var(--navy); width: 38%; }
+      td.desc { color: #3a3d4d; }
+      .note {
+        background: #eef0f8;
+        border-left: 4px solid var(--navy);
+        padding: 12px 16px;
+        border-radius: 4px;
+        margin: 16px 0;
+        font-size: 15px;
+      }
+      .toc { columns: 2; column-gap: 24px; padding: 0; list-style: none; margin: 16px 0; }
+      .toc a { color: var(--navy); text-decoration: none; font-weight: 500; }
+      .toc a:hover { text-decoration: underline; }
+      footer {
+        text-align: center;
+        color: var(--navy-soft);
+        font-size: 13px;
+        padding: 32px 24px 48px;
+      }
+      code {
+        background: #eef0f8;
+        padding: 1px 5px;
+        border-radius: 3px;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>MacTools for PowerPoint</h1>
+      <p>User manual — cross-platform tools for web, Mac &amp; Windows</p>
+    </header>
+
+    <main>
+      <p class="lead">
+        MacTools is a PowerPoint add-in that speeds up slide work — alignment,
+        sizing, text, shapes, tables and more. Every tool lives in one task
+        pane, grouped by category. It runs identically in PowerPoint on the
+        web, on macOS and on Windows.
+      </p>
+
+      <h2 id="how">How it works</h2>
+      <div class="card">
+        <p>
+          Open the pane from the <strong>MacTools</strong> button on the Home
+          tab. Most tools act on the <strong>shapes you have selected</strong>
+          on the current slide — select first, then click a tool. A status bar
+          at the top of the pane reports the result of each action.
+        </p>
+        <p>
+          Some tools need a newer PowerPoint API than the user's Office build
+          provides. Those tools disable themselves automatically and explain
+          why — the rest keep working. The API level detected on your client
+          is shown in the pane header.
+        </p>
+      </div>
+
+      <h2 id="contents">Contents</h2>
+      <ul class="toc">
+        <li><a href="#alignment">Alignment &amp; Distribution</a></li>
+        <li><a href="#size">Size &amp; Position</a></li>
+        <li><a href="#select">Select Same</a></li>
+        <li><a href="#text">Text &amp; Paragraph</a></li>
+        <li><a href="#shapes">Shape Creation</a></li>
+        <li><a href="#swap">Swap, Pick up &amp; Apply</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#slides">Slides &amp; Presentation</a></li>
+        <li><a href="#special">Special Shapes</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#settings">Settings</a></li>
+      </ul>
+
+      <h2 id="alignment">Alignment &amp; Distribution</h2>
+      <p>
+        Choose what to align relative to — the <em>selection</em> bounds, the
+        <em>first</em> or <em>last</em> selected shape, or the <em>slide</em> —
+        then align or distribute.
+      </p>
+      <div class="card"><table>
+        <tr><td class="feat">Align Left / Center / Right</td><td class="desc">Aligns selected shapes horizontally to the chosen target.</td></tr>
+        <tr><td class="feat">Align Top / Middle / Bottom</td><td class="desc">Aligns selected shapes vertically to the chosen target.</td></tr>
+        <tr><td class="feat">Distribute Horizontally / Vertically</td><td class="desc">Spaces 3+ shapes so the gaps between them are equal.</td></tr>
+      </table></div>
+
+      <h2 id="size">Size &amp; Position</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Match Width / Height / Both</td><td class="desc">Resizes selected shapes to the first or last selected reference shape.</td></tr>
+        <tr><td class="feat">Scale</td><td class="desc">Scales selected shapes by a percentage, about their centre.</td></tr>
+        <tr><td class="feat">Stretch Left / Right / Top / Bottom</td><td class="desc">Extends one edge of each shape out to the selection or slide edge.</td></tr>
+        <tr><td class="feat">Fill Gaps</td><td class="desc">Extends shapes so the gaps between neighbours are closed.</td></tr>
+        <tr><td class="feat">Unify Size</td><td class="desc">Resizes every selected shape to match the largest one.</td></tr>
+        <tr><td class="feat">Straighten Lines</td><td class="desc">Flattens selected line shapes to be perfectly horizontal or vertical.</td></tr>
+      </table></div>
+
+      <h2 id="select">Select Same</h2>
+      <p>Select one reference shape, then pick a property — every shape on the slide matching it is selected.</p>
+      <div class="card"><table>
+        <tr><td class="feat">Fill / Outline Colour, Outline Weight</td><td class="desc">Matches shapes by fill or outline styling.</td></tr>
+        <tr><td class="feat">Font, Shape Type, Size</td><td class="desc">Matches shapes by font name, type or dimensions.</td></tr>
+        <tr><td class="feat">Position (matching edge)</td><td class="desc">Matches shapes that share a top, left, right or bottom edge.</td></tr>
+        <tr><td class="feat">Hide Selected / Show All</td><td class="desc">Hides the selected shapes, or restores every shape on the slide. <em>(Needs API 1.10.)</em></td></tr>
+      </table></div>
+
+      <h2 id="text">Text &amp; Paragraph</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Autofit, Word Wrap</td><td class="desc">Toggles shape-to-fit-text autosize and word wrap.</td></tr>
+        <tr><td class="feat">Text-box Margins</td><td class="desc">Applies margin presets or a custom value to the text box.</td></tr>
+        <tr><td class="feat">Paragraph Alignment</td><td class="desc">Left, centre, right or justify.</td></tr>
+        <tr><td class="feat">Clear Line Breaks / Clear Text</td><td class="desc">Joins multi-line text to one line, or empties the shapes.</td></tr>
+        <tr><td class="feat">Bullets, Text Style</td><td class="desc">Shows/hides bullets; applies Heading / Subheading / Body presets.</td></tr>
+        <tr><td class="feat">Merge / Split Text</td><td class="desc">Combines text of several shapes, or splits lines into separate boxes.</td></tr>
+        <tr><td class="feat">Special Characters</td><td class="desc">Inserts a symbol at the text cursor.</td></tr>
+      </table></div>
+
+      <h2 id="shapes">Shape Creation</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Insert Shapes</td><td class="desc">Rectangle, rounded rectangle, oval, triangle, arrow, chevron, line, text box.</td></tr>
+        <tr><td class="feat">Numbered Circle</td><td class="desc">Inserts a circle with a centred number.</td></tr>
+        <tr><td class="feat">Connect Two Shapes</td><td class="desc">Draws a line between the centres of two selected shapes.</td></tr>
+        <tr><td class="feat">Lay out as Row / Column</td><td class="desc">Arranges selected shapes edge-to-edge.</td></tr>
+      </table></div>
+
+      <h2 id="swap">Swap, Pick up &amp; Apply</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Swap Position / Size / Fill &amp; Outline</td><td class="desc">Swaps a property between exactly two selected shapes.</td></tr>
+        <tr><td class="feat">Pick Up / Apply</td><td class="desc">Stores one shape's size &amp; position, then applies it to other shapes. Remembered across documents.</td></tr>
+      </table></div>
+
+      <h2 id="tables">Tables</h2>
+      <p class="note">Table tools need PowerPoint API 1.8. On older clients they disable themselves.</p>
+      <div class="card"><table>
+        <tr><td class="feat">Insert Table</td><td class="desc">Adds a table with the chosen rows and columns.</td></tr>
+        <tr><td class="feat">Add / Delete Row &amp; Column</td><td class="desc">Appends or removes the last row or column of the selected table.</td></tr>
+        <tr><td class="feat">Convert Table to Text</td><td class="desc">Copies the table's contents into a tab-separated text box.</td></tr>
+      </table></div>
+
+      <h2 id="slides">Slides &amp; Presentation</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Export Slide Titles</td><td class="desc">Lists every slide title for copying.</td></tr>
+        <tr><td class="feat">Insert Table of Contents</td><td class="desc">Builds a numbered contents list from the slide titles.</td></tr>
+        <tr><td class="feat">Add Sticky Note</td><td class="desc">Adds a coloured note stamped with your initials and the date.</td></tr>
+      </table></div>
+
+      <h2 id="special">Special Shapes</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Title, Conclusion, Footnote, Ghost, Label</td><td class="desc">Inserts a pre-formatted text box of the chosen kind on the slide.</td></tr>
+      </table></div>
+
+      <h2 id="utilities">Utilities</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Replace Fonts</td><td class="desc">Swaps one font for another across the whole presentation (blank "from" replaces all fonts).</td></tr>
+        <tr><td class="feat">CAGR</td><td class="desc">Computes a compound annual growth rate and inserts it as a text box.</td></tr>
+        <tr><td class="feat">File Size</td><td class="desc">Reports the size of the current presentation.</td></tr>
+      </table></div>
+
+      <h2 id="settings">Settings</h2>
+      <div class="card"><table>
+        <tr><td class="feat">Slide Size</td><td class="desc">Sets the slide dimensions used by the align/stretch-to-slide tools. Stored with the presentation.</td></tr>
+        <tr><td class="feat">Default Initials</td><td class="desc">Remembers your initials for sticky notes.</td></tr>
+        <tr><td class="feat">Reset Defaults / Online Help</td><td class="desc">Restores default settings, or opens this manual.</td></tr>
+      </table></div>
+
+      <div class="note">
+        Some legacy tools cannot be rebuilt yet because the PowerPoint
+        JavaScript API does not expose the needed capability — for example
+        slide guides, sections, slide-image export and picture effects. These
+        are listed inside the task pane with the reason, and will be added if
+        the API gains support.
+      </div>
+    </main>
+
+    <footer>MacTools for PowerPoint — cross-platform add-in</footer>
+  </body>
+</html>

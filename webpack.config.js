@@ -48,6 +48,12 @@ module.exports = async (env, argv) => {
         template: "./src/commands/commands.html",
         chunks: ["commands"],
       }),
+      new HtmlWebpackPlugin({
+        filename: "manual.html",
+        template: "./src/manual/manual.html",
+        chunks: [],
+        inject: false,
+      }),
       new CopyWebpackPlugin({
         patterns: [{ from: "assets", to: "assets" }],
       }),

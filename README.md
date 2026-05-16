@@ -28,6 +28,13 @@ All feasible features implemented, with runtime API capability gating.
 - ⛔ Remaining items have no JavaScript API at all; each is listed in-product
   with the reason.
 
+### Look &amp; feel and help
+
+The pane uses the brand colour `#000F47` and the Noto Sans typeface, and
+every action button carries an icon from the original tool set. An info
+button in the header opens an About modal; the full online manual is at
+`/manual.html` on the deployed site.
+
 ### API capability gating
 
 The manifest keeps a low `MinVersion` so the add-in installs on every client.
