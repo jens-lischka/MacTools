@@ -7,23 +7,34 @@ All features live in a single **task pane**, organised by category.
 
 ## Status
 
-All feasible features implemented.
+All feasible features implemented, with runtime API capability gating.
 
 - ✅ **Alignment & Distribution**
 - ✅ **Size & Position** — match size, scale, stretch, straighten lines
-- ✅ **Select Same** — fill/outline colour & weight, type, size, font, position
+- ✅ **Select Same** — fill/outline colour & weight, type, size, font,
+  position; hide / show shapes *(needs API 1.10)*
 - ✅ **Text & Paragraph** — autofit, wrap, margins, alignment, clear text,
   bullets, text styles, merge/split text, special characters
 - ✅ **Shape Creation** — insert shapes, line, text box, numbered circle,
   lay out as row/column
 - ✅ **Swap / Pick up & Apply** — swap position/size/fill&outline, pick up
   & apply geometry
+- ✅ **Tables** — insert, add/remove rows & columns, table-to-text
+  *(needs API 1.8)*
 - ✅ **Slides** — export titles, table of contents, sticky notes
 - ✅ **Special Shapes** — title, conclusion, footnote, ghost, label
 - ✅ **Utilities** — replace fonts, CAGR, file size
 - ✅ **Settings** — slide size, default initials, online help
-- ⛔ Remaining items are `blocked` (no JS API) or need the table API; each is
-  listed in-product with the reason. See the overview doc.
+- ⛔ Remaining items have no JavaScript API at all; each is listed in-product
+  with the reason.
+
+### API capability gating
+
+The manifest keeps a low `MinVersion` so the add-in installs on every client.
+Features that need a newer API set (e.g. Tables → 1.8, Hide/Show → 1.10)
+check `Office.context.requirements.isSetSupported` at runtime and disable
+themselves cleanly on clients that don't support them, rather than failing
+when invoked. The detected API level is shown in the task-pane header.
 
 See [`docs/powerpoint-cross-platform-overview.md`](docs/powerpoint-cross-platform-overview.md)
 for the full feature inventory and feasibility analysis.

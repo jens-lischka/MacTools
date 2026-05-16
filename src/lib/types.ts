@@ -11,6 +11,12 @@ export interface Feature {
   description?: string;
   rating: Rating;
   /**
+   * PowerPoint API requirement set this feature needs (e.g. "1.8"). When the
+   * client does not support it, the feature renders disabled regardless of
+   * its rating.
+   */
+  requiresApi?: string;
+  /**
    * Action handler. Undefined means "not yet implemented" — the button is
    * shown but disabled. Blocked features never have a handler.
    */

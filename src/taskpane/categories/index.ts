@@ -7,6 +7,7 @@ import { ShapeCreationPanel } from "../components/ShapeCreationPanel";
 import { TransformPanel } from "../components/TransformPanel";
 import { SlidesPanel } from "../components/SlidesPanel";
 import { SpecialShapesPanel } from "../components/SpecialShapesPanel";
+import { TablesPanel } from "../components/TablesPanel";
 import { UtilitiesPanel } from "../components/UtilitiesPanel";
 import { SettingsPanel } from "../components/SettingsPanel";
 
@@ -48,9 +49,6 @@ export const categories: Category[] = [
     id: "selection",
     label: "Select Same",
     panel: SelectSamePanel,
-    features: [
-      f("showHide", "Show All / Hide Objects", "blocked", "Shape visibility not exposed."),
-    ],
   },
   {
     id: "text",
@@ -89,12 +87,11 @@ export const categories: Category[] = [
   {
     id: "tables",
     label: "Tables",
+    panel: TablesPanel,
     features: [
-      f("formatTable", "Format Table / Heading / Text", "partial", "Needs PowerPoint API 1.8; planned."),
-      f("addRowColumn", "Add Row / Column", "partial", "Needs PowerPoint API 1.8; planned."),
-      f("moveRemove", "Move / Remove Row / Column", "partial", "Needs PowerPoint API 1.8; planned."),
-      f("tableToText", "Convert Table to Text", "partial", "Needs PowerPoint API 1.8; planned."),
-      f("optimizeWidth", "Optimize Table Width", "partial", "Needs PowerPoint API 1.8; planned."),
+      f("formatTable", "Table styling", "partial", "Planned for a later phase."),
+      f("optimizeWidth", "Optimize Table Width", "partial", "Planned for a later phase."),
+      f("moveRows", "Move Rows / Columns", "blocked", "No row/column reorder API."),
       f("transpose", "Transpose Table", "blocked", "No structural transpose API."),
       f("splitTable", "Split Table", "blocked", "No split API."),
     ],

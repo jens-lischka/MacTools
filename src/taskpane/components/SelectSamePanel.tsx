@@ -2,11 +2,15 @@ import * as React from "react";
 import {
   Button,
   Field,
+  Divider,
   Caption1,
+  Tooltip,
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
 import { selectSame, type SameProperty } from "../../lib/selectSame";
+import { setSelectedShapesVisible, showAllShapes } from "../../lib/visibility";
+import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
 
 const useStyles = makeStyles({
@@ -41,6 +45,7 @@ const POSITION_PROPS: { property: SameProperty; label: string }[] = [
 export const SelectSamePanel: React.FC = () => {
   const styles = useStyles();
   const { run, busy } = useActions();
+  const visibilitySupported = isApiSupported("1.10");
 
   const buttonFor = (property: SameProperty, label: string) => (
     <Button
@@ -69,6 +74,38 @@ export const SelectSamePanel: React.FC = () => {
         <div className={styles.grid}>
           {POSITION_PROPS.map((p) => buttonFor(p.property, p.label))}
         </div>
+      </Field>
+
+      <Divider />
+
+      <Field label="Visibility">
+        <Tooltip
+          content={
+            visibilitySupported
+              ? "Hide or show shapes."
+              : "Needs PowerPoint API 1.10, which this client does not support."
+          }
+          relationship="description"
+        >
+          <div className={styles.grid}>
+            <Button
+              disabled={busy || !visibilitySupported}
+              onClick={() =>
+                run("Hide selected shapes", () =>
+                  setSelectedShapesVisible(false),
+                )
+              }
+            >
+              Hide Selected
+            </Button>
+            <Button
+              disabled={busy || !visibilitySupported}
+              onClick={() => run("Show all shapes", () => showAllShapes())}
+            >
+              Show All
+            </Button>
+          </div>
+        </Tooltip>
       </Field>
     </div>
   );

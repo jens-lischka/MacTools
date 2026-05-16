@@ -7,6 +7,7 @@ import {
   tokens,
 } from "@fluentui/react-components";
 import type { Feature, Rating } from "../../lib/types";
+import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
 
 const useStyles = makeStyles({
@@ -33,14 +34,19 @@ const FeatureRow: React.FC<{ feature: Feature }> = ({ feature }) => {
   const styles = useStyles();
   const { run, busy } = useActions();
   const meta = RATING_META[feature.rating];
+  const apiMissing =
+    feature.requiresApi !== undefined && !isApiSupported(feature.requiresApi);
   const handler = feature.run;
+  const tooltip = apiMissing
+    ? `Needs PowerPoint API ${feature.requiresApi}, which this client does not support.`
+    : feature.description;
 
   const button = (
     <Button
       appearance="subtle"
       className={styles.button}
-      disabled={busy || !handler}
-      onClick={handler ? () => run(feature.label, handler) : undefined}
+      disabled={busy || !handler || apiMissing}
+      onClick={handler && !apiMissing ? () => run(feature.label, handler) : undefined}
     >
       {feature.label}
     </Button>
@@ -48,15 +54,15 @@ const FeatureRow: React.FC<{ feature: Feature }> = ({ feature }) => {
 
   return (
     <div className={styles.row}>
-      {feature.description ? (
-        <Tooltip content={feature.description} relationship="description">
+      {tooltip ? (
+        <Tooltip content={tooltip} relationship="description">
           {button}
         </Tooltip>
       ) : (
         button
       )}
-      <Badge appearance="tint" color={meta.color} size="small">
-        {meta.text}
+      <Badge appearance="tint" color={apiMissing ? "warning" : meta.color} size="small">
+        {apiMissing ? `API ${feature.requiresApi}` : meta.text}
       </Badge>
     </div>
   );

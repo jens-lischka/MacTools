@@ -18,6 +18,7 @@ import {
 import { categories } from "../categories";
 import { FeatureList } from "./FeatureList";
 import { ActionContext, type ActionRunner } from "./ActionContext";
+import { highestSupportedApi } from "../../lib/capabilities";
 
 const useStyles = makeStyles({
   root: {
@@ -74,7 +75,10 @@ const App: React.FC = () => {
           <div className={styles.header}>
             <Subtitle2>MacTools for PowerPoint</Subtitle2>
             <br />
-            <Caption1>Cross-platform tools — web, Mac &amp; Windows.</Caption1>
+            <Caption1>
+              Cross-platform tools — PowerPoint API {highestSupportedApi()}{" "}
+              detected.
+            </Caption1>
           </div>
 
           {status && (
