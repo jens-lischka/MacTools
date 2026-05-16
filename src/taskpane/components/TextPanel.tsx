@@ -38,6 +38,13 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   spin: { width: "96px" },
+  squareButton: {
+    minWidth: "36px",
+    maxWidth: "36px",
+    width: "36px",
+    height: "36px",
+    padding: "0",
+  },
 });
 
 const all = (v: number): Margins => ({ left: v, right: v, top: v, bottom: v });
@@ -241,6 +248,7 @@ export const TextPanel: React.FC = () => {
           {SPECIAL_CHARS.map((ch) => (
             <Button
               key={ch}
+              className={styles.squareButton}
               disabled={busy}
               aria-label={`Insert ${ch}`}
               onClick={() => run(`Insert ${ch}`, () => insertSpecialCharacter(ch))}

@@ -18,6 +18,7 @@ import { categories } from "../categories";
 import { FeatureList } from "./FeatureList";
 import { ActionContext, type ActionRunner } from "./ActionContext";
 import { HelpButton } from "./HelpButton";
+import { highestSupportedApi } from "../../lib/capabilities";
 import { macToolsTheme } from "../theme";
 
 const useStyles = makeStyles({
@@ -86,6 +87,8 @@ const App: React.FC = () => {
                 Enhanced features for macOS and web — built for streamlined
                 presentation workflows.
               </Caption1>
+              <br />
+              <Caption1>PowerPoint API {highestSupportedApi()}</Caption1>
             </div>
             <HelpButton />
           </div>

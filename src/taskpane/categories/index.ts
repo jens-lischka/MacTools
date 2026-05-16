@@ -12,13 +12,8 @@ import { UtilitiesPanel } from "../components/UtilitiesPanel";
 import { SettingsPanel } from "../components/SettingsPanel";
 
 /**
- * Category registry driving the task pane.
- *
- * Each category renders a working panel and/or a list of features. A feature
- * with no `run` handler renders disabled — it carries a feasibility rating so
- * not-yet-built and API-blocked items stay visible in-product.
- *
- * Ratings mirror docs/powerpoint-cross-platform-overview.md.
+ * Category registry driving the task pane. Each category renders a working
+ * panel, optionally followed by a list of features still in progress.
  */
 
 const f = (id: string, label: string, rating: Feature["rating"], description?: string): Feature => ({
@@ -29,56 +24,17 @@ const f = (id: string, label: string, rating: Feature["rating"], description?: s
 });
 
 export const categories: Category[] = [
-  {
-    id: "alignment",
-    label: "Alignment & Distribution",
-    panel: AlignmentPanel,
-  },
-  {
-    id: "size",
-    label: "Size & Position",
-    panel: SizePositionPanel,
-    features: [
-      f("cropToCircle", "Crop to Circle", "blocked", "Picture crop API not exposed."),
-      f("aspectRatioLock", "Lock Aspect Ratio", "blocked", "Property not exposed."),
-    ],
-  },
-  {
-    id: "selection",
-    label: "Select Same",
-    panel: SelectSamePanel,
-  },
-  {
-    id: "text",
-    label: "Text & Paragraph",
-    panel: TextPanel,
-    features: [
-      f("paragraphSpacing", "Paragraph Spacing", "blocked", "Space before/after has no JS API."),
-    ],
-  },
-  {
-    id: "insert",
-    label: "Shape Creation",
-    panel: ShapeCreationPanel,
-    features: [
-      f("multiply", "Multiply Shape", "blocked", "No shape-duplicate API."),
-    ],
-  },
+  { id: "alignment", label: "Alignment & Distribution", panel: AlignmentPanel },
+  { id: "size", label: "Size & Position", panel: SizePositionPanel },
+  { id: "selection", label: "Select Same", panel: SelectSamePanel },
+  { id: "text", label: "Text & Paragraph", panel: TextPanel },
+  { id: "insert", label: "Shape Creation", panel: ShapeCreationPanel },
   {
     id: "properties",
     label: "Swap, Pick up & Apply",
     panel: TransformPanel,
     features: [
-      f("applyMatching", "Apply to Matching Objects", "ok", "Planned for a later phase."),
-      f("tableProperties", "Pick up / Apply Table Formatting", "partial", "Needs the table API; planned."),
-    ],
-  },
-  {
-    id: "effects",
-    label: "Effects",
-    features: [
-      f("dropShadow", "Drop Shadow / Remove Effects", "blocked", "Effect formatting not exposed."),
-      f("grayscale", "Fix Grayscale", "blocked", "Picture recolour not exposed."),
+      f("tableProperties", "Pick up / Apply Table Formatting", "partial", "Planned for a later phase."),
     ],
   },
   {
@@ -88,9 +44,6 @@ export const categories: Category[] = [
     features: [
       f("formatTable", "Table styling", "partial", "Planned for a later phase."),
       f("optimizeWidth", "Optimize Table Width", "partial", "Planned for a later phase."),
-      f("moveRows", "Move Rows / Columns", "blocked", "No row/column reorder API."),
-      f("transpose", "Transpose Table", "blocked", "No structural transpose API."),
-      f("splitTable", "Split Table", "blocked", "No split API."),
     ],
   },
   {
@@ -98,22 +51,10 @@ export const categories: Category[] = [
     label: "Slides & Presentation",
     panel: SlidesPanel,
     features: [
-      f("stickyNoteManage", "Sticky Notes — show / hide / remove", "blocked", "Shape visibility not exposed."),
       f("pasteOnSlides", "Paste on Slides", "partial", "Clipboard access is constrained."),
-      f("exportPictures", "Export as Pictures", "blocked", "No slide-render/export API."),
-      f("sections", "Section management", "blocked", "No sections API."),
-      f("slideGuides", "Slide Guides", "blocked", "No slide-guide API."),
-      f("closeAll", "Close All", "blocked", "No multi-document control."),
     ],
   },
-  {
-    id: "special",
-    label: "Special Shapes",
-    panel: SpecialShapesPanel,
-    features: [
-      f("harvey", "Harvey Balls", "blocked", "Pie-segment angles are not settable via the API."),
-    ],
-  },
+  { id: "special", label: "Special Shapes", panel: SpecialShapesPanel },
   {
     id: "utilities",
     label: "Utilities",
@@ -121,16 +62,7 @@ export const categories: Category[] = [
     features: [
       f("optimizeFontSize", "Optimize Font Size", "partial", "Planned for a later phase."),
       f("conversionColours", "Conversion Assistant — Colours / Fonts", "partial", "Planned for a later phase."),
-      f("airplaneMode", "Airplane Mode", "blocked", "Picture compression not exposed."),
-      f("applyTemplate", "Apply Custom Template", "blocked", "No template-swap API."),
     ],
   },
-  {
-    id: "settings",
-    label: "Settings",
-    panel: SettingsPanel,
-    features: [
-      f("shortcuts", "Shortcut Manager", "blocked", "Global shortcut binding not available to add-ins."),
-    ],
-  },
+  { id: "settings", label: "Settings", panel: SettingsPanel },
 ];
