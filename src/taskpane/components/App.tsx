@@ -17,7 +17,7 @@ import {
 import { categories } from "../categories";
 import { FeatureList } from "./FeatureList";
 import { ActionContext, type ActionRunner } from "./ActionContext";
-import { HelpDialog } from "./HelpDialog";
+import { HelpButton } from "./HelpButton";
 import { macToolsTheme } from "../theme";
 
 const useStyles = makeStyles({
@@ -87,7 +87,7 @@ const App: React.FC = () => {
                 presentation workflows.
               </Caption1>
             </div>
-            <HelpDialog />
+            <HelpButton />
           </div>
 
           {status && (
