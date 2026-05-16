@@ -165,7 +165,7 @@ def gen_extension_point():
                 <Label resid="Lbl.{bid}" />
                 <Supertip>
                   <Title resid="Lbl.{bid}" />
-                  <Description resid="Lbl.{bid}" />
+                  <Description resid="Sup.{bid}" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.{icon}" />
@@ -271,6 +271,9 @@ def gen_resources(host):
         '        <bt:String id="GetStarted.Description" DefaultValue="Open the StudioTools task pane — enhanced features for streamlined presentation workflows." />',
         '        <bt:String id="Taskpane.Tooltip" DefaultValue="Open the StudioTools task pane." />',
     ]
+    for _gid, _glabel, buttons in GROUPS:
+        for bid, label, _icon, _expr in buttons:
+            long.append(f'        <bt:String id="Sup.{bid}" DefaultValue="{esc(label)}" />')
     urls = [
         f'        <bt:Url id="Commands.Url" DefaultValue="{host}/commands.html" />',
         f'        <bt:Url id="Taskpane.Url" DefaultValue="{host}/taskpane.html" />',

@@ -105,7 +105,7 @@
                 <Label resid="Lbl.alignLeft" />
                 <Supertip>
                   <Title resid="Lbl.alignLeft" />
-                  <Description resid="Lbl.alignLeft" />
+                  <Description resid="Sup.alignLeft" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignLeft" />
@@ -120,7 +120,7 @@
                 <Label resid="Lbl.alignCenter" />
                 <Supertip>
                   <Title resid="Lbl.alignCenter" />
-                  <Description resid="Lbl.alignCenter" />
+                  <Description resid="Sup.alignCenter" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignCenter" />
@@ -135,7 +135,7 @@
                 <Label resid="Lbl.alignRight" />
                 <Supertip>
                   <Title resid="Lbl.alignRight" />
-                  <Description resid="Lbl.alignRight" />
+                  <Description resid="Sup.alignRight" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignRight" />
@@ -150,7 +150,7 @@
                 <Label resid="Lbl.alignTop" />
                 <Supertip>
                   <Title resid="Lbl.alignTop" />
-                  <Description resid="Lbl.alignTop" />
+                  <Description resid="Sup.alignTop" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignTop" />
@@ -165,7 +165,7 @@
                 <Label resid="Lbl.alignMiddle" />
                 <Supertip>
                   <Title resid="Lbl.alignMiddle" />
-                  <Description resid="Lbl.alignMiddle" />
+                  <Description resid="Sup.alignMiddle" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignMiddle" />
@@ -180,7 +180,7 @@
                 <Label resid="Lbl.alignBottom" />
                 <Supertip>
                   <Title resid="Lbl.alignBottom" />
-                  <Description resid="Lbl.alignBottom" />
+                  <Description resid="Sup.alignBottom" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignBottom" />
@@ -203,7 +203,7 @@
                 <Label resid="Lbl.distributeH" />
                 <Supertip>
                   <Title resid="Lbl.distributeH" />
-                  <Description resid="Lbl.distributeH" />
+                  <Description resid="Sup.distributeH" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.DistributeHorizontally" />
@@ -218,7 +218,7 @@
                 <Label resid="Lbl.distributeV" />
                 <Supertip>
                   <Title resid="Lbl.distributeV" />
-                  <Description resid="Lbl.distributeV" />
+                  <Description resid="Sup.distributeV" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.DistributeVertically" />
@@ -241,7 +241,7 @@
                 <Label resid="Lbl.matchWidth" />
                 <Supertip>
                   <Title resid="Lbl.matchWidth" />
-                  <Description resid="Lbl.matchWidth" />
+                  <Description resid="Sup.matchWidth" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.MatchWidth" />
@@ -256,7 +256,7 @@
                 <Label resid="Lbl.matchHeight" />
                 <Supertip>
                   <Title resid="Lbl.matchHeight" />
-                  <Description resid="Lbl.matchHeight" />
+                  <Description resid="Sup.matchHeight" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.MatchHeight" />
@@ -271,7 +271,7 @@
                 <Label resid="Lbl.matchSizeBoth" />
                 <Supertip>
                   <Title resid="Lbl.matchSizeBoth" />
-                  <Description resid="Lbl.matchSizeBoth" />
+                  <Description resid="Sup.matchSizeBoth" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.MatchSize" />
@@ -294,7 +294,7 @@
                 <Label resid="Lbl.stretchLeft" />
                 <Supertip>
                   <Title resid="Lbl.stretchLeft" />
-                  <Description resid="Lbl.stretchLeft" />
+                  <Description resid="Sup.stretchLeft" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.StretchLeft" />
@@ -309,7 +309,7 @@
                 <Label resid="Lbl.stretchRight" />
                 <Supertip>
                   <Title resid="Lbl.stretchRight" />
-                  <Description resid="Lbl.stretchRight" />
+                  <Description resid="Sup.stretchRight" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.StretchRight" />
@@ -324,7 +324,7 @@
                 <Label resid="Lbl.stretchTop" />
                 <Supertip>
                   <Title resid="Lbl.stretchTop" />
-                  <Description resid="Lbl.stretchTop" />
+                  <Description resid="Sup.stretchTop" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.StretchTop" />
@@ -339,7 +339,7 @@
                 <Label resid="Lbl.stretchBottom" />
                 <Supertip>
                   <Title resid="Lbl.stretchBottom" />
-                  <Description resid="Lbl.stretchBottom" />
+                  <Description resid="Sup.stretchBottom" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.StretchBottom" />
@@ -362,7 +362,7 @@
                 <Label resid="Lbl.fillGapH" />
                 <Supertip>
                   <Title resid="Lbl.fillGapH" />
-                  <Description resid="Lbl.fillGapH" />
+                  <Description resid="Sup.fillGapH" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.FillHorizontalGap" />
@@ -377,7 +377,7 @@
                 <Label resid="Lbl.fillGapV" />
                 <Supertip>
                   <Title resid="Lbl.fillGapV" />
-                  <Description resid="Lbl.fillGapV" />
+                  <Description resid="Sup.fillGapV" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.FillVerticalGap" />
@@ -392,7 +392,7 @@
                 <Label resid="Lbl.unifySize" />
                 <Supertip>
                   <Title resid="Lbl.unifySize" />
-                  <Description resid="Lbl.unifySize" />
+                  <Description resid="Sup.unifySize" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.UnifyCorners" />
@@ -407,7 +407,7 @@
                 <Label resid="Lbl.straightenLines" />
                 <Supertip>
                   <Title resid="Lbl.straightenLines" />
-                  <Description resid="Lbl.straightenLines" />
+                  <Description resid="Sup.straightenLines" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.StraightenLine" />
@@ -430,7 +430,7 @@
                 <Label resid="Lbl.selectFill" />
                 <Supertip>
                   <Title resid="Lbl.selectFill" />
-                  <Description resid="Lbl.selectFill" />
+                  <Description resid="Sup.selectFill" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSameFill" />
@@ -445,7 +445,7 @@
                 <Label resid="Lbl.selectOutline" />
                 <Supertip>
                   <Title resid="Lbl.selectOutline" />
-                  <Description resid="Lbl.selectOutline" />
+                  <Description resid="Sup.selectOutline" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSameOutline" />
@@ -460,7 +460,7 @@
                 <Label resid="Lbl.selectWeight" />
                 <Supertip>
                   <Title resid="Lbl.selectWeight" />
-                  <Description resid="Lbl.selectWeight" />
+                  <Description resid="Sup.selectWeight" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSameOutlineWeight" />
@@ -475,7 +475,7 @@
                 <Label resid="Lbl.selectFont" />
                 <Supertip>
                   <Title resid="Lbl.selectFont" />
-                  <Description resid="Lbl.selectFont" />
+                  <Description resid="Sup.selectFont" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSameFontName" />
@@ -490,7 +490,7 @@
                 <Label resid="Lbl.selectType" />
                 <Supertip>
                   <Title resid="Lbl.selectType" />
-                  <Description resid="Lbl.selectType" />
+                  <Description resid="Sup.selectType" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSameType" />
@@ -505,7 +505,7 @@
                 <Label resid="Lbl.selectSize" />
                 <Supertip>
                   <Title resid="Lbl.selectSize" />
-                  <Description resid="Lbl.selectSize" />
+                  <Description resid="Sup.selectSize" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSameSize" />
@@ -528,7 +528,7 @@
                 <Label resid="Lbl.selectPosTop" />
                 <Supertip>
                   <Title resid="Lbl.selectPosTop" />
-                  <Description resid="Lbl.selectPosTop" />
+                  <Description resid="Sup.selectPosTop" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSamePositionTop" />
@@ -543,7 +543,7 @@
                 <Label resid="Lbl.selectPosLeft" />
                 <Supertip>
                   <Title resid="Lbl.selectPosLeft" />
-                  <Description resid="Lbl.selectPosLeft" />
+                  <Description resid="Sup.selectPosLeft" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSamePositionLeft" />
@@ -558,7 +558,7 @@
                 <Label resid="Lbl.selectPosRight" />
                 <Supertip>
                   <Title resid="Lbl.selectPosRight" />
-                  <Description resid="Lbl.selectPosRight" />
+                  <Description resid="Sup.selectPosRight" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSamePositionRight" />
@@ -573,7 +573,7 @@
                 <Label resid="Lbl.selectPosBottom" />
                 <Supertip>
                   <Title resid="Lbl.selectPosBottom" />
-                  <Description resid="Lbl.selectPosBottom" />
+                  <Description resid="Sup.selectPosBottom" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SelectSamePositionBottom" />
@@ -588,7 +588,7 @@
                 <Label resid="Lbl.hideShapes" />
                 <Supertip>
                   <Title resid="Lbl.hideShapes" />
-                  <Description resid="Lbl.hideShapes" />
+                  <Description resid="Sup.hideShapes" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.HideObject" />
@@ -603,7 +603,7 @@
                 <Label resid="Lbl.showShapes" />
                 <Supertip>
                   <Title resid="Lbl.showShapes" />
-                  <Description resid="Lbl.showShapes" />
+                  <Description resid="Sup.showShapes" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShowAll" />
@@ -626,7 +626,7 @@
                 <Label resid="Lbl.autofitOn" />
                 <Supertip>
                   <Title resid="Lbl.autofitOn" />
-                  <Description resid="Lbl.autofitOn" />
+                  <Description resid="Sup.autofitOn" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ResizeShapeToFitTextOn" />
@@ -641,7 +641,7 @@
                 <Label resid="Lbl.autofitOff" />
                 <Supertip>
                   <Title resid="Lbl.autofitOff" />
-                  <Description resid="Lbl.autofitOff" />
+                  <Description resid="Sup.autofitOff" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ResizeShapeToFitTextMix" />
@@ -656,7 +656,7 @@
                 <Label resid="Lbl.wrapOn" />
                 <Supertip>
                   <Title resid="Lbl.wrapOn" />
-                  <Description resid="Lbl.wrapOn" />
+                  <Description resid="Sup.wrapOn" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.WrapTextOn" />
@@ -671,7 +671,7 @@
                 <Label resid="Lbl.wrapOff" />
                 <Supertip>
                   <Title resid="Lbl.wrapOff" />
-                  <Description resid="Lbl.wrapOff" />
+                  <Description resid="Sup.wrapOff" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.WrapTextMix" />
@@ -694,7 +694,7 @@
                 <Label resid="Lbl.marginsNone" />
                 <Supertip>
                   <Title resid="Lbl.marginsNone" />
-                  <Description resid="Lbl.marginsNone" />
+                  <Description resid="Sup.marginsNone" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SetMarginsNone" />
@@ -709,7 +709,7 @@
                 <Label resid="Lbl.marginsNarrow" />
                 <Supertip>
                   <Title resid="Lbl.marginsNarrow" />
-                  <Description resid="Lbl.marginsNarrow" />
+                  <Description resid="Sup.marginsNarrow" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SetMarginsNarrow" />
@@ -724,7 +724,7 @@
                 <Label resid="Lbl.marginsNormal" />
                 <Supertip>
                   <Title resid="Lbl.marginsNormal" />
-                  <Description resid="Lbl.marginsNormal" />
+                  <Description resid="Sup.marginsNormal" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SetMarginsNormal" />
@@ -739,7 +739,7 @@
                 <Label resid="Lbl.marginsWide" />
                 <Supertip>
                   <Title resid="Lbl.marginsWide" />
-                  <Description resid="Lbl.marginsWide" />
+                  <Description resid="Sup.marginsWide" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SetMarginsWide" />
@@ -762,7 +762,7 @@
                 <Label resid="Lbl.alignTextLeft" />
                 <Supertip>
                   <Title resid="Lbl.alignTextLeft" />
-                  <Description resid="Lbl.alignTextLeft" />
+                  <Description resid="Sup.alignTextLeft" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignLeft" />
@@ -777,7 +777,7 @@
                 <Label resid="Lbl.alignTextCenter" />
                 <Supertip>
                   <Title resid="Lbl.alignTextCenter" />
-                  <Description resid="Lbl.alignTextCenter" />
+                  <Description resid="Sup.alignTextCenter" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignCenter" />
@@ -792,7 +792,7 @@
                 <Label resid="Lbl.alignTextRight" />
                 <Supertip>
                   <Title resid="Lbl.alignTextRight" />
-                  <Description resid="Lbl.alignTextRight" />
+                  <Description resid="Sup.alignTextRight" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignRight" />
@@ -807,7 +807,7 @@
                 <Label resid="Lbl.alignTextJustify" />
                 <Supertip>
                   <Title resid="Lbl.alignTextJustify" />
-                  <Description resid="Lbl.alignTextJustify" />
+                  <Description resid="Sup.alignTextJustify" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AlignInGrid" />
@@ -822,7 +822,7 @@
                 <Label resid="Lbl.bulletsOn" />
                 <Supertip>
                   <Title resid="Lbl.bulletsOn" />
-                  <Description resid="Lbl.bulletsOn" />
+                  <Description resid="Sup.bulletsOn" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.FixBullets" />
@@ -837,7 +837,7 @@
                 <Label resid="Lbl.bulletsOff" />
                 <Supertip>
                   <Title resid="Lbl.bulletsOff" />
-                  <Description resid="Lbl.bulletsOff" />
+                  <Description resid="Sup.bulletsOff" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.NoBullets" />
@@ -860,7 +860,7 @@
                 <Label resid="Lbl.clearBreaks" />
                 <Supertip>
                   <Title resid="Lbl.clearBreaks" />
-                  <Description resid="Lbl.clearBreaks" />
+                  <Description resid="Sup.clearBreaks" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ClearLineBreaks" />
@@ -875,7 +875,7 @@
                 <Label resid="Lbl.clearTextRibbon" />
                 <Supertip>
                   <Title resid="Lbl.clearTextRibbon" />
-                  <Description resid="Lbl.clearTextRibbon" />
+                  <Description resid="Sup.clearTextRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.DeleteText" />
@@ -890,7 +890,7 @@
                 <Label resid="Lbl.mergeTextRibbon" />
                 <Supertip>
                   <Title resid="Lbl.mergeTextRibbon" />
-                  <Description resid="Lbl.mergeTextRibbon" />
+                  <Description resid="Sup.mergeTextRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.MergeText" />
@@ -905,7 +905,7 @@
                 <Label resid="Lbl.splitTextRibbon" />
                 <Supertip>
                   <Title resid="Lbl.splitTextRibbon" />
-                  <Description resid="Lbl.splitTextRibbon" />
+                  <Description resid="Sup.splitTextRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SplitText" />
@@ -928,7 +928,7 @@
                 <Label resid="Lbl.styleHeading" />
                 <Supertip>
                   <Title resid="Lbl.styleHeading" />
-                  <Description resid="Lbl.styleHeading" />
+                  <Description resid="Sup.styleHeading" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Heading1Text" />
@@ -943,7 +943,7 @@
                 <Label resid="Lbl.styleSubheading" />
                 <Supertip>
                   <Title resid="Lbl.styleSubheading" />
-                  <Description resid="Lbl.styleSubheading" />
+                  <Description resid="Sup.styleSubheading" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Subheading1Text" />
@@ -958,7 +958,7 @@
                 <Label resid="Lbl.styleBody" />
                 <Supertip>
                   <Title resid="Lbl.styleBody" />
-                  <Description resid="Lbl.styleBody" />
+                  <Description resid="Sup.styleBody" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Body1Text" />
@@ -981,7 +981,7 @@
                 <Label resid="Lbl.insertRectangle" />
                 <Supertip>
                   <Title resid="Lbl.insertRectangle" />
-                  <Description resid="Lbl.insertRectangle" />
+                  <Description resid="Sup.insertRectangle" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesRectangle" />
@@ -996,7 +996,7 @@
                 <Label resid="Lbl.insertRoundRect" />
                 <Supertip>
                   <Title resid="Lbl.insertRoundRect" />
-                  <Description resid="Lbl.insertRoundRect" />
+                  <Description resid="Sup.insertRoundRect" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesRoundedRectangle" />
@@ -1011,7 +1011,7 @@
                 <Label resid="Lbl.insertOval" />
                 <Supertip>
                   <Title resid="Lbl.insertOval" />
-                  <Description resid="Lbl.insertOval" />
+                  <Description resid="Sup.insertOval" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesOval" />
@@ -1026,7 +1026,7 @@
                 <Label resid="Lbl.insertTriangle" />
                 <Supertip>
                   <Title resid="Lbl.insertTriangle" />
-                  <Description resid="Lbl.insertTriangle" />
+                  <Description resid="Sup.insertTriangle" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesLargeCaret" />
@@ -1041,7 +1041,7 @@
                 <Label resid="Lbl.insertArrow" />
                 <Supertip>
                   <Title resid="Lbl.insertArrow" />
-                  <Description resid="Lbl.insertArrow" />
+                  <Description resid="Sup.insertArrow" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SymbolsArrowRight" />
@@ -1056,7 +1056,7 @@
                 <Label resid="Lbl.insertChevron" />
                 <Supertip>
                   <Title resid="Lbl.insertChevron" />
-                  <Description resid="Lbl.insertChevron" />
+                  <Description resid="Sup.insertChevron" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesChevron1" />
@@ -1079,7 +1079,7 @@
                 <Label resid="Lbl.insertLineRibbon" />
                 <Supertip>
                   <Title resid="Lbl.insertLineRibbon" />
-                  <Description resid="Lbl.insertLineRibbon" />
+                  <Description resid="Sup.insertLineRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesLine" />
@@ -1094,7 +1094,7 @@
                 <Label resid="Lbl.insertTextBoxRibbon" />
                 <Supertip>
                   <Title resid="Lbl.insertTextBoxRibbon" />
-                  <Description resid="Lbl.insertTextBoxRibbon" />
+                  <Description resid="Sup.insertTextBoxRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.InsertTextBox" />
@@ -1109,7 +1109,7 @@
                 <Label resid="Lbl.insertCircle" />
                 <Supertip>
                   <Title resid="Lbl.insertCircle" />
-                  <Description resid="Lbl.insertCircle" />
+                  <Description resid="Sup.insertCircle" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ShapesCircle" />
@@ -1124,7 +1124,7 @@
                 <Label resid="Lbl.connectShapes" />
                 <Supertip>
                   <Title resid="Lbl.connectShapes" />
-                  <Description resid="Lbl.connectShapes" />
+                  <Description resid="Sup.connectShapes" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.ConnectObjects" />
@@ -1139,7 +1139,7 @@
                 <Label resid="Lbl.groupRow" />
                 <Supertip>
                   <Title resid="Lbl.groupRow" />
-                  <Description resid="Lbl.groupRow" />
+                  <Description resid="Sup.groupRow" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.GroupAsRows" />
@@ -1154,7 +1154,7 @@
                 <Label resid="Lbl.groupColumn" />
                 <Supertip>
                   <Title resid="Lbl.groupColumn" />
-                  <Description resid="Lbl.groupColumn" />
+                  <Description resid="Sup.groupColumn" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.GroupAsColumns" />
@@ -1177,7 +1177,7 @@
                 <Label resid="Lbl.swapPositionRibbon" />
                 <Supertip>
                   <Title resid="Lbl.swapPositionRibbon" />
-                  <Description resid="Lbl.swapPositionRibbon" />
+                  <Description resid="Sup.swapPositionRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SwapPosition" />
@@ -1192,7 +1192,7 @@
                 <Label resid="Lbl.swapSizeRibbon" />
                 <Supertip>
                   <Title resid="Lbl.swapSizeRibbon" />
-                  <Description resid="Lbl.swapSizeRibbon" />
+                  <Description resid="Sup.swapSizeRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.MatchSize" />
@@ -1207,7 +1207,7 @@
                 <Label resid="Lbl.swapFillRibbon" />
                 <Supertip>
                   <Title resid="Lbl.swapFillRibbon" />
-                  <Description resid="Lbl.swapFillRibbon" />
+                  <Description resid="Sup.swapFillRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SwapFillAndOutline" />
@@ -1222,7 +1222,7 @@
                 <Label resid="Lbl.pickUpRibbon" />
                 <Supertip>
                   <Title resid="Lbl.pickUpRibbon" />
-                  <Description resid="Lbl.pickUpRibbon" />
+                  <Description resid="Sup.pickUpRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SizePositionCopy" />
@@ -1237,7 +1237,7 @@
                 <Label resid="Lbl.applySizeRibbon" />
                 <Supertip>
                   <Title resid="Lbl.applySizeRibbon" />
-                  <Description resid="Lbl.applySizeRibbon" />
+                  <Description resid="Sup.applySizeRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SizePositionPaste" />
@@ -1252,7 +1252,7 @@
                 <Label resid="Lbl.applyMatchingRibbon" />
                 <Supertip>
                   <Title resid="Lbl.applyMatchingRibbon" />
-                  <Description resid="Lbl.applyMatchingRibbon" />
+                  <Description resid="Sup.applyMatchingRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SizePositionMatchingPaste" />
@@ -1275,7 +1275,7 @@
                 <Label resid="Lbl.addTableRowRibbon" />
                 <Supertip>
                   <Title resid="Lbl.addTableRowRibbon" />
-                  <Description resid="Lbl.addTableRowRibbon" />
+                  <Description resid="Sup.addTableRowRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AddRowBottom" />
@@ -1290,7 +1290,7 @@
                 <Label resid="Lbl.addTableColumnRibbon" />
                 <Supertip>
                   <Title resid="Lbl.addTableColumnRibbon" />
-                  <Description resid="Lbl.addTableColumnRibbon" />
+                  <Description resid="Sup.addTableColumnRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AddColumnRight" />
@@ -1305,7 +1305,7 @@
                 <Label resid="Lbl.deleteTableRowRibbon" />
                 <Supertip>
                   <Title resid="Lbl.deleteTableRowRibbon" />
-                  <Description resid="Lbl.deleteTableRowRibbon" />
+                  <Description resid="Sup.deleteTableRowRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.RemoveLastRow" />
@@ -1320,7 +1320,7 @@
                 <Label resid="Lbl.deleteTableColumnRibbon" />
                 <Supertip>
                   <Title resid="Lbl.deleteTableColumnRibbon" />
-                  <Description resid="Lbl.deleteTableColumnRibbon" />
+                  <Description resid="Sup.deleteTableColumnRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.RemoveLastColumn" />
@@ -1335,7 +1335,7 @@
                 <Label resid="Lbl.tableToTextRibbon" />
                 <Supertip>
                   <Title resid="Lbl.tableToTextRibbon" />
-                  <Description resid="Lbl.tableToTextRibbon" />
+                  <Description resid="Sup.tableToTextRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.TableToText" />
@@ -1358,7 +1358,7 @@
                 <Label resid="Lbl.specialTitle" />
                 <Supertip>
                   <Title resid="Lbl.specialTitle" />
-                  <Description resid="Lbl.specialTitle" />
+                  <Description resid="Sup.specialTitle" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.SlideTitle" />
@@ -1373,7 +1373,7 @@
                 <Label resid="Lbl.specialConclusion" />
                 <Supertip>
                   <Title resid="Lbl.specialConclusion" />
-                  <Description resid="Lbl.specialConclusion" />
+                  <Description resid="Sup.specialConclusion" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Conclusion" />
@@ -1388,7 +1388,7 @@
                 <Label resid="Lbl.specialFootnote" />
                 <Supertip>
                   <Title resid="Lbl.specialFootnote" />
-                  <Description resid="Lbl.specialFootnote" />
+                  <Description resid="Sup.specialFootnote" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Footnote" />
@@ -1403,7 +1403,7 @@
                 <Label resid="Lbl.specialGhost" />
                 <Supertip>
                   <Title resid="Lbl.specialGhost" />
-                  <Description resid="Lbl.specialGhost" />
+                  <Description resid="Sup.specialGhost" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Ghost" />
@@ -1418,7 +1418,7 @@
                 <Label resid="Lbl.specialLabel" />
                 <Supertip>
                   <Title resid="Lbl.specialLabel" />
-                  <Description resid="Lbl.specialLabel" />
+                  <Description resid="Sup.specialLabel" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.Labels" />
@@ -1441,7 +1441,7 @@
                 <Label resid="Lbl.insertTocRibbon" />
                 <Supertip>
                   <Title resid="Lbl.insertTocRibbon" />
-                  <Description resid="Lbl.insertTocRibbon" />
+                  <Description resid="Sup.insertTocRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.TableOfContents" />
@@ -1456,7 +1456,7 @@
                 <Label resid="Lbl.addNoteRibbon" />
                 <Supertip>
                   <Title resid="Lbl.addNoteRibbon" />
-                  <Description resid="Lbl.addNoteRibbon" />
+                  <Description resid="Sup.addNoteRibbon" />
                 </Supertip>
                 <Icon>
                   <bt:Image size="16" resid="Ic.AddNote" />
@@ -1674,6 +1674,88 @@
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Open the StudioTools task pane — enhanced features for streamlined presentation workflows." />
         <bt:String id="Taskpane.Tooltip" DefaultValue="Open the StudioTools task pane." />
+        <bt:String id="Sup.alignLeft" DefaultValue="Align Left" />
+        <bt:String id="Sup.alignCenter" DefaultValue="Align Center" />
+        <bt:String id="Sup.alignRight" DefaultValue="Align Right" />
+        <bt:String id="Sup.alignTop" DefaultValue="Align Top" />
+        <bt:String id="Sup.alignMiddle" DefaultValue="Align Middle" />
+        <bt:String id="Sup.alignBottom" DefaultValue="Align Bottom" />
+        <bt:String id="Sup.distributeH" DefaultValue="Distribute Horizontally" />
+        <bt:String id="Sup.distributeV" DefaultValue="Distribute Vertically" />
+        <bt:String id="Sup.matchWidth" DefaultValue="Match Width" />
+        <bt:String id="Sup.matchHeight" DefaultValue="Match Height" />
+        <bt:String id="Sup.matchSizeBoth" DefaultValue="Match Size" />
+        <bt:String id="Sup.stretchLeft" DefaultValue="Stretch Left" />
+        <bt:String id="Sup.stretchRight" DefaultValue="Stretch Right" />
+        <bt:String id="Sup.stretchTop" DefaultValue="Stretch Top" />
+        <bt:String id="Sup.stretchBottom" DefaultValue="Stretch Bottom" />
+        <bt:String id="Sup.fillGapH" DefaultValue="Fill Horizontal Gaps" />
+        <bt:String id="Sup.fillGapV" DefaultValue="Fill Vertical Gaps" />
+        <bt:String id="Sup.unifySize" DefaultValue="Unify Size" />
+        <bt:String id="Sup.straightenLines" DefaultValue="Straighten Lines" />
+        <bt:String id="Sup.selectFill" DefaultValue="Select Same Fill" />
+        <bt:String id="Sup.selectOutline" DefaultValue="Select Same Outline" />
+        <bt:String id="Sup.selectWeight" DefaultValue="Select Same Outline Weight" />
+        <bt:String id="Sup.selectFont" DefaultValue="Select Same Font" />
+        <bt:String id="Sup.selectType" DefaultValue="Select Same Type" />
+        <bt:String id="Sup.selectSize" DefaultValue="Select Same Size" />
+        <bt:String id="Sup.selectPosTop" DefaultValue="Select Same Top Edge" />
+        <bt:String id="Sup.selectPosLeft" DefaultValue="Select Same Left Edge" />
+        <bt:String id="Sup.selectPosRight" DefaultValue="Select Same Right Edge" />
+        <bt:String id="Sup.selectPosBottom" DefaultValue="Select Same Bottom Edge" />
+        <bt:String id="Sup.hideShapes" DefaultValue="Hide Selected" />
+        <bt:String id="Sup.showShapes" DefaultValue="Show All Shapes" />
+        <bt:String id="Sup.autofitOn" DefaultValue="Resize Shape to Fit Text" />
+        <bt:String id="Sup.autofitOff" DefaultValue="Turn Autofit Off" />
+        <bt:String id="Sup.wrapOn" DefaultValue="Word Wrap On" />
+        <bt:String id="Sup.wrapOff" DefaultValue="Word Wrap Off" />
+        <bt:String id="Sup.marginsNone" DefaultValue="No Margins" />
+        <bt:String id="Sup.marginsNarrow" DefaultValue="Narrow Margins" />
+        <bt:String id="Sup.marginsNormal" DefaultValue="Normal Margins" />
+        <bt:String id="Sup.marginsWide" DefaultValue="Wide Margins" />
+        <bt:String id="Sup.alignTextLeft" DefaultValue="Align Text Left" />
+        <bt:String id="Sup.alignTextCenter" DefaultValue="Align Text Center" />
+        <bt:String id="Sup.alignTextRight" DefaultValue="Align Text Right" />
+        <bt:String id="Sup.alignTextJustify" DefaultValue="Justify Text" />
+        <bt:String id="Sup.bulletsOn" DefaultValue="Bullets On" />
+        <bt:String id="Sup.bulletsOff" DefaultValue="Bullets Off" />
+        <bt:String id="Sup.clearBreaks" DefaultValue="Clear Line Breaks" />
+        <bt:String id="Sup.clearTextRibbon" DefaultValue="Clear Text" />
+        <bt:String id="Sup.mergeTextRibbon" DefaultValue="Merge Text" />
+        <bt:String id="Sup.splitTextRibbon" DefaultValue="Split Text" />
+        <bt:String id="Sup.styleHeading" DefaultValue="Heading Style" />
+        <bt:String id="Sup.styleSubheading" DefaultValue="Subheading Style" />
+        <bt:String id="Sup.styleBody" DefaultValue="Body Style" />
+        <bt:String id="Sup.insertRectangle" DefaultValue="Insert Rectangle" />
+        <bt:String id="Sup.insertRoundRect" DefaultValue="Insert Rounded Rectangle" />
+        <bt:String id="Sup.insertOval" DefaultValue="Insert Oval" />
+        <bt:String id="Sup.insertTriangle" DefaultValue="Insert Triangle" />
+        <bt:String id="Sup.insertArrow" DefaultValue="Insert Right Arrow" />
+        <bt:String id="Sup.insertChevron" DefaultValue="Insert Chevron" />
+        <bt:String id="Sup.insertLineRibbon" DefaultValue="Insert Line" />
+        <bt:String id="Sup.insertTextBoxRibbon" DefaultValue="Insert Text Box" />
+        <bt:String id="Sup.insertCircle" DefaultValue="Insert Numbered Circle" />
+        <bt:String id="Sup.connectShapes" DefaultValue="Connect Two Shapes" />
+        <bt:String id="Sup.groupRow" DefaultValue="Lay Out as a Row" />
+        <bt:String id="Sup.groupColumn" DefaultValue="Lay Out as a Column" />
+        <bt:String id="Sup.swapPositionRibbon" DefaultValue="Swap Position" />
+        <bt:String id="Sup.swapSizeRibbon" DefaultValue="Swap Size" />
+        <bt:String id="Sup.swapFillRibbon" DefaultValue="Swap Fill &amp; Outline" />
+        <bt:String id="Sup.pickUpRibbon" DefaultValue="Pick Up Size &amp; Position" />
+        <bt:String id="Sup.applySizeRibbon" DefaultValue="Apply Size &amp; Position" />
+        <bt:String id="Sup.applyMatchingRibbon" DefaultValue="Apply to Matching Objects" />
+        <bt:String id="Sup.addTableRowRibbon" DefaultValue="Add Table Row" />
+        <bt:String id="Sup.addTableColumnRibbon" DefaultValue="Add Table Column" />
+        <bt:String id="Sup.deleteTableRowRibbon" DefaultValue="Delete Last Row" />
+        <bt:String id="Sup.deleteTableColumnRibbon" DefaultValue="Delete Last Column" />
+        <bt:String id="Sup.tableToTextRibbon" DefaultValue="Convert Table to Text" />
+        <bt:String id="Sup.specialTitle" DefaultValue="Insert Slide Title" />
+        <bt:String id="Sup.specialConclusion" DefaultValue="Insert Conclusion" />
+        <bt:String id="Sup.specialFootnote" DefaultValue="Insert Footnote" />
+        <bt:String id="Sup.specialGhost" DefaultValue="Insert Ghost" />
+        <bt:String id="Sup.specialLabel" DefaultValue="Insert Label" />
+        <bt:String id="Sup.insertTocRibbon" DefaultValue="Insert Table of Contents" />
+        <bt:String id="Sup.addNoteRibbon" DefaultValue="Add Sticky Note" />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
