@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Button,
   Textarea,
   Input,
   Field,
@@ -15,7 +14,7 @@ import {
 } from "../../lib/slides";
 import { getSetting, setSetting } from "../../lib/settings";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
   section: {
@@ -23,7 +22,12 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  row: { display: "flex", gap: tokens.spacingHorizontalS, flexWrap: "wrap" },
+  toolbar: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: tokens.spacingHorizontalS,
+    alignItems: "center",
+  },
   grow: { flexGrow: 1 },
 });
 
@@ -54,13 +58,24 @@ export const SlidesPanel: React.FC = () => {
 
   return (
     <div className={styles.section}>
-      <Button
-        disabled={busy || exporting}
-        icon={<ToolIcon name="ExportSlideTitles" />}
-        onClick={() => void exportTitles()}
-      >
-        Export Slide Titles
-      </Button>
+      <Field label="Slides">
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="ExportSlideTitles"
+            label="Export slide titles"
+            disabled={busy || exporting}
+            onClick={() => void exportTitles()}
+          />
+          <ToolButton
+            icon="TableOfContents"
+            label="Insert table of contents"
+            disabled={busy}
+            onClick={() =>
+              run("Insert table of contents", () => insertTableOfContents())
+            }
+          />
+        </div>
+      </Field>
       {titles && (
         <Field label="Slide titles (select and copy)">
           <Textarea value={titles} rows={8} readOnly />
@@ -69,38 +84,25 @@ export const SlidesPanel: React.FC = () => {
 
       <Divider />
 
-      <Button
-        disabled={busy}
-        icon={<ToolIcon name="TableOfContents" />}
-        onClick={() =>
-          run("Insert table of contents", () => insertTableOfContents())
-        }
-      >
-        Insert Table of Contents
-      </Button>
-
-      <Divider />
-
       <Field label="Sticky note — your initials">
-        <div className={styles.row}>
+        <div className={styles.toolbar}>
           <Input
             className={styles.grow}
             value={initials}
             placeholder="e.g. JL"
             onChange={(_, d) => setInitials(d.value)}
           />
-          <Button
+          <ToolButton
+            icon="AddNote"
+            label="Add sticky note"
             disabled={busy}
-            icon={<ToolIcon name="AddNote" />}
             onClick={() =>
               run("Add sticky note", async () => {
                 await setSetting(INITIALS_KEY, initials, "roaming");
                 await addStickyNote(initials);
               })
             }
-          >
-            Add Note
-          </Button>
+          />
         </div>
       </Field>
     </div>

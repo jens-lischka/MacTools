@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Button,
   Field,
   SpinButton,
   Divider,
@@ -20,7 +19,7 @@ import {
 } from "../../lib/tables";
 import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
   section: {
@@ -28,13 +27,13 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  row: { display: "flex", gap: tokens.spacingHorizontalS, flexWrap: "wrap" },
-  grow: { flexGrow: 1 },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
+  toolbar: {
+    display: "flex",
+    flexWrap: "wrap",
     gap: tokens.spacingHorizontalS,
+    alignItems: "center",
   },
+  spin: { width: "84px" },
 });
 
 export const TablesPanel: React.FC = () => {
@@ -63,58 +62,66 @@ export const TablesPanel: React.FC = () => {
 
   return (
     <div className={styles.section}>
-      <Field label="Insert table — rows">
-        <SpinButton min={1} max={50} value={rows} onChange={spin(setRows)} />
-      </Field>
-      <Field label="Insert table — columns">
-        <div className={styles.row}>
+      <Field label="Insert table — rows &amp; columns">
+        <div className={styles.toolbar}>
           <SpinButton
-            className={styles.grow}
+            className={styles.spin}
+            min={1}
+            max={50}
+            value={rows}
+            onChange={spin(setRows)}
+          />
+          <SpinButton
+            className={styles.spin}
             min={1}
             max={50}
             value={columns}
             onChange={spin(setColumns)}
           />
-          <Button
+          <ToolButton
+            icon="FormatTable"
+            label="Insert table"
             disabled={busy}
-            icon={<ToolIcon name="FormatTable" />}
-            onClick={() =>
-              run("Insert table", () => insertTable(rows, columns))
-            }
-          >
-            Insert
-          </Button>
+            onClick={() => run("Insert table", () => insertTable(rows, columns))}
+          />
         </div>
       </Field>
 
       <Divider />
 
       <Caption1>The actions below apply to the selected table.</Caption1>
-      <div className={styles.grid}>
-        <Button disabled={busy} icon={<ToolIcon name="AddRowBottom" />} onClick={() => run("Add row", () => addTableRow())}>
-          Add Row
-        </Button>
-        <Button disabled={busy} icon={<ToolIcon name="AddColumnRight" />} onClick={() => run("Add column", () => addTableColumn())}>
-          Add Column
-        </Button>
-        <Button
+      <div className={styles.toolbar}>
+        <ToolButton
+          icon="AddRowBottom"
+          label="Add row"
           disabled={busy}
-          icon={<ToolIcon name="RemoveLastRow" />}
+          onClick={() => run("Add row", () => addTableRow())}
+        />
+        <ToolButton
+          icon="AddColumnRight"
+          label="Add column"
+          disabled={busy}
+          onClick={() => run("Add column", () => addTableColumn())}
+        />
+        <ToolButton
+          icon="RemoveLastRow"
+          label="Delete last row"
+          disabled={busy}
           onClick={() => run("Delete last row", () => deleteLastTableRow())}
-        >
-          Delete Last Row
-        </Button>
-        <Button
+        />
+        <ToolButton
+          icon="RemoveLastColumn"
+          label="Delete last column"
           disabled={busy}
-          icon={<ToolIcon name="RemoveLastColumn" />}
           onClick={() => run("Delete last column", () => deleteLastTableColumn())}
-        >
-          Delete Last Column
-        </Button>
+        />
+        <ToolButton
+          icon="TableToText"
+          label="Convert table to text"
+          disabled={busy}
+          onClick={() => run("Table to text", () => tableToText())}
+        />
       </div>
-      <Button disabled={busy} icon={<ToolIcon name="TableToText" />} onClick={() => run("Table to text", () => tableToText())}>
-        Convert Table to Text
-      </Button>
     </div>
   );
 };

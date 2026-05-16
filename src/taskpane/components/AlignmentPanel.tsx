@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Button,
   Field,
   Radio,
   RadioGroup,
@@ -15,34 +14,26 @@ import {
   type AlignTarget,
 } from "../../lib/alignment";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr",
-    gap: tokens.spacingHorizontalS,
-    marginTop: tokens.spacingVerticalM,
-  },
-  wide: { gridColumn: "span 3" },
   section: {
     display: "flex",
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
+  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
 });
 
 const ALIGN_BUTTONS: { edge: AlignEdge; label: string; icon: string }[] = [
-  { edge: "left", label: "Left", icon: "AlignLeft" },
-  { edge: "centerH", label: "Center", icon: "AlignCenter" },
-  { edge: "right", label: "Right", icon: "AlignRight" },
-  { edge: "top", label: "Top", icon: "AlignTop" },
-  { edge: "middle", label: "Middle", icon: "AlignMiddle" },
-  { edge: "bottom", label: "Bottom", icon: "AlignBottom" },
+  { edge: "left", label: "Align Left", icon: "AlignLeft" },
+  { edge: "centerH", label: "Align Center", icon: "AlignCenter" },
+  { edge: "right", label: "Align Right", icon: "AlignRight" },
+  { edge: "top", label: "Align Top", icon: "AlignTop" },
+  { edge: "middle", label: "Align Middle", icon: "AlignMiddle" },
+  { edge: "bottom", label: "Align Bottom", icon: "AlignBottom" },
 ];
 
-/** Custom UI for the Alignment category — needs a target selector that a
- *  plain button list cannot express. */
 export const AlignmentPanel: React.FC = () => {
   const styles = useStyles();
   const { run, busy } = useActions();
@@ -62,43 +53,46 @@ export const AlignmentPanel: React.FC = () => {
           <Radio value="slide" label="Slide" />
         </RadioGroup>
       </Field>
-      <Caption1>
-        Replaces the legacy guide / modifier-key Power Align modes, which the
-        cross-platform API does not expose.
-      </Caption1>
 
-      <div className={styles.grid}>
-        {ALIGN_BUTTONS.map((b) => (
-          <Button
-            key={b.edge}
+      <Field label="Align">
+        <div className={styles.toolbar}>
+          {ALIGN_BUTTONS.map((b) => (
+            <ToolButton
+              key={b.edge}
+              icon={b.icon}
+              label={b.label}
+              disabled={busy}
+              onClick={() => run(b.label, () => align(b.edge, target))}
+            />
+          ))}
+        </div>
+      </Field>
+
+      <Field label="Distribute">
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="DistributeHorizontally"
+            label="Distribute Horizontally"
             disabled={busy}
-            icon={<ToolIcon name={b.icon} />}
-            onClick={() => run(`Align ${b.label}`, () => align(b.edge, target))}
-          >
-            {b.label}
-          </Button>
-        ))}
-        <Button
-          className={styles.wide}
-          disabled={busy}
-          icon={<ToolIcon name="DistributeHorizontally" />}
-          onClick={() =>
-            run("Distribute horizontally", () => distribute("horizontal"))
-          }
-        >
-          Distribute Horizontally
-        </Button>
-        <Button
-          className={styles.wide}
-          disabled={busy}
-          icon={<ToolIcon name="DistributeVertically" />}
-          onClick={() =>
-            run("Distribute vertically", () => distribute("vertical"))
-          }
-        >
-          Distribute Vertically
-        </Button>
-      </div>
+            onClick={() =>
+              run("Distribute horizontally", () => distribute("horizontal"))
+            }
+          />
+          <ToolButton
+            icon="DistributeVertically"
+            label="Distribute Vertically"
+            disabled={busy}
+            onClick={() =>
+              run("Distribute vertically", () => distribute("vertical"))
+            }
+          />
+        </div>
+      </Field>
+
+      <Caption1>
+        Power Align&apos;s guide / modifier-key modes are replaced by the
+        &ldquo;align relative to&rdquo; choice above.
+      </Caption1>
     </div>
   );
 };

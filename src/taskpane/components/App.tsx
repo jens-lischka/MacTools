@@ -18,7 +18,6 @@ import { categories } from "../categories";
 import { FeatureList } from "./FeatureList";
 import { ActionContext, type ActionRunner } from "./ActionContext";
 import { HelpDialog } from "./HelpDialog";
-import { highestSupportedApi } from "../../lib/capabilities";
 import { macToolsTheme } from "../theme";
 
 const useStyles = makeStyles({
@@ -79,11 +78,13 @@ const App: React.FC = () => {
         <div className={styles.root}>
           <div className={styles.header}>
             <div>
-              <Subtitle2>MacTools for PowerPoint</Subtitle2>
+              <Subtitle2>StudioTools</Subtitle2>
+              <br />
+              <Caption1>A Creative Studio Solution</Caption1>
               <br />
               <Caption1>
-                Cross-platform tools — PowerPoint API {highestSupportedApi()}{" "}
-                detected.
+                Enhanced features for macOS and web — built for streamlined
+                presentation workflows.
               </Caption1>
             </div>
             <HelpDialog />

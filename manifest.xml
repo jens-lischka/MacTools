@@ -8,10 +8,10 @@
 
   <Id>8545941f-5483-4dd7-a665-b13ab3ba43ca</Id>
   <Version>0.1.0.0</Version>
-  <ProviderName>MacTools</ProviderName>
+  <ProviderName>Creative Studio</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="MacTools for PowerPoint" />
-  <Description DefaultValue="Cross-platform PowerPoint productivity tools — alignment, sizing, text and shape utilities." />
+  <DisplayName DefaultValue="StudioTools" />
+  <Description DefaultValue="Enhanced features for macOS and web — built for streamlined presentation workflows." />
   <IconUrl DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://jens-lischka.github.io/MacTools/assets/icon-64.png" />
   <SupportUrl DefaultValue="https://jens-lischka.github.io/MacTools/" />
@@ -86,13 +86,13 @@
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://jens-lischka.github.io/MacTools/" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="MacTools for PowerPoint" />
-        <bt:String id="Group.Label" DefaultValue="MacTools" />
-        <bt:String id="Taskpane.Label" DefaultValue="MacTools" />
+        <bt:String id="GetStarted.Title" DefaultValue="StudioTools" />
+        <bt:String id="Group.Label" DefaultValue="StudioTools" />
+        <bt:String id="Taskpane.Label" DefaultValue="StudioTools" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Open the MacTools task pane to access alignment, sizing, text and shape tools." />
-        <bt:String id="Taskpane.Tooltip" DefaultValue="Open the MacTools task pane." />
+        <bt:String id="GetStarted.Description" DefaultValue="Open the StudioTools task pane — enhanced features for streamlined presentation workflows." />
+        <bt:String id="Taskpane.Tooltip" DefaultValue="Open the StudioTools task pane." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Button,
-  Field,
-  Divider,
-  Caption1,
-  makeStyles,
-  tokens,
-} from "@fluentui/react-components";
+import { Field, Divider, Caption1, makeStyles, tokens } from "@fluentui/react-components";
 import {
   swapPosition,
   swapSize,
@@ -15,7 +8,7 @@ import {
   applySizePosition,
 } from "../../lib/transform";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
   section: {
@@ -23,8 +16,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  row: { display: "flex", gap: tokens.spacingHorizontalS, flexWrap: "wrap" },
-  grow: { flexGrow: 1 },
+  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
 });
 
 export const TransformPanel: React.FC = () => {
@@ -34,56 +26,44 @@ export const TransformPanel: React.FC = () => {
   return (
     <div className={styles.section}>
       <Field label="Swap (exactly two shapes)">
-        <div className={styles.row}>
-          <Button
-            className={styles.grow}
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="SwapPosition"
+            label="Swap position"
             disabled={busy}
-            icon={<ToolIcon name="SwapPosition" />}
             onClick={() => run("Swap position", () => swapPosition())}
-          >
-            Swap Position
-          </Button>
-          <Button
-            className={styles.grow}
+          />
+          <ToolButton
+            icon="MatchSize"
+            label="Swap size"
             disabled={busy}
-            icon={<ToolIcon name="MatchSize" />}
             onClick={() => run("Swap size", () => swapSize())}
-          >
-            Swap Size
-          </Button>
-          <Button
-            className={styles.grow}
+          />
+          <ToolButton
+            icon="SwapFillAndOutline"
+            label="Swap fill & outline"
             disabled={busy}
-            icon={<ToolIcon name="SwapFillAndOutline" />}
-            onClick={() =>
-              run("Swap fill & outline", () => swapFillAndOutline())
-            }
-          >
-            Swap Fill &amp; Outline
-          </Button>
+            onClick={() => run("Swap fill & outline", () => swapFillAndOutline())}
+          />
         </div>
       </Field>
 
       <Divider />
 
       <Field label="Pick up &amp; apply size and position">
-        <div className={styles.row}>
-          <Button
-            className={styles.grow}
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="SizePositionCopy"
+            label="Pick up size & position"
             disabled={busy}
-            icon={<ToolIcon name="SizePositionCopy" />}
             onClick={() => run("Pick up size & position", () => pickUpSizePosition())}
-          >
-            Pick Up
-          </Button>
-          <Button
-            className={styles.grow}
+          />
+          <ToolButton
+            icon="SizePositionPaste"
+            label="Apply size & position"
             disabled={busy}
-            icon={<ToolIcon name="SizePositionPaste" />}
             onClick={() => run("Apply size & position", () => applySizePosition())}
-          >
-            Apply
-          </Button>
+          />
         </div>
       </Field>
       <Caption1>

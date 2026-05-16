@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Button,
   Input,
   SpinButton,
   Field,
@@ -11,7 +10,7 @@ import {
 } from "@fluentui/react-components";
 import { replaceFonts, insertCagr, getFileSize } from "../../lib/utilities";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
   section: {
@@ -19,8 +18,14 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  row: { display: "flex", gap: tokens.spacingHorizontalS, flexWrap: "wrap" },
+  toolbar: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: tokens.spacingHorizontalS,
+    alignItems: "center",
+  },
   grow: { flexGrow: 1 },
+  spin: { width: "96px" },
 });
 
 function spinValue(value: number | undefined, displayValue: string | undefined): number | null {
@@ -60,57 +65,54 @@ export const UtilitiesPanel: React.FC = () => {
         />
       </Field>
       <Field label="Replace font — to">
-        <div className={styles.row}>
+        <div className={styles.toolbar}>
           <Input
             className={styles.grow}
             value={toFont}
             placeholder="e.g. Arial"
             onChange={(_, d) => setToFont(d.value)}
           />
-          <Button
+          <ToolButton
+            icon="ReplaceFonts"
+            label="Replace fonts"
             disabled={busy}
-            icon={<ToolIcon name="ReplaceFonts" />}
             onClick={() =>
               run("Replace fonts", async () => {
                 const count = await replaceFonts(fromFont, toFont);
                 if (count === 0) throw new Error("No shapes used that font.");
               })
             }
-          >
-            Replace
-          </Button>
+          />
         </div>
       </Field>
       <Caption1>Replaces the font across the whole presentation.</Caption1>
 
       <Divider />
 
-      <Field label="CAGR — start value">
-        <SpinButton
-          min={0}
-          step={10}
-          value={startValue}
-          onChange={(_, d) => {
-            const v = spinValue(d.value ?? undefined, d.displayValue);
-            if (v !== null) setStartValue(v);
-          }}
-        />
-      </Field>
-      <Field label="CAGR — end value">
-        <SpinButton
-          min={0}
-          step={10}
-          value={endValue}
-          onChange={(_, d) => {
-            const v = spinValue(d.value ?? undefined, d.displayValue);
-            if (v !== null) setEndValue(v);
-          }}
-        />
-      </Field>
-      <Field label="CAGR — number of periods">
-        <div className={styles.row}>
+      <Field label="CAGR — start, end &amp; periods">
+        <div className={styles.toolbar}>
           <SpinButton
-            className={styles.grow}
+            className={styles.spin}
+            min={0}
+            step={10}
+            value={startValue}
+            onChange={(_, d) => {
+              const v = spinValue(d.value ?? undefined, d.displayValue);
+              if (v !== null) setStartValue(v);
+            }}
+          />
+          <SpinButton
+            className={styles.spin}
+            min={0}
+            step={10}
+            value={endValue}
+            onChange={(_, d) => {
+              const v = spinValue(d.value ?? undefined, d.displayValue);
+              if (v !== null) setEndValue(v);
+            }}
+          />
+          <SpinButton
+            className={styles.spin}
             min={1}
             step={1}
             value={periods}
@@ -119,32 +121,27 @@ export const UtilitiesPanel: React.FC = () => {
               if (v !== null) setPeriods(v);
             }}
           />
-          <Button
+          <ToolButton
+            icon="CAGR"
+            label="Insert CAGR"
             disabled={busy}
-            icon={<ToolIcon name="CAGR" />}
             onClick={() =>
-              run("Insert CAGR", () =>
-                insertCagr(startValue, endValue, periods),
-              )
+              run("Insert CAGR", () => insertCagr(startValue, endValue, periods))
             }
-          >
-            Insert
-          </Button>
+          />
         </div>
       </Field>
 
       <Divider />
 
       <Field label="Presentation file size">
-        <div className={styles.row}>
-          <Button
-            className={styles.grow}
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="FileSize"
+            label="Check file size"
             disabled={busy || checkingSize}
-            icon={<ToolIcon name="FileSize" />}
             onClick={() => void checkFileSize()}
-          >
-            Check File Size
-          </Button>
+          />
           {fileSize && <Caption1>{fileSize}</Caption1>}
         </div>
       </Field>

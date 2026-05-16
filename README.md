@@ -1,9 +1,14 @@
-# MacTools for PowerPoint
+# StudioTools
+
+**A Creative Studio Solution** — enhanced features for macOS and web, built
+for streamlined presentation workflows.
 
 A cross-platform PowerPoint add-in (web, Mac, Windows) — a rebuild of the
 legacy Windows-only VSTO "OWG Toolbox" on the Office.js platform.
 
-All features live in a single **task pane**, organised by category.
+All features live in a single **task pane**, organised by category, with
+icon-only tool buttons. The repository is named `MacTools`, so the hosted
+URLs below keep that path.
 
 ## Status
 

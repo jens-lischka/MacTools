@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Button,
-  Field,
-  Divider,
-  Caption1,
-  makeStyles,
-  tokens,
-} from "@fluentui/react-components";
+import { Field, Divider, Caption1, makeStyles, tokens } from "@fluentui/react-components";
 import {
   insertShape,
   insertLine,
@@ -16,7 +9,7 @@ import {
   groupAsLayout,
 } from "../../lib/shapes";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
   section: {
@@ -24,11 +17,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: tokens.spacingHorizontalS,
-  },
+  toolbar: { display: "flex", flexWrap: "wrap", gap: tokens.spacingHorizontalS },
 });
 
 export const ShapeCreationPanel: React.FC = () => {
@@ -49,67 +38,60 @@ export const ShapeCreationPanel: React.FC = () => {
   return (
     <div className={styles.section}>
       <Caption1>New shapes are added to the slide in view.</Caption1>
-      <div className={styles.grid}>
-        {SHAPES.map((s) => (
-          <Button
-            key={s.label}
+      <Field label="Insert">
+        <div className={styles.toolbar}>
+          {SHAPES.map((s) => (
+            <ToolButton
+              key={s.label}
+              icon={s.icon}
+              label={`Insert ${s.label}`}
+              disabled={busy}
+              onClick={() => run(`Insert ${s.label.toLowerCase()}`, () => insertShape(s.type))}
+            />
+          ))}
+          <ToolButton
+            icon="ShapesLine"
+            label="Insert line"
             disabled={busy}
-            icon={<ToolIcon name={s.icon} />}
-            onClick={() => run(`Insert ${s.label.toLowerCase()}`, () => insertShape(s.type))}
-          >
-            {s.label}
-          </Button>
-        ))}
-        <Button
-          disabled={busy}
-          icon={<ToolIcon name="ShapesLine" />}
-          onClick={() => run("Insert line", () => insertLine())}
-        >
-          Line
-        </Button>
-        <Button
-          disabled={busy}
-          icon={<ToolIcon name="InsertTextBox" />}
-          onClick={() => run("Insert text box", () => insertTextBox())}
-        >
-          Text Box
-        </Button>
-        <Button
-          disabled={busy}
-          icon={<ToolIcon name="ShapesCircle" />}
-          onClick={() =>
-            run("Insert numbered circle", () => insertNumberedCircle("1"))
-          }
-        >
-          Numbered Circle
-        </Button>
-        <Button
-          disabled={busy}
-          icon={<ToolIcon name="ConnectObjects" />}
-          onClick={() => run("Connect two shapes", () => insertConnector())}
-        >
-          Connect Two Shapes
-        </Button>
-      </div>
+            onClick={() => run("Insert line", () => insertLine())}
+          />
+          <ToolButton
+            icon="InsertTextBox"
+            label="Insert text box"
+            disabled={busy}
+            onClick={() => run("Insert text box", () => insertTextBox())}
+          />
+          <ToolButton
+            icon="ShapesCircle"
+            label="Insert numbered circle"
+            disabled={busy}
+            onClick={() => run("Insert numbered circle", () => insertNumberedCircle("1"))}
+          />
+          <ToolButton
+            icon="ConnectObjects"
+            label="Connect two shapes"
+            disabled={busy}
+            onClick={() => run("Connect two shapes", () => insertConnector())}
+          />
+        </div>
+      </Field>
 
       <Divider />
 
       <Field label="Lay selected shapes out as">
-        <div className={styles.grid}>
-          <Button
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="GroupAsRows"
+            label="Lay out as a row"
             disabled={busy}
-            icon={<ToolIcon name="GroupAsRows" />}
             onClick={() => run("Group as row", () => groupAsLayout("row"))}
-          >
-            Row
-          </Button>
-          <Button
+          />
+          <ToolButton
+            icon="GroupAsColumns"
+            label="Lay out as a column"
             disabled={busy}
-            icon={<ToolIcon name="GroupAsColumns" />}
             onClick={() => run("Group as column", () => groupAsLayout("column"))}
-          >
-            Column
-          </Button>
+          />
         </div>
       </Field>
     </div>

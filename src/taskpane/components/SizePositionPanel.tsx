@@ -1,12 +1,10 @@
 import * as React from "react";
 import {
-  Button,
   Field,
   Radio,
   RadioGroup,
   SpinButton,
   Divider,
-  Caption1,
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
@@ -23,7 +21,7 @@ import {
   type StretchTarget,
 } from "../../lib/sizePosition";
 import { useActions } from "./ActionContext";
-import { ToolIcon } from "./ToolIcon";
+import { ToolButton } from "./ToolButton";
 
 const useStyles = makeStyles({
   section: {
@@ -31,21 +29,26 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
-  row: { display: "flex", gap: tokens.spacingHorizontalS, flexWrap: "wrap" },
-  grow: { flexGrow: 1 },
+  toolbar: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: tokens.spacingHorizontalS,
+    alignItems: "center",
+  },
+  spin: { width: "96px" },
 });
 
 const MATCH: { dimension: MatchDimension; label: string; icon: string }[] = [
-  { dimension: "width", label: "Width", icon: "MatchWidth" },
-  { dimension: "height", label: "Height", icon: "MatchHeight" },
-  { dimension: "both", label: "Both", icon: "MatchSize" },
+  { dimension: "width", label: "Match Width", icon: "MatchWidth" },
+  { dimension: "height", label: "Match Height", icon: "MatchHeight" },
+  { dimension: "both", label: "Match Size", icon: "MatchSize" },
 ];
 
 const STRETCH: { edge: StretchEdge; label: string; icon: string }[] = [
-  { edge: "left", label: "Left", icon: "StretchLeft" },
-  { edge: "right", label: "Right", icon: "StretchRight" },
-  { edge: "top", label: "Top", icon: "StretchTop" },
-  { edge: "bottom", label: "Bottom", icon: "StretchBottom" },
+  { edge: "left", label: "Stretch Left", icon: "StretchLeft" },
+  { edge: "right", label: "Stretch Right", icon: "StretchRight" },
+  { edge: "top", label: "Stretch Top", icon: "StretchTop" },
+  { edge: "bottom", label: "Stretch Bottom", icon: "StretchBottom" },
 ];
 
 export const SizePositionPanel: React.FC = () => {
@@ -67,30 +70,24 @@ export const SizePositionPanel: React.FC = () => {
           <Radio value="last" label="Last selected" />
         </RadioGroup>
       </Field>
-      <div className={styles.row}>
+      <div className={styles.toolbar}>
         {MATCH.map((m) => (
-          <Button
+          <ToolButton
             key={m.dimension}
-            className={styles.grow}
+            icon={m.icon}
+            label={m.label}
             disabled={busy}
-            icon={<ToolIcon name={m.icon} />}
-            onClick={() =>
-              run(`Match ${m.label.toLowerCase()}`, () =>
-                matchSize(m.dimension, reference),
-              )
-            }
-          >
-            {m.label}
-          </Button>
+            onClick={() => run(m.label, () => matchSize(m.dimension, reference))}
+          />
         ))}
       </div>
 
       <Divider />
 
       <Field label="Scale (%)">
-        <div className={styles.row}>
+        <div className={styles.toolbar}>
           <SpinButton
-            className={styles.grow}
+            className={styles.spin}
             min={1}
             max={1000}
             step={5}
@@ -100,13 +97,12 @@ export const SizePositionPanel: React.FC = () => {
               if (Number.isFinite(next)) setScale(next as number);
             }}
           />
-          <Button
+          <ToolButton
+            icon="ScaleToValue"
+            label="Apply scale"
             disabled={busy}
-            icon={<ToolIcon name="ScaleToValue" />}
             onClick={() => run(`Scale to ${scale}%`, () => scaleShapes(scale))}
-          >
-            Apply
-          </Button>
+          />
         </div>
       </Field>
 
@@ -122,67 +118,48 @@ export const SizePositionPanel: React.FC = () => {
           <Radio value="slide" label="Slide" />
         </RadioGroup>
       </Field>
-      <div className={styles.row}>
+      <div className={styles.toolbar}>
         {STRETCH.map((s) => (
-          <Button
+          <ToolButton
             key={s.edge}
-            className={styles.grow}
+            icon={s.icon}
+            label={s.label}
             disabled={busy}
-            icon={<ToolIcon name={s.icon} />}
-            onClick={() =>
-              run(`Stretch ${s.label.toLowerCase()}`, () =>
-                stretchToEdge(s.edge, stretchTarget),
-              )
-            }
-          >
-            {s.label}
-          </Button>
+            onClick={() => run(s.label, () => stretchToEdge(s.edge, stretchTarget))}
+          />
         ))}
       </div>
 
       <Divider />
 
-      <Field label="Close gaps / unify">
-        <div className={styles.row}>
-          <Button
-            className={styles.grow}
+      <Field label="Close gaps / unify / straighten">
+        <div className={styles.toolbar}>
+          <ToolButton
+            icon="FillHorizontalGap"
+            label="Fill horizontal gaps"
             disabled={busy}
-            icon={<ToolIcon name="FillHorizontalGap" />}
             onClick={() => run("Fill horizontal gaps", () => fillGap("horizontal"))}
-          >
-            Fill Gaps →
-          </Button>
-          <Button
-            className={styles.grow}
+          />
+          <ToolButton
+            icon="FillVerticalGap"
+            label="Fill vertical gaps"
             disabled={busy}
-            icon={<ToolIcon name="FillVerticalGap" />}
             onClick={() => run("Fill vertical gaps", () => fillGap("vertical"))}
-          >
-            Fill Gaps ↓
-          </Button>
-          <Button
-            className={styles.grow}
+          />
+          <ToolButton
+            icon="UnifyCorners"
+            label="Unify size"
             disabled={busy}
-            icon={<ToolIcon name="UnifyCorners" />}
             onClick={() => run("Unify shapes", () => unifyShapes())}
-          >
-            Unify Size
-          </Button>
+          />
+          <ToolButton
+            icon="StraightenLine"
+            label="Straighten lines"
+            disabled={busy}
+            onClick={() => run("Straighten lines", () => straightenLines())}
+          />
         </div>
       </Field>
-
-      <Divider />
-
-      <Button
-        disabled={busy}
-        icon={<ToolIcon name="StraightenLine" />}
-        onClick={() => run("Straighten lines", () => straightenLines())}
-      >
-        Straighten Lines
-      </Button>
-      <Caption1>
-        Flattens selected line shapes to be perfectly horizontal or vertical.
-      </Caption1>
     </div>
   );
 };
