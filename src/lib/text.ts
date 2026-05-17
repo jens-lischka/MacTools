@@ -110,6 +110,138 @@ export async function setBullets(visible: boolean): Promise<void> {
   });
 }
 
+interface BulletLevel {
+  type: PowerPoint.BulletFormat["type"];
+  style: PowerPoint.BulletFormat["style"];
+  visible: PowerPoint.BulletFormat["visible"];
+}
+
+/** Character ranges of each paragraph in `text` (handles \r, \n and \r\n). */
+function paragraphRanges(text: string): { start: number; length: number }[] {
+  const ranges: { start: number; length: number }[] = [];
+  let start = 0;
+  let i = 0;
+  while (i <= text.length) {
+    const ch = text[i];
+    if (i === text.length || ch === "\r" || ch === "\n") {
+      ranges.push({ start, length: i - start });
+      if (ch === "\r" && text[i + 1] === "\n") i += 1;
+      i += 1;
+      start = i;
+    } else {
+      i += 1;
+    }
+  }
+  return ranges;
+}
+
+/** Non-empty paragraph sub-ranges of a text range. */
+function paragraphSubranges(
+  range: PowerPoint.TextRange,
+  text: string,
+): PowerPoint.TextRange[] {
+  return paragraphRanges(text)
+    .filter((p) => p.length > 0)
+    .map((p) => range.getSubstring(p.start, p.length));
+}
+
+/**
+ * Copy the body placeholder's per-indent-level bullet formatting from the
+ * slide master onto every paragraph of the selected text shapes, matched by
+ * indent level.
+ *
+ * The JavaScript API only exposes a bullet's type, numbering style and
+ * visibility — not its character, colour, size or indent — so this aligns the
+ * bullet *kind* per level, not the master's exact bullet appearance.
+ */
+export async function matchBulletLevels(): Promise<void> {
+  await PowerPoint.run(async (context) => {
+    const selected = context.presentation.getSelectedShapes();
+    selected.load("items/id,items/type");
+    await context.sync();
+
+    const textShapes = selected.items.filter((s) => isTextShape(s.type));
+    if (textShapes.length === 0) {
+      throw new Error("Select at least one shape that can contain text.");
+    }
+
+    // Locate the body placeholder on the slide master.
+    const masterShapes = textShapes[0].getParentSlideMaster().shapes;
+    masterShapes.load("items/type");
+    await context.sync();
+
+    const placeholders = masterShapes.items.filter(
+      (s) => s.type === PowerPoint.ShapeType.placeholder,
+    );
+    placeholders.forEach((p) => p.placeholderFormat.load("type"));
+    await context.sync();
+
+    const body = placeholders.find((p) => {
+      const t = p.placeholderFormat.type;
+      return (
+        t === PowerPoint.PlaceholderType.body ||
+        t === PowerPoint.PlaceholderType.content ||
+        t === PowerPoint.PlaceholderType.verticalBody
+      );
+    });
+    if (!body) {
+      throw new Error("The slide master has no body placeholder to copy bullets from.");
+    }
+
+    // Read the master body placeholder's bullet format per indent level.
+    const masterRange = body.textFrame.textRange;
+    masterRange.load("text");
+    await context.sync();
+
+    const masterFormats = paragraphSubranges(masterRange, masterRange.text).map(
+      (range) => {
+        range.paragraphFormat.load("indentLevel");
+        range.paragraphFormat.bulletFormat.load("type,style,visible");
+        return range.paragraphFormat;
+      },
+    );
+    await context.sync();
+
+    const levels = new Map<number, BulletLevel>();
+    masterFormats.forEach((pf) => {
+      if (!levels.has(pf.indentLevel)) {
+        levels.set(pf.indentLevel, {
+          type: pf.bulletFormat.type,
+          style: pf.bulletFormat.style,
+          visible: pf.bulletFormat.visible,
+        });
+      }
+    });
+    if (levels.size === 0) {
+      throw new Error("The master body placeholder has no bullet levels to copy.");
+    }
+
+    // Read every target paragraph's indent level.
+    const targetRanges = textShapes.map((s) => s.textFrame.textRange);
+    targetRanges.forEach((r) => r.load("text"));
+    await context.sync();
+
+    const targetParagraphs = targetRanges.flatMap((r) =>
+      paragraphSubranges(r, r.text),
+    );
+    targetParagraphs.forEach((range) =>
+      range.paragraphFormat.load("indentLevel"),
+    );
+    await context.sync();
+
+    // Apply the master level's bullet format to each paragraph.
+    targetParagraphs.forEach((range) => {
+      const pf = range.paragraphFormat;
+      const level = levels.get(pf.indentLevel) ?? levels.get(0);
+      if (!level) return;
+      if (level.visible !== null) pf.bulletFormat.visible = level.visible;
+      if (level.type !== null) pf.bulletFormat.type = level.type;
+      if (level.style !== null) pf.bulletFormat.style = level.style;
+    });
+    await context.sync();
+  });
+}
+
 export interface TextStyle {
   size: number;
   bold: boolean;

@@ -12,9 +12,11 @@ import {
   mergeText,
   splitText,
   insertSpecialCharacter,
+  matchBulletLevels,
   type Margins,
   type TextStyle,
 } from "../../lib/text";
+import { isApiSupported } from "../../lib/capabilities";
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
 import { usePanelStyles } from "./panelStyles";
@@ -52,6 +54,7 @@ export const TextPanel: React.FC = () => {
   const textStyles = useTextStyles();
   const { run, busy } = useActions();
   const [customMargin, setCustomMargin] = React.useState(6);
+  const bulletLevelsSupported = isApiSupported("1.10");
 
   // Built inside the component so the PowerPoint enum is read after Office.js
   // has loaded, not at module-evaluation time.
@@ -192,6 +195,18 @@ export const TextPanel: React.FC = () => {
             label="Bullets off"
             disabled={busy}
             onClick={() => run("Bullets off", () => setBullets(false))}
+          />
+          <ToolButton
+            icon="FixBullets1"
+            label={
+              bulletLevelsSupported
+                ? "Match bullet levels to layout"
+                : "Match bullet levels — needs PowerPoint API 1.10"
+            }
+            disabled={busy || !bulletLevelsSupported}
+            onClick={() =>
+              run("Match bullet levels to layout", () => matchBulletLevels())
+            }
           />
           {STYLES.map((s) => (
             <ToolButton
