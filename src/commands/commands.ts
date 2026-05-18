@@ -30,14 +30,6 @@ import {
   splitText,
 } from "../lib/text";
 import {
-  insertShape,
-  insertLine,
-  insertTextBox,
-  insertNumberedCircle,
-  insertConnector,
-  groupAsLayout,
-} from "../lib/shapes";
-import {
   swapPosition,
   swapSize,
   swapFillAndOutline,
@@ -113,18 +105,6 @@ const RUNNERS: Record<string, () => Promise<void>> = {
   styleHeading: () => applyTextStyle({ size: 28, bold: true }),
   styleSubheading: () => applyTextStyle({ size: 20, bold: true }),
   styleBody: () => applyTextStyle({ size: 14, bold: false }),
-  insertRectangle: () => insertShape(PowerPoint.GeometricShapeType.rectangle),
-  insertRoundRect: () => insertShape(PowerPoint.GeometricShapeType.roundRectangle),
-  insertOval: () => insertShape(PowerPoint.GeometricShapeType.ellipse),
-  insertTriangle: () => insertShape(PowerPoint.GeometricShapeType.triangle),
-  insertArrow: () => insertShape(PowerPoint.GeometricShapeType.rightArrow),
-  insertChevron: () => insertShape(PowerPoint.GeometricShapeType.chevron),
-  insertLineRibbon: () => insertLine(),
-  insertTextBoxRibbon: () => insertTextBox(),
-  insertCircle: () => insertNumberedCircle("1"),
-  connectShapes: () => insertConnector(),
-  groupRow: () => groupAsLayout("row"),
-  groupColumn: () => groupAsLayout("column"),
   swapPositionRibbon: () => swapPosition(),
   swapSizeRibbon: () => swapSize(),
   swapFillRibbon: () => swapFillAndOutline(),

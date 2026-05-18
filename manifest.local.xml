@@ -970,202 +970,6 @@
                 </Action>
               </Control>
             </Group>
-            <Group id="toolsGrpInsertShapes">
-              <Label resid="Grp.InsertShapes" />
-              <Icon>
-                <bt:Image size="16" resid="Ic.ShapesRectangle" />
-                <bt:Image size="32" resid="Ic.ShapesRectangle" />
-                <bt:Image size="80" resid="Ic.ShapesRectangle" />
-              </Icon>
-              <Control xsi:type="Button" id="insertRectangle">
-                <Label resid="Lbl.insertRectangle" />
-                <Supertip>
-                  <Title resid="Lbl.insertRectangle" />
-                  <Description resid="Sup.insertRectangle" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesRectangle" />
-                  <bt:Image size="32" resid="Ic.ShapesRectangle" />
-                  <bt:Image size="80" resid="Ic.ShapesRectangle" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertRectangle</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertRoundRect">
-                <Label resid="Lbl.insertRoundRect" />
-                <Supertip>
-                  <Title resid="Lbl.insertRoundRect" />
-                  <Description resid="Sup.insertRoundRect" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesRoundedRectangle" />
-                  <bt:Image size="32" resid="Ic.ShapesRoundedRectangle" />
-                  <bt:Image size="80" resid="Ic.ShapesRoundedRectangle" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertRoundRect</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertOval">
-                <Label resid="Lbl.insertOval" />
-                <Supertip>
-                  <Title resid="Lbl.insertOval" />
-                  <Description resid="Sup.insertOval" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesOval" />
-                  <bt:Image size="32" resid="Ic.ShapesOval" />
-                  <bt:Image size="80" resid="Ic.ShapesOval" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertOval</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertTriangle">
-                <Label resid="Lbl.insertTriangle" />
-                <Supertip>
-                  <Title resid="Lbl.insertTriangle" />
-                  <Description resid="Sup.insertTriangle" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesLargeCaret" />
-                  <bt:Image size="32" resid="Ic.ShapesLargeCaret" />
-                  <bt:Image size="80" resid="Ic.ShapesLargeCaret" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertTriangle</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertArrow">
-                <Label resid="Lbl.insertArrow" />
-                <Supertip>
-                  <Title resid="Lbl.insertArrow" />
-                  <Description resid="Sup.insertArrow" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.SymbolsArrowRight" />
-                  <bt:Image size="32" resid="Ic.SymbolsArrowRight" />
-                  <bt:Image size="80" resid="Ic.SymbolsArrowRight" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertArrow</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertChevron">
-                <Label resid="Lbl.insertChevron" />
-                <Supertip>
-                  <Title resid="Lbl.insertChevron" />
-                  <Description resid="Sup.insertChevron" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesChevron1" />
-                  <bt:Image size="32" resid="Ic.ShapesChevron1" />
-                  <bt:Image size="80" resid="Ic.ShapesChevron1" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertChevron</FunctionName>
-                </Action>
-              </Control>
-            </Group>
-            <Group id="toolsGrpInsert">
-              <Label resid="Grp.Insert" />
-              <Icon>
-                <bt:Image size="16" resid="Ic.ShapesLine" />
-                <bt:Image size="32" resid="Ic.ShapesLine" />
-                <bt:Image size="80" resid="Ic.ShapesLine" />
-              </Icon>
-              <Control xsi:type="Button" id="insertLineRibbon">
-                <Label resid="Lbl.insertLineRibbon" />
-                <Supertip>
-                  <Title resid="Lbl.insertLineRibbon" />
-                  <Description resid="Sup.insertLineRibbon" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesLine" />
-                  <bt:Image size="32" resid="Ic.ShapesLine" />
-                  <bt:Image size="80" resid="Ic.ShapesLine" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertLineRibbon</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertTextBoxRibbon">
-                <Label resid="Lbl.insertTextBoxRibbon" />
-                <Supertip>
-                  <Title resid="Lbl.insertTextBoxRibbon" />
-                  <Description resid="Sup.insertTextBoxRibbon" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.InsertTextBox" />
-                  <bt:Image size="32" resid="Ic.InsertTextBox" />
-                  <bt:Image size="80" resid="Ic.InsertTextBox" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertTextBoxRibbon</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="insertCircle">
-                <Label resid="Lbl.insertCircle" />
-                <Supertip>
-                  <Title resid="Lbl.insertCircle" />
-                  <Description resid="Sup.insertCircle" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ShapesCircle" />
-                  <bt:Image size="32" resid="Ic.ShapesCircle" />
-                  <bt:Image size="80" resid="Ic.ShapesCircle" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>insertCircle</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="connectShapes">
-                <Label resid="Lbl.connectShapes" />
-                <Supertip>
-                  <Title resid="Lbl.connectShapes" />
-                  <Description resid="Sup.connectShapes" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.ConnectObjects" />
-                  <bt:Image size="32" resid="Ic.ConnectObjects" />
-                  <bt:Image size="80" resid="Ic.ConnectObjects" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>connectShapes</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="groupRow">
-                <Label resid="Lbl.groupRow" />
-                <Supertip>
-                  <Title resid="Lbl.groupRow" />
-                  <Description resid="Sup.groupRow" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.GroupAsRows" />
-                  <bt:Image size="32" resid="Ic.GroupAsRows" />
-                  <bt:Image size="80" resid="Ic.GroupAsRows" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>groupRow</FunctionName>
-                </Action>
-              </Control>
-              <Control xsi:type="Button" id="groupColumn">
-                <Label resid="Lbl.groupColumn" />
-                <Supertip>
-                  <Title resid="Lbl.groupColumn" />
-                  <Description resid="Sup.groupColumn" />
-                </Supertip>
-                <Icon>
-                  <bt:Image size="16" resid="Ic.GroupAsColumns" />
-                  <bt:Image size="32" resid="Ic.GroupAsColumns" />
-                  <bt:Image size="80" resid="Ic.GroupAsColumns" />
-                </Icon>
-                <Action xsi:type="ExecuteFunction">
-                  <FunctionName>groupColumn</FunctionName>
-                </Action>
-              </Control>
-            </Group>
             <Group id="toolsGrpSwapApply">
               <Label resid="Grp.SwapApply" />
               <Icon>
@@ -1493,7 +1297,6 @@
         <bt:Image id="Ic.Body1Text" DefaultValue="https://localhost:3000/assets/icons/Body1Text.png" />
         <bt:Image id="Ic.ClearLineBreaks" DefaultValue="https://localhost:3000/assets/icons/ClearLineBreaks.png" />
         <bt:Image id="Ic.Conclusion" DefaultValue="https://localhost:3000/assets/icons/Conclusion.png" />
-        <bt:Image id="Ic.ConnectObjects" DefaultValue="https://localhost:3000/assets/icons/ConnectObjects.png" />
         <bt:Image id="Ic.DeleteText" DefaultValue="https://localhost:3000/assets/icons/DeleteText.png" />
         <bt:Image id="Ic.DistributeHorizontally" DefaultValue="https://localhost:3000/assets/icons/DistributeHorizontally.png" />
         <bt:Image id="Ic.DistributeVertically" DefaultValue="https://localhost:3000/assets/icons/DistributeVertically.png" />
@@ -1502,11 +1305,8 @@
         <bt:Image id="Ic.FixBullets" DefaultValue="https://localhost:3000/assets/icons/FixBullets.png" />
         <bt:Image id="Ic.Footnote" DefaultValue="https://localhost:3000/assets/icons/Footnote.png" />
         <bt:Image id="Ic.Ghost" DefaultValue="https://localhost:3000/assets/icons/Ghost.png" />
-        <bt:Image id="Ic.GroupAsColumns" DefaultValue="https://localhost:3000/assets/icons/GroupAsColumns.png" />
-        <bt:Image id="Ic.GroupAsRows" DefaultValue="https://localhost:3000/assets/icons/GroupAsRows.png" />
         <bt:Image id="Ic.Heading1Text" DefaultValue="https://localhost:3000/assets/icons/Heading1Text.png" />
         <bt:Image id="Ic.HideObject" DefaultValue="https://localhost:3000/assets/icons/HideObject.png" />
-        <bt:Image id="Ic.InsertTextBox" DefaultValue="https://localhost:3000/assets/icons/InsertTextBox.png" />
         <bt:Image id="Ic.Labels" DefaultValue="https://localhost:3000/assets/icons/Labels.png" />
         <bt:Image id="Ic.MatchHeight" DefaultValue="https://localhost:3000/assets/icons/MatchHeight.png" />
         <bt:Image id="Ic.MatchSize" DefaultValue="https://localhost:3000/assets/icons/MatchSize.png" />
@@ -1531,13 +1331,6 @@
         <bt:Image id="Ic.SetMarginsNone" DefaultValue="https://localhost:3000/assets/icons/SetMarginsNone.png" />
         <bt:Image id="Ic.SetMarginsNormal" DefaultValue="https://localhost:3000/assets/icons/SetMarginsNormal.png" />
         <bt:Image id="Ic.SetMarginsWide" DefaultValue="https://localhost:3000/assets/icons/SetMarginsWide.png" />
-        <bt:Image id="Ic.ShapesChevron1" DefaultValue="https://localhost:3000/assets/icons/ShapesChevron1.png" />
-        <bt:Image id="Ic.ShapesCircle" DefaultValue="https://localhost:3000/assets/icons/ShapesCircle.png" />
-        <bt:Image id="Ic.ShapesLargeCaret" DefaultValue="https://localhost:3000/assets/icons/ShapesLargeCaret.png" />
-        <bt:Image id="Ic.ShapesLine" DefaultValue="https://localhost:3000/assets/icons/ShapesLine.png" />
-        <bt:Image id="Ic.ShapesOval" DefaultValue="https://localhost:3000/assets/icons/ShapesOval.png" />
-        <bt:Image id="Ic.ShapesRectangle" DefaultValue="https://localhost:3000/assets/icons/ShapesRectangle.png" />
-        <bt:Image id="Ic.ShapesRoundedRectangle" DefaultValue="https://localhost:3000/assets/icons/ShapesRoundedRectangle.png" />
         <bt:Image id="Ic.ShowAll" DefaultValue="https://localhost:3000/assets/icons/ShowAll.png" />
         <bt:Image id="Ic.SizePositionCopy" DefaultValue="https://localhost:3000/assets/icons/SizePositionCopy.png" />
         <bt:Image id="Ic.SizePositionMatchingPaste" DefaultValue="https://localhost:3000/assets/icons/SizePositionMatchingPaste.png" />
@@ -1552,7 +1345,6 @@
         <bt:Image id="Ic.Subheading1Text" DefaultValue="https://localhost:3000/assets/icons/Subheading1Text.png" />
         <bt:Image id="Ic.SwapFillAndOutline" DefaultValue="https://localhost:3000/assets/icons/SwapFillAndOutline.png" />
         <bt:Image id="Ic.SwapPosition" DefaultValue="https://localhost:3000/assets/icons/SwapPosition.png" />
-        <bt:Image id="Ic.SymbolsArrowRight" DefaultValue="https://localhost:3000/assets/icons/SymbolsArrowRight.png" />
         <bt:Image id="Ic.TableOfContents" DefaultValue="https://localhost:3000/assets/icons/TableOfContents.png" />
         <bt:Image id="Ic.TableToText" DefaultValue="https://localhost:3000/assets/icons/TableToText.png" />
         <bt:Image id="Ic.UnifyCorners" DefaultValue="https://localhost:3000/assets/icons/UnifyCorners.png" />
@@ -1634,20 +1426,6 @@
         <bt:String id="Lbl.styleHeading" DefaultValue="Heading Style" />
         <bt:String id="Lbl.styleSubheading" DefaultValue="Subheading Style" />
         <bt:String id="Lbl.styleBody" DefaultValue="Body Style" />
-        <bt:String id="Grp.InsertShapes" DefaultValue="Insert Shapes" />
-        <bt:String id="Lbl.insertRectangle" DefaultValue="Insert Rectangle" />
-        <bt:String id="Lbl.insertRoundRect" DefaultValue="Insert Rounded Rectangle" />
-        <bt:String id="Lbl.insertOval" DefaultValue="Insert Oval" />
-        <bt:String id="Lbl.insertTriangle" DefaultValue="Insert Triangle" />
-        <bt:String id="Lbl.insertArrow" DefaultValue="Insert Right Arrow" />
-        <bt:String id="Lbl.insertChevron" DefaultValue="Insert Chevron" />
-        <bt:String id="Grp.Insert" DefaultValue="Insert &amp; Group" />
-        <bt:String id="Lbl.insertLineRibbon" DefaultValue="Insert Line" />
-        <bt:String id="Lbl.insertTextBoxRibbon" DefaultValue="Insert Text Box" />
-        <bt:String id="Lbl.insertCircle" DefaultValue="Insert Numbered Circle" />
-        <bt:String id="Lbl.connectShapes" DefaultValue="Connect Two Shapes" />
-        <bt:String id="Lbl.groupRow" DefaultValue="Lay Out as a Row" />
-        <bt:String id="Lbl.groupColumn" DefaultValue="Lay Out as a Column" />
         <bt:String id="Grp.SwapApply" DefaultValue="Swap &amp; Apply" />
         <bt:String id="Lbl.swapPositionRibbon" DefaultValue="Swap Position" />
         <bt:String id="Lbl.swapSizeRibbon" DefaultValue="Swap Size" />
@@ -1726,18 +1504,6 @@
         <bt:String id="Sup.styleHeading" DefaultValue="Heading Style" />
         <bt:String id="Sup.styleSubheading" DefaultValue="Subheading Style" />
         <bt:String id="Sup.styleBody" DefaultValue="Body Style" />
-        <bt:String id="Sup.insertRectangle" DefaultValue="Insert Rectangle" />
-        <bt:String id="Sup.insertRoundRect" DefaultValue="Insert Rounded Rectangle" />
-        <bt:String id="Sup.insertOval" DefaultValue="Insert Oval" />
-        <bt:String id="Sup.insertTriangle" DefaultValue="Insert Triangle" />
-        <bt:String id="Sup.insertArrow" DefaultValue="Insert Right Arrow" />
-        <bt:String id="Sup.insertChevron" DefaultValue="Insert Chevron" />
-        <bt:String id="Sup.insertLineRibbon" DefaultValue="Insert Line" />
-        <bt:String id="Sup.insertTextBoxRibbon" DefaultValue="Insert Text Box" />
-        <bt:String id="Sup.insertCircle" DefaultValue="Insert Numbered Circle" />
-        <bt:String id="Sup.connectShapes" DefaultValue="Connect Two Shapes" />
-        <bt:String id="Sup.groupRow" DefaultValue="Lay Out as a Row" />
-        <bt:String id="Sup.groupColumn" DefaultValue="Lay Out as a Column" />
         <bt:String id="Sup.swapPositionRibbon" DefaultValue="Swap Position" />
         <bt:String id="Sup.swapSizeRibbon" DefaultValue="Swap Size" />
         <bt:String id="Sup.swapFillRibbon" DefaultValue="Swap Fill &amp; Outline" />

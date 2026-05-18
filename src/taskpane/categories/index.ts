@@ -3,7 +3,6 @@ import { AlignmentPanel } from "../components/AlignmentPanel";
 import { SizePositionPanel } from "../components/SizePositionPanel";
 import { SelectSamePanel } from "../components/SelectSamePanel";
 import { TextPanel } from "../components/TextPanel";
-import { ShapeCreationPanel } from "../components/ShapeCreationPanel";
 import { TransformPanel } from "../components/TransformPanel";
 import { SlidesPanel } from "../components/SlidesPanel";
 import { SpecialShapesPanel } from "../components/SpecialShapesPanel";
@@ -28,7 +27,6 @@ export const categories: Category[] = [
   { id: "size", label: "Size & Position", panel: SizePositionPanel },
   { id: "selection", label: "Select Same", panel: SelectSamePanel },
   { id: "text", label: "Text & Paragraph", panel: TextPanel },
-  { id: "insert", label: "Shape Creation", panel: ShapeCreationPanel },
   {
     id: "properties",
     label: "Swap, Pick up & Apply",

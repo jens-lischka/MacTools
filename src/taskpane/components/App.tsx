@@ -89,7 +89,7 @@ const App: React.FC = () => {
               <br />
               <br />
               <Caption1>
-                Version 0.1.1 · PowerPoint API {highestSupportedApi()}
+                Version 0.1.2 · PowerPoint API {highestSupportedApi()}
               </Caption1>
             </div>
             <HelpButton />
