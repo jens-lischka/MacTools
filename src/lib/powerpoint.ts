@@ -62,11 +62,19 @@ export async function withSelectedShapes(
     callback(shapes, geometry, context);
     await context.sync();
 
-    // Programmatic geometry changes update the model and the slide thumbnail
-    // but do not always repaint the live editing canvas. Re-selecting the
-    // shapes nudges PowerPoint to refresh the view.
-    const slide = shapes[0].getParentSlide();
-    slide.setSelectedShapes(geometry.map((g) => g.id));
+    // A programmatic geometry change updates the model and the slide
+    // thumbnail but does not always repaint the live editing canvas. Nudging
+    // each shape 1 pt and back forces PowerPoint to redraw it.
+    shapes.forEach((s) => s.load("left"));
+    await context.sync();
+    const restored = shapes.map((s) => s.left);
+    shapes.forEach((s, i) => {
+      s.left = restored[i] - 1;
+    });
+    await context.sync();
+    shapes.forEach((s, i) => {
+      s.left = restored[i];
+    });
     await context.sync();
   });
 }

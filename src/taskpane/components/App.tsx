@@ -88,7 +88,9 @@ const App: React.FC = () => {
               </Caption1>
               <br />
               <br />
-              <Caption1>PowerPoint API {highestSupportedApi()}</Caption1>
+              <Caption1>
+                Version 0.1.0 · PowerPoint API {highestSupportedApi()}
+              </Caption1>
             </div>
             <HelpButton />
           </div>
