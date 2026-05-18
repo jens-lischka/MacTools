@@ -36,7 +36,7 @@ const useStyles = makeStyles({
     alignItems: "flex-start",
     gap: tokens.spacingHorizontalS,
   },
-  scroll: { flexGrow: 1, overflowY: "auto" },
+  scroll: { flexGrow: 1, overflowY: "scroll" },
   status: { margin: tokens.spacingVerticalS },
   panelInner: {
     padding: tokens.spacingVerticalS,
@@ -97,7 +97,7 @@ const App: React.FC = () => {
 
           {status && (
             <MessageBar
-              key={status.text}
+              layout="multiline"
               className={styles.status}
               intent={status.kind === "error" ? "error" : status.kind}
             >

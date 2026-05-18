@@ -14,6 +14,9 @@ import {
 import { useActions } from "./ActionContext";
 import { ToolButton } from "./ToolButton";
 import { usePanelStyles } from "./panelStyles";
+import { getSetting, setSetting } from "../../lib/settings";
+
+const TARGET_KEY = "align:target";
 
 
 const ALIGN_BUTTONS: { edge: AlignEdge; label: string; icon: string }[] = [
@@ -30,13 +33,28 @@ export const AlignmentPanel: React.FC = () => {
   const { run, busy } = useActions();
   const [target, setTarget] = React.useState<AlignTarget>("selection");
 
+  React.useEffect(() => {
+    let cancelled = false;
+    void getSetting<AlignTarget>(TARGET_KEY, "selection").then((value) => {
+      if (!cancelled) setTarget(value);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const changeTarget = (value: AlignTarget) => {
+    setTarget(value);
+    void setSetting(TARGET_KEY, value, "roaming");
+  };
+
   return (
     <div className={styles.section}>
       <Field label="Align relative to">
         <RadioGroup
           layout="horizontal-stacked"
           value={target}
-          onChange={(_, d) => setTarget(d.value as AlignTarget)}
+          onChange={(_, d) => changeTarget(d.value as AlignTarget)}
         >
           <Radio value="selection" label="Selection" />
           <Radio value="first" label="First" />
