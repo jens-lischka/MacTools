@@ -64,12 +64,13 @@ export async function withSelectedShapes(
 
     // A programmatic geometry change updates the model and the slide
     // thumbnail but does not always repaint the live editing canvas. Nudging
-    // each shape 1 pt and back forces PowerPoint to redraw it.
+    // each shape 1 pt and back forces a redraw. Nudge towards +x so a shape
+    // sitting on the slide's left edge does not flash off-canvas.
     shapes.forEach((s) => s.load("left"));
     await context.sync();
     const restored = shapes.map((s) => s.left);
     shapes.forEach((s, i) => {
-      s.left = restored[i] - 1;
+      s.left = restored[i] + 1;
     });
     await context.sync();
     shapes.forEach((s, i) => {

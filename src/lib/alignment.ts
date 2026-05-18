@@ -29,10 +29,11 @@ function targetBox(
   slideSize: SlideSize,
 ): Box {
   switch (target) {
+    // getSelectedShapes() returns the most recently selected shape first.
     case "first":
-      return geometry[0];
-    case "last":
       return geometry[geometry.length - 1];
+    case "last":
+      return geometry[0];
     case "slide":
       return { left: 0, top: 0, width: slideSize.width, height: slideSize.height };
     case "selection":

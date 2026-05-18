@@ -29,7 +29,8 @@ export async function matchSize(
   reference: Reference,
 ): Promise<void> {
   await withSelectedShapes(2, (shapes, geometry) => {
-    const ref = reference === "first" ? geometry[0] : geometry[geometry.length - 1];
+    // getSelectedShapes() returns the most recently selected shape first.
+    const ref = reference === "first" ? geometry[geometry.length - 1] : geometry[0];
     shapes.forEach((shape, i) => {
       if (geometry[i].id === ref.id) return;
       if (dimension !== "height") shape.width = ref.width;

@@ -32,6 +32,14 @@ function near(a: number, b: number, tolerance: number): boolean {
   return Math.abs(a - b) < tolerance;
 }
 
+/** A shape's kind: broad type plus its name without the trailing number,
+ *  so "Rectangle 3" and "Rectangle 7" match but "Rectangle 3" and "Oval 1"
+ *  do not. */
+function shapeKind(shape: PowerPoint.Shape): string {
+  const namePrefix = shape.name.replace(/\s*\d+\s*$/, "").trim().toLowerCase();
+  return `${shape.type}|${namePrefix}`;
+}
+
 function edgeValue(shape: PowerPoint.Shape, property: SameProperty): number {
   switch (property) {
     case "positionTop":
@@ -65,7 +73,7 @@ export async function selectSame(property: SameProperty): Promise<void> {
     const referenceId = selectedShapes.items[0].id;
     const slide = selectedSlides.items[0];
     const shapes = slide.shapes;
-    shapes.load("items/id,items/type,items/left,items/top,items/width,items/height");
+    shapes.load("items/id,items/type,items/name,items/left,items/top,items/width,items/height");
     await context.sync();
 
     const all = shapes.items;
@@ -77,7 +85,14 @@ export async function selectSame(property: SameProperty): Promise<void> {
     let matchIds: string[];
 
     if (property === "shapeType") {
-      matchIds = all.filter((s) => s.type === reference.type).map((s) => s.id);
+      // The API exposes only the broad type (geometricShape, line, …), not
+      // the specific geometric shape. PowerPoint names shapes after their
+      // kind ("Rectangle 3", "Oval 5"), so the name prefix distinguishes
+      // rectangle from oval etc. — unless a shape has been renamed.
+      const refKind = shapeKind(reference);
+      matchIds = all
+        .filter((s) => shapeKind(s) === refKind)
+        .map((s) => s.id);
     } else if (property === "size") {
       matchIds = all
         .filter(
