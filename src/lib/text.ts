@@ -243,22 +243,53 @@ export async function matchBulletLevels(): Promise<void> {
 }
 
 export interface TextStyle {
+  name: string;
   size: number;
   bold: boolean;
 }
 
-/** Apply a simple font style (size + weight) to the selected text shapes. */
+/**
+ * Apply a font style (font, size, weight). If text is selected inside a
+ * shape, the style is applied to that selection only (so a single line can
+ * be styled); otherwise it applies to the whole text of each selected shape.
+ * Line spacing is left untouched — the JS API does not expose it.
+ */
 export async function applyTextStyle(style: TextStyle): Promise<void> {
-  await withTextShapes((shapes) => {
-    shapes.forEach((s) => {
+  await PowerPoint.run(async (context) => {
+    const selectedRange = context.presentation.getSelectedTextRangeOrNullObject();
+    selectedRange.load("isNullObject");
+    await context.sync();
+
+    if (!selectedRange.isNullObject) {
+      const font = selectedRange.font;
+      font.name = style.name;
+      font.size = style.size;
+      font.bold = style.bold;
+      await context.sync();
+      return;
+    }
+
+    const selected = context.presentation.getSelectedShapes();
+    selected.load("items/type");
+    await context.sync();
+    const textShapes = selected.items.filter((s) => isTextShape(s.type));
+    if (textShapes.length === 0) {
+      throw new Error("Select a shape, or select the text to style.");
+    }
+    textShapes.forEach((s) => {
       const font = s.textFrame.textRange.font;
+      font.name = style.name;
       font.size = style.size;
       font.bold = style.bold;
     });
+    await context.sync();
   });
 }
 
-/** Concatenate the text of every selected text shape into the first one. */
+/**
+ * Concatenate the text of every selected text shape into the first one.
+ * Selected text boxes that are emptied by the merge are deleted.
+ */
 export async function mergeText(): Promise<void> {
   await withTextShapes(async (shapes, context) => {
     if (shapes.length < 2) {
@@ -273,13 +304,17 @@ export async function mergeText(): Promise<void> {
       .filter((t) => t.length > 0)
       .join("\n");
     ranges[0].text = merged;
-    ranges.slice(1).forEach((r) => {
-      r.text = "";
+    shapes.slice(1).forEach((s, i) => {
+      if (s.type === PowerPoint.ShapeType.textBox) {
+        s.delete();
+      } else {
+        ranges[i + 1].text = "";
+      }
     });
   });
 }
 
-/** Split the lines of one selected text shape into separate text boxes. */
+/** Split one selected text shape into one text box per paragraph. */
 export async function splitText(): Promise<void> {
   await PowerPoint.run(async (context) => {
     const selected = context.presentation.getSelectedShapes();
@@ -288,9 +323,7 @@ export async function splitText(): Promise<void> {
     slides.load("items/id");
     await context.sync();
 
-    const textShapes = selected.items.filter((s) =>
-      isTextShape(s.type),
-    );
+    const textShapes = selected.items.filter((s) => isTextShape(s.type));
     if (textShapes.length !== 1) {
       throw new Error("Select exactly one text shape to split.");
     }
@@ -301,25 +334,26 @@ export async function splitText(): Promise<void> {
     range.load("text");
     await context.sync();
 
-    const lines = range.text
-      .split(/[\r\n\v\f]+/)
-      .map((l) => l.trim())
-      .filter((l) => l.length > 0);
-    if (lines.length < 2) {
-      throw new Error("The selected shape has only one line of text.");
+    // Split on paragraph breaks only — soft line breaks stay within a
+    // paragraph, so each resulting text box holds exactly one paragraph.
+    const paragraphs = paragraphRanges(range.text)
+      .map((p) => range.text.substr(p.start, p.length))
+      .filter((p) => p.trim().length > 0);
+    if (paragraphs.length < 2) {
+      throw new Error("The selected shape has only one paragraph.");
     }
 
-    const lineHeight = shape.height / lines.length;
+    const boxHeight = shape.height / paragraphs.length;
     const slide = slides.items[0];
-    lines.slice(1).forEach((line, i) => {
-      slide.shapes.addTextBox(line, {
+    paragraphs.slice(1).forEach((paragraph, i) => {
+      slide.shapes.addTextBox(paragraph, {
         left: shape.left,
-        top: shape.top + (i + 1) * lineHeight,
+        top: shape.top + (i + 1) * boxHeight,
         width: shape.width,
-        height: lineHeight,
+        height: boxHeight,
       });
     });
-    range.text = lines[0];
+    range.text = paragraphs[0];
     await context.sync();
   });
 }

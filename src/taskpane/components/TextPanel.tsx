@@ -42,9 +42,9 @@ const MARGIN_PRESETS: { label: string; margins: Margins; icon: string }[] = [
 ];
 
 const STYLES: { label: string; style: TextStyle; icon: string }[] = [
-  { label: "Heading style", style: { size: 28, bold: true }, icon: "Heading1Text" },
-  { label: "Subheading style", style: { size: 20, bold: true }, icon: "Subheading1Text" },
-  { label: "Body style", style: { size: 14, bold: false }, icon: "Body1Text" },
+  { label: "Heading style", style: { name: "Noto Sans", size: 12, bold: true }, icon: "Heading1Text" },
+  { label: "Subheading style", style: { name: "Noto Sans", size: 12, bold: false }, icon: "Subheading1Text" },
+  { label: "Body style", style: { name: "Noto Sans", size: 12, bold: false }, icon: "Body1Text" },
 ];
 
 const SPECIAL_CHARS = ["—", "–", "•", "→", "←", "↑", "↓", "×", "✓", "€"];

@@ -82,9 +82,9 @@ GROUPS = [
         ("splitTextRibbon", "Split Text", "SplitText", "splitText()"),
     ]),
     ("TextStyles", "Text Styles", [
-        ("styleHeading", "Heading Style", "Heading1Text", "applyTextStyle({ size: 28, bold: true })"),
-        ("styleSubheading", "Subheading Style", "Subheading1Text", "applyTextStyle({ size: 20, bold: true })"),
-        ("styleBody", "Body Style", "Body1Text", "applyTextStyle({ size: 14, bold: false })"),
+        ("styleHeading", "Heading Style", "Heading1Text", 'applyTextStyle({ name: "Noto Sans", size: 12, bold: true })'),
+        ("styleSubheading", "Subheading Style", "Subheading1Text", 'applyTextStyle({ name: "Noto Sans", size: 12, bold: false })'),
+        ("styleBody", "Body Style", "Body1Text", 'applyTextStyle({ name: "Noto Sans", size: 12, bold: false })'),
     ]),
     ("SwapApply", "Swap & Apply", [
         ("swapPositionRibbon", "Swap Position", "SwapPosition", "swapPosition()"),
